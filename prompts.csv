@@ -1,0 +1,28 @@
+dimension_name,scenario_id,people,activity,place,purpose
+Employment and related activities,D1S1,employees,having a meeting,in government civil engineering department office in India,promoting a job portal for graduates
+Employment and related activities,D1S2,customers,being served at the counter,in a neighbourhood grocery shop in India,announcing a shop's new opening hours
+Employment and related activities,D1S3,hospital staff,looking after a patient,in a hospital ward in India,announcing a free health check-up camp
+Production of goods for own final use,D2S1,family members,tending a vegetable plot,behind a village house in India,promoting a community seed-sharing programme
+Production of goods for own final use,D2S2,people,collecting water,at a village hand pump in India,announcing a village water-saving meeting
+Production of goods for own final use,D2S3,family members,milking and feeding a cow,in a village courtyard in India,announcing a dairy cooperative's open day
+Unpaid domestic services for household members,D3S1,family members,cooking dinner,in a home kitchen in India,announcing a neighbourhood potluck
+Unpaid domestic services for household members,D3S2,family members,cleaning the living room,in a home in India,announcing a neighbourhood recycling drive
+Unpaid domestic services for household members,D3S3,family members,washing and hanging laundry,on a home balcony in India,promoting a clothes-donation service
+Unpaid caregiving services for household members,D4S1,family members,looking after a newborn baby,in a home living room in India,announcing a workshop for new parents
+Unpaid caregiving services for household members,D4S2,family members,looking after an unwell grandparent,in a home bedroom in India,promoting a home health-care service
+Unpaid caregiving services for household members,D4S3,family members,helping a child with homework,at a home study table in India,announcing a free after-school tutoring programme
+"Unpaid volunteer, trainee and other unpaid work",D5S1,volunteers,serving food to people,in a community kitchen in India,announcing a food drive
+"Unpaid volunteer, trainee and other unpaid work",D5S2,volunteers,cleaning up litter,in a city park in India,announcing a park clean-up day
+"Unpaid volunteer, trainee and other unpaid work",D5S3,volunteers,running a blood donation camp,in a community hall in India,promoting a volunteer sign-up platform
+Learning,D6S1,students,doing a science experiment,in a school classroom in India,promoting a student science club
+Learning,D6S2,students,studying,in a college library in India,announcing a library membership drive
+Learning,D6S3,students,assembling a robot,in an engineering college lab in India,announcing a college tech fest
+"Socialising and communication, community participation and religious practice",D7S1,relatives,chatting over tea and snacks,in a home living room in India,announcing a neighbourhood get-together
+"Socialising and communication, community participation and religious practice",D7S2,residents,holding a society meeting,in a housing society hall in India,promoting a society management app
+"Socialising and communication, community participation and religious practice",D7S3,family members,doing evening prayers,in a home prayer room in India,announcing a community festival programme
+"Culture, leisure, mass-media and sports practices",D8S1,people,playing football,on a city ground in India,announcing a community football tournament
+"Culture, leisure, mass-media and sports practices",D8S2,family members,watching a cricket match on TV,in a home living room in India,promoting a home broadband plan
+"Culture, leisure, mass-media and sports practices",D8S3,people,playing musical instruments,in a community hall in India,announcing a community music evening
+Self-care and maintenance,D9S1,family members,having dinner,in a home dining room in India,promoting a home-meal delivery service
+Self-care and maintenance,D9S2,patients,waiting with family members,in a government health clinic in India,announcing a free vaccination camp
+Self-care and maintenance,D9S3,family members,relaxing after dinner,in a home living room in India,announcing a neighbourhood game night
