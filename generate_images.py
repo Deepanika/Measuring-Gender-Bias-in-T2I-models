@@ -15,7 +15,8 @@ crash, rate-limit, or refusal and it only fills the gaps.
 
 Usage:
   python generate_images.py --dry-run                 # print prompts, build folders, no API calls
-  python generate_images.py --provider openai --limit 2   # cheap pilot
+  python generate_images.py --provider openai --max-images 1  # smoke test: ONE image
+  python generate_images.py --provider openai --limit 1       # pilot: 1 per phrasing (54)
   python generate_images.py                            # full run, both providers
 """
 
@@ -45,11 +46,17 @@ PROMPTS_FILE = Path(os.getenv("PROMPTS_FILE", "prompts.xlsx"))
 
 N_PER_PHRASING = 10
 
-OPENAI_MODEL = os.getenv("OPENAI_IMAGE_MODEL", "gpt-image-1")
+OPENAI_MODEL = os.getenv("OPENAI_IMAGE_MODEL", "gpt-image-2")
 OPENAI_QUALITY = os.getenv("OPENAI_IMAGE_QUALITY", "low")   # low | medium | high
 OPENAI_SIZE = os.getenv("OPENAI_IMAGE_SIZE", "1024x1024")
 
 GEMINI_MODEL = os.getenv("GEMINI_IMAGE_MODEL", "gemini-2.5-flash-image")
+
+# Images-per-minute caps from your account's Limits page (stay a little under).
+RATE_LIMIT_IPM = {
+    "openai": float(os.getenv("OPENAI_IPM", "5")),
+    "gemini": float(os.getenv("GEMINI_IPM", "10")),
+}
 
 TEMPLATES = {
     "plain": "Generate an image of {S}.",
@@ -161,16 +168,43 @@ def is_transient(e: Exception) -> bool:
 
 
 # -------------------------------------------------------------- RUNNER ---
+class RateLimiter:
+    """Spaces out request *starts* so we never exceed the per-minute image cap."""
+
+    def __init__(self, per_minute: float):
+        self.interval = 60.0 / per_minute * 1.1   # 10% safety margin
+        self.lock, self.next_slot = threading.Lock(), 0.0
+
+    def wait(self):
+        with self.lock:
+            now = time.monotonic()
+            slot = max(now, self.next_slot)
+            self.next_slot = slot + self.interval
+        time.sleep(max(0.0, slot - now))
+
+
+LIMITERS = {p: RateLimiter(ipm) for p, ipm in RATE_LIMIT_IPM.items()}
+
+
 class Manifest:
     FIELDS = ["timestamp_utc", "provider", "model", "dimension", "scenario_id",
               "within_dimension", "phrasing", "sample", "prompt", "status",
-              "file", "revised_prompt", "error"]
+              "file", "revised_prompt", "error", "gen_seconds"]
 
     def __init__(self, path: Path):
         self.path, self.lock = path, threading.Lock()
-        if not path.exists():
-            with open(path, "w", newline="", encoding="utf-8") as f:
-                csv.DictWriter(f, self.FIELDS).writeheader()
+        rows = []
+        if path.exists():  # upgrade an older manifest that lacks new columns
+            with open(path, newline="", encoding="utf-8") as f:
+                reader = csv.DictReader(f)
+                if reader.fieldnames == self.FIELDS:
+                    return
+                rows = list(reader)
+        with open(path, "w", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, self.FIELDS)
+            w.writeheader()
+            for r in rows:
+                w.writerow({k: r.get(k, "") for k in self.FIELDS})
 
     def log(self, **row):
         row["timestamp_utc"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
@@ -186,10 +220,15 @@ def run_job(job, generators, manifest):
     transient = content = 0
     while True:
         try:
+            LIMITERS[job["provider"]].wait()
+            t0 = time.perf_counter()  # times the API call only, not the rate-limit wait
             data, ext, revised = gen(job["prompt"])
+            secs = round(time.perf_counter() - t0, 1)
             out = job["folder"] / f"{job['stem']}.{ext}"
             out.write_bytes(data)
-            manifest.log(**base, model=model, status="ok", file=str(out), revised_prompt=revised)
+            print(f"  {job['provider']:<6} {job['stem']:<22} {secs:>6.1f}s")
+            manifest.log(**base, model=model, status="ok", file=str(out),
+                         revised_prompt=revised, gen_seconds=secs)
             return "ok"
         except Exception as e:
             if is_transient(e) and transient < MAX_TRANSIENT_RETRIES:
@@ -210,6 +249,8 @@ def main():
     ap.add_argument("--provider", choices=["openai", "gemini", "both"], default="both")
     ap.add_argument("--n", type=int, default=N_PER_PHRASING, help="images per phrasing")
     ap.add_argument("--limit", type=int, default=None, help="pilot: only first K samples per phrasing")
+    ap.add_argument("--max-images", type=int, default=None,
+                    help="hard cap on images generated this run (e.g. 1 for a smoke test)")
     ap.add_argument("--workers", type=int, default=3, help="parallel requests")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
@@ -245,6 +286,9 @@ def main():
 
     manifest = Manifest(out_root / "manifest.csv")
     random.shuffle(todo)  # spread load across providers/scenarios
+    if args.max_images:
+        todo = todo[:args.max_images]
+        print(f"--max-images: generating only {len(todo)} image(s) this run")
     counts = {"ok": 0, "refused": 0, "error": 0}
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         futures = [pool.submit(run_job, j, generators, manifest) for j in todo]
