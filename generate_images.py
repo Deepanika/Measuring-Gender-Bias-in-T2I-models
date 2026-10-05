@@ -93,11 +93,13 @@ def load_prompts(path: Path) -> pd.DataFrame:
     return df
 
 
-def build_jobs(df, providers, n, out_root, limit=None):
+def build_jobs(df, providers, n, out_root, limit=None, phrasings=None):
     jobs = []
     for provider in providers:
         for _, r in df.iterrows():
             for phrasing, tpl in TEMPLATES.items():
+                if phrasings and phrasing not in phrasings:
+                    continue
                 prompt = tpl.format(S=r["S"], purpose=r["purpose"])
                 folder = (out_root / provider / safe_name(r["dimension_name"])
                           / safe_name(r["within dimension"]) / phrasing)
@@ -247,6 +249,8 @@ def run_job(job, generators, manifest):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--provider", choices=["openai", "gemini", "both"], default="both")
+    ap.add_argument("--phrasing", choices=["plain", "use-case", "both"], default="both",
+                    help="which phrasing(s) to generate")
     ap.add_argument("--n", type=int, default=N_PER_PHRASING, help="images per phrasing")
     ap.add_argument("--limit", type=int, default=None, help="pilot: only first K samples per phrasing")
     ap.add_argument("--max-images", type=int, default=None,
@@ -261,7 +265,8 @@ def main():
         raise SystemExit(f"DRIVE_ROOT not found: {DRIVE_ROOT}  (set it in .env)")
 
     df = load_prompts(PROMPTS_FILE)
-    jobs = build_jobs(df, providers, args.n, out_root, args.limit)
+    phrasings = None if args.phrasing == "both" else [args.phrasing]
+    jobs = build_jobs(df, providers, args.n, out_root, args.limit, phrasings)
     for f in {j["folder"] for j in jobs}:
         f.mkdir(parents=True, exist_ok=True)
 
