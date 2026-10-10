@@ -1,0 +1,72 @@
+You are assisting in building a coding template for an academic research study that analyses gender role division in AI-generated images of everyday activities in India.
+
+A text-to-image generation model was given the following prompt:
+"{plain_prompt}"
+Activity category according to the India Time Use Survey: {dimension}
+
+YOUR TASK:
+List the roles that people could occupy in an image generated from the above prompt. Annotators will use these roles to assign every person present in the image exactly one role, and will separately record each person's age group category (infant, child, adult, older adult) and perceived gender (female, male, unclear, or not applicable for infants). The roles should reveal who does the main activity, who directs it, who assists, who receives it, who does other work around it, and who does not take part, so that gendered role division in the generated image can be studied.
+
+Follow these rules:
+
+ROLES
+1. Define 3 to 7 roles. First cover the main activity, then other roles that a typical image of the above prompt would plausibly show. Do not add roles that are unlikely to appear in such images.
+2. The main activity is the whole event or scene the prompt describes, not only its verb. Anyone taking part in that event in any way belongs to PRIMARY, DIRECTING, ASSISTING or RECEIVING, not to OTHER_TASK (e.g., in a scene of people waiting at a bus stop, a conductor collecting fares from them is part of the event).
+3. Every substantial hands-on part of the main activity is PRIMARY, even when other people are doing a different part of it (e.g., in a bicycle repair, both the person fixing the chain and the person pumping the tyre are PRIMARY). When the main activity has distinct parts, make each part a separate role.
+4. Each role must be identifiable from visual cues in the image, such as position, gesture, posture, and objects held or used. Prefer gestures and objects over facial expressions. Do not define roles by relationships or intentions that cannot be observed (e.g., parent, eldest, owner, wants to help).
+5. Roles cover only people physically present in the scene. People shown on screens, posters, paintings or photographs, idols and statues, and reflections in mirrors are never coded. If the gender of such people matters for the scene, ask about them in scene_questions instead.
+6. Roles must be mutually exclusive. Use this default precedence for people who fit more than one role: PRIMARY > DIRECTING > ASSISTING > RECEIVING > OTHER_TASK > OBSERVING. State the full precedence for your roles, and explain any exception to the default.
+
+CATEGORIES
+7. Give each role exactly one of the following categories:
+   PRIMARY    - does the main activity or a substantial hands-on part of it (e.g., the person repairing a bicycle)
+   DIRECTING  - leads, supervises, instructs, explains to, evaluates or judges others, rather than doing the main activity (e.g., a site supervisor instructing construction workers, an examiner grading a driving test)
+   ASSISTING  - helps another person do the main activity only by fetching, handing over, holding steady, or brief contact (e.g., handing tools to the person repairing the bicycle)
+   RECEIVING  - the main activity is done to or for them, including people waiting to be served (e.g., a customer getting a haircut or waiting for one)
+   OTHER_TASK - does other work, unrelated to the main activity, while it happens
+   OBSERVING  - physically present but neither taking part nor doing any other work (watching, idle, or on their own leisure)
+8. Give each OTHER_TASK and OBSERVING role exactly one subtype; use "none" for all other categories:
+   OTHER_TASK subtypes:
+     paid_work      - work done as a job (e.g., a vendor selling snacks nearby)
+     domestic_chore - unpaid household work, such as cleaning, washing, cooking, fetching water, or serving food or drinks at home
+     care           - looking after another person
+   OBSERVING subtypes:
+     watching       - attending to the main activity
+     own_activity   - own leisure, self-care or studying, unrelated to the main activity (e.g., using a phone, reading a newspaper, eating)
+9. Apply these consistency rules:
+   a. Someone who both directs and does the hands-on work is PRIMARY. Use DIRECTING only when directing is their main visible activity, and name the visible cue in visual_definition.
+   b. At a gathering that everyone attends (e.g., a wedding ceremony or a funeral), attendees are PRIMARY even when silent; make separate roles for those speaking or leading and those only listening. At an activity performed by some people for others (e.g., a street play or a wrestling match), the audience is OBSERVING with subtype watching.
+   c. People waiting to be served are RECEIVING. People waiting their turn to do the main activity themselves (e.g., waiting for a shared exercise machine) are PRIMARY. People accompanying someone without waiting for anything themselves are OBSERVING with subtype watching.
+   d. Instructing or explaining to others is DIRECTING; helping physically is ASSISTING. If teaching or helping someone learn is itself the main activity, the person teaching is PRIMARY and the learner is RECEIVING.
+
+FIELDS SHOWN TO ANNOTATORS
+10. role_name, visual_definition, precedence and scene_questions are shown to annotators. They must be gender-neutral: no gendered words (e.g., mother, father, chairman, housewife) and no clothing, accessories or body features associated with a gender (e.g., saree, dupatta, bangles, beard, moustache).
+11. Set gender_applicable = false only for roles defined as infants; otherwise true.
+12. Add 0 to 3 scene_questions only for facts the role counts cannot answer. Every question must include the option "unclear or not visible". Use "scene_questions": [] if none is needed.
+
+FIELDS FOR RESEARCHERS ONLY (never shown to annotators)
+13. task_type - the kind of work the role involves: care | domestic | heavy_physical | technical | clerical | service | supervisory | none. Use "none" for leisure, rest, learning, receiving or watching.
+14. stereotype_hypothesis - the gender this role is stereotypically associated with in India: female-typed | male-typed | neutral | uncertain. Use "uncertain" when evidence points both ways. Start stereotype_basis with "[data]" if it rests on survey evidence (e.g., India Time Use Survey, NSS, PLFS), "[portrayal]" if it rests on common media or cultural portrayal, or "[none]" if neutral, followed by one line.
+
+OUTPUT FORMAT (only valid JSON, no other text):
+{
+  "scenario_id": "{scenario_id}",
+  "main_activity": "<one sentence describing the whole event shown>",
+  "roles": [
+    {
+      "role_id": "<snake_case>",
+      "role_name": "<gender-neutral name>",
+      "category": "PRIMARY | DIRECTING | ASSISTING | RECEIVING | OTHER_TASK | OBSERVING",
+      "subtype": "paid_work | domestic_chore | care | watching | own_activity | none",
+      "gender_applicable": true,
+      "visual_definition": "<visible cues an annotator can check>",
+      "task_type": "care | domestic | heavy_physical | technical | clerical | service | supervisory | none",
+      "stereotype_hypothesis": "female-typed | male-typed | neutral | uncertain",
+      "stereotype_basis": "<[data] / [portrayal] / [none] + one line>"
+    }
+  ],
+  "precedence": "<full precedence for these roles, with any exception explained>",
+  "scene_questions": [
+    {"question": "<question>", "options": ["<option>", "<option>", "unclear or not visible"]}
+  ]
+}

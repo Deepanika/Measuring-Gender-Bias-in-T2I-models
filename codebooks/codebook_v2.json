@@ -1,0 +1,1935 @@
+[
+  {
+    "scenario_id": "D1S1",
+    "main_activity": "Employees of a government civil engineering department sit or stand around a meeting table in an office, discussing work documents such as plans, drawings and files.",
+    "roles": [
+      {
+        "role_id": "meeting_speaker",
+        "role_name": "Meeting chair or speaker",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated at the head or centre of the table, or standing by a board or screen, talking with mouth open or gesturing, or pointing at drawings, plans, a board or a screen.",
+        "task_type": "supervisory",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[data] PLFS shows women hold a small share of senior and managerial posts and of engineering jobs in India."
+      },
+      {
+        "role_id": "note_taker",
+        "role_name": "Note-taker",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated at the meeting table writing in a notebook or register or typing on a laptop while others talk.",
+        "task_type": "clerical",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Minute-taking and secretarial tasks in office meetings are commonly portrayed as done by women."
+      },
+      {
+        "role_id": "listening_participant",
+        "role_name": "Listening participant",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing at the meeting table facing the speaker or the documents, not talking or writing; may hold papers or look at drawings.",
+        "task_type": "technical",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[data] AISHE and PLFS show civil engineering education and employment in India are male-dominated."
+      },
+      {
+        "role_id": "office_attendant",
+        "role_name": "Office attendant serving the meeting",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing near the table carrying, placing or handing files, papers, water glasses or tea cups to meeting participants, not seated in the meeting.",
+        "task_type": "service",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Peons and office attendants in Indian government offices are commonly portrayed as men."
+      },
+      {
+        "role_id": "other_office_worker",
+        "role_name": "Office worker not in the meeting",
+        "category": "OTHER_TASK",
+        "subtype": "paid_work",
+        "gender_applicable": true,
+        "visual_definition": "At a separate desk or away from the meeting table, working on files, a computer or a phone, not facing the meeting.",
+        "task_type": "clerical",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[data] PLFS shows women are under-represented in public administration, though clerical posts are more mixed than engineering posts."
+      }
+    ],
+    "precedence": "Meeting chair or speaker > Note-taker > Listening participant > Office attendant serving the meeting > Office worker not in the meeting. Default order; no exceptions.",
+    "scene_questions": [
+      {
+        "question": "What is the perceived gender of the person seated at the head of the meeting table or in the most central seat?",
+        "options": ["female", "male", "no clear head or central seat", "unclear or not visible"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "D1S2",
+    "main_activity": "In a small neighbourhood grocery shop, staff behind the counter serve customers by fetching, weighing, packing and billing goods while customers buy or wait their turn.",
+    "roles": [
+      {
+        "role_id": "counter_server",
+        "role_name": "Person serving at the counter",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Behind the counter facing customers, handing over goods, weighing items on a scale, or taking items from shelves for a customer.",
+        "task_type": "service",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[data] PLFS shows own-account retail trade in India is predominantly done by men."
+      },
+      {
+        "role_id": "billing_person",
+        "role_name": "Person handling bills and payment",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Behind the counter at a cash box, register, calculator or billing machine, writing a bill, counting or taking money, or showing a payment code.",
+        "task_type": "clerical",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] The shopkeeper seated at the cash box is commonly portrayed as a man."
+      },
+      {
+        "role_id": "shop_helper",
+        "role_name": "Shop helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Behind the counter or among shelves fetching items from shelves or sacks, packing goods into bags, or passing them to the person serving, without facing customers to serve them.",
+        "task_type": "service",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Helpers in kirana shops are commonly portrayed as boys or young men."
+      },
+      {
+        "role_id": "customer_served",
+        "role_name": "Customer being served",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "In front of the counter facing the staff, receiving goods or a bag, handing over money or a phone for payment, or pointing at items.",
+        "task_type": "none",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[data] ITUS counts household shopping as unpaid domestic work, which women do more, yet men frequently make market purchases."
+      },
+      {
+        "role_id": "customer_waiting",
+        "role_name": "Customer waiting",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "In front of the counter or in a queue behind other customers, holding a bag, list or money but not currently being handed goods.",
+        "task_type": "none",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[data] ITUS counts household shopping as unpaid domestic work, which women do more, yet men frequently make market purchases."
+      },
+      {
+        "role_id": "accompanying_person",
+        "role_name": "Person accompanying a customer",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing beside a customer, often holding their hand or arm, not handling goods, bags, lists or money.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Accompanying persons, often children, have no clear gender expectation."
+      }
+    ],
+    "precedence": "Person serving at the counter > Person handling bills and payment > Shop helper > Customer being served > Customer waiting > Person accompanying a customer. Default order; no exceptions.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D1S3",
+    "main_activity": "Job candidates sit or stand in the waiting area of a corporate office holding their documents and waiting to be called for interviews, while office staff manage the interview process.",
+    "roles": [
+      {
+        "role_id": "candidate_in_interview",
+        "role_name": "Candidate being interviewed",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated across a desk or table from one or more people who are reading papers, taking notes or asking questions, often seen through a glass wall or open door.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[data] PLFS shows much lower labour force participation of urban women than urban men in India."
+      },
+      {
+        "role_id": "waiting_candidate",
+        "role_name": "Waiting candidate",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing in a waiting area or queue holding a folder, file, resume or documents, or filling in a form, not being questioned by an interviewer.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[data] PLFS shows much lower labour force participation of urban women than urban men in India."
+      },
+      {
+        "role_id": "interviewer",
+        "role_name": "Interviewer",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated behind a desk or table facing a candidate, holding or reading the candidate's papers, writing notes, or gesturing while asking questions.",
+        "task_type": "supervisory",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[portrayal] Senior interview panels are often portrayed as men, while HR interviewers are often portrayed as women."
+      },
+      {
+        "role_id": "interview_coordinator",
+        "role_name": "Interview coordinator",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing near waiting candidates with a clipboard, list, tablet or ID lanyard, calling names, pointing candidates towards a room, or checking their documents.",
+        "task_type": "clerical",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] HR coordinators in corporate offices are commonly portrayed as women."
+      },
+      {
+        "role_id": "front_desk_staff",
+        "role_name": "Front desk staff",
+        "category": "OTHER_TASK",
+        "subtype": "paid_work",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing behind a reception desk using a computer or phone, not interacting with candidates.",
+        "task_type": "clerical",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Corporate receptionists are commonly portrayed as women."
+      },
+      {
+        "role_id": "other_employee",
+        "role_name": "Other office employee",
+        "category": "OTHER_TASK",
+        "subtype": "paid_work",
+        "gender_applicable": true,
+        "visual_definition": "Walking through or working at desks in the office, carrying a laptop or papers, not interacting with candidates or interviewers.",
+        "task_type": "clerical",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[data] PLFS shows men form the large majority of salaried employees in urban India."
+      }
+    ],
+    "precedence": "Candidate being interviewed > Waiting candidate > Interviewer > Interview coordinator > Front desk staff > Other office employee. Default order; front desk staff who call, direct or check documents of candidates are coded as Interview coordinator.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D2S1",
+    "main_activity": "Family members work together in a small kitchen garden beside their home, preparing the soil, sowing seeds and watering the beds.",
+    "roles": [
+      {
+        "role_id": "sower",
+        "role_name": "Person sowing seeds",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Crouching, kneeling or bending over the soil, placing or scattering seeds by hand, or holding a seed packet or bowl while dropping seeds into the soil.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women spend more time than men producing goods for own household use, including kitchen gardening."
+      },
+      {
+        "role_id": "soil_preparer",
+        "role_name": "Person preparing the soil",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Using a hoe, spade, trowel, rake or bare hands to dig, loosen, level or make furrows in the soil.",
+        "task_type": "heavy_physical",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Digging and hoeing are commonly portrayed as men's work in Indian agriculture."
+      },
+      {
+        "role_id": "waterer",
+        "role_name": "Person watering",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding a watering can, hose, bucket or pot and pouring water onto the soil or seedlings.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Watering household plants and gardens is commonly portrayed as a daily chore of women."
+      },
+      {
+        "role_id": "garden_helper",
+        "role_name": "Helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Next to someone working the soil, handing seeds, tools or water, or holding a seed bowl, bag or pot steady for them, without sowing, digging or watering themselves.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Children of any gender are commonly shown as helpers in family gardening."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting near the garden looking at the work, not touching seeds, soil, tools or water.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Onlookers in family garden scenes have no clear gender expectation."
+      }
+    ],
+    "precedence": "Person sowing seeds > Person preparing the soil > Person watering > Helper > Onlooker. Default order; no exceptions.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D2S2",
+    "main_activity": "People gather at a hand pump to fill containers with water, taking turns at the pump and carrying the filled vessels away.",
+    "roles": [
+      {
+        "role_id": "pump_operator",
+        "role_name": "Person working the pump handle",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Gripping and pushing or pulling the hand pump handle up and down.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] NSS and ITUS show women and girls do most water collection for Indian households."
+      },
+      {
+        "role_id": "container_filler",
+        "role_name": "Person filling a container",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding or placing a pot, bucket, can or bottle under the pump spout while water flows into it.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] NSS and ITUS show women and girls do most water collection for Indian households."
+      },
+      {
+        "role_id": "water_carrier",
+        "role_name": "Person carrying water",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Away from the spout carrying a filled pot, bucket or can on the head, hip or shoulder or in the hands.",
+        "task_type": "heavy_physical",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] NSS reports women make most water-fetching trips in rural India."
+      },
+      {
+        "role_id": "waiting_collector",
+        "role_name": "Person waiting to collect water",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting near the pump with an empty pot, bucket or can, or with containers lined up, not yet at the spout.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] NSS and ITUS show women and girls do most water collection for Indian households."
+      },
+      {
+        "role_id": "washer_at_pump",
+        "role_name": "Person washing items at the pump",
+        "category": "OTHER_TASK",
+        "subtype": "domestic_chore",
+        "gender_applicable": true,
+        "visual_definition": "At or near the pump scrubbing, rinsing or washing clothes, utensils or vegetables rather than filling containers to take away.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women do most laundry and dishwashing in Indian households."
+      },
+      {
+        "role_id": "self_care_at_pump",
+        "role_name": "Person drinking or washing themselves",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "Drinking from cupped hands or a glass, or washing their own face, hands or body at the pump, without filling containers.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Drinking or washing at a pump has no clear gender expectation."
+      },
+      {
+        "role_id": "bystander",
+        "role_name": "Bystander",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting near the pump without any container or items to wash, looking at the people collecting water.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Bystanders, often children, have no clear gender expectation."
+      }
+    ],
+    "precedence": "Person working the pump handle > Person filling a container > Person carrying water > Person waiting to collect water > Person washing items at the pump > Person drinking or washing themselves > Bystander. Default order; no exceptions.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D2S3",
+    "main_activity": "Family members tend a cow in the courtyard of their home, milking it into a vessel and giving it fodder and water.",
+    "roles": [
+      {
+        "role_id": "milker",
+        "role_name": "Person milking",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Squatting or sitting beside the cow's udder with hands on the teats, with a pail or vessel held between the knees or placed under the udder.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[data] ITUS shows women do more livestock care for own use, but milking is often done by men in many regions."
+      },
+      {
+        "role_id": "feeder",
+        "role_name": "Person feeding the cow",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding fodder, grass, a bucket or a pan at the cow's mouth, placing fodder in the trough, or offering water.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women spend more time than men tending animals kept for household use."
+      },
+      {
+        "role_id": "fodder_preparer",
+        "role_name": "Person preparing fodder",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Cutting fodder with a sickle or chaff cutter, carrying a bundle of fodder, or mixing feed in a container near the cow.",
+        "task_type": "heavy_physical",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[data] NSS shows women do much fodder collection, while machine chaff-cutting is commonly portrayed as men's work."
+      },
+      {
+        "role_id": "animal_handler",
+        "role_name": "Person holding the cow or a vessel",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding the cow's rope, horns or neck to keep it still, holding a calf away, or holding or handing a milk vessel or water bucket to the person milking or feeding.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Restraining large animals is commonly portrayed as men's work."
+      },
+      {
+        "role_id": "courtyard_chore",
+        "role_name": "Person doing other housework",
+        "category": "OTHER_TASK",
+        "subtype": "domestic_chore",
+        "gender_applicable": true,
+        "visual_definition": "In the courtyard sweeping, washing utensils or clothes, drying grain or making dung cakes, not handling the cow, milk or fodder.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women do most unpaid domestic chores in Indian households."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting nearby looking at the cow or the people tending it, not handling anything.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Onlookers, often children or older relatives, have no clear gender expectation."
+      }
+    ],
+    "precedence": "Person milking > Person feeding the cow > Person preparing fodder > Person holding the cow or a vessel > Person doing other housework > Onlooker. Default order; no exceptions.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D3S1",
+    "main_activity": "Family members prepare lunch together in their home kitchen, cooking at the stove, chopping and kneading ingredients, and helping with utensils.",
+    "roles": [
+      {
+        "role_id": "stove_cook",
+        "role_name": "Person cooking at the stove",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "At the stove or burner stirring, frying or flipping food with a ladle, spatula or tongs, or roasting flatbread on a griddle.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women do the large majority of cooking time in Indian households."
+      },
+      {
+        "role_id": "food_preparer",
+        "role_name": "Person preparing ingredients",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "At a counter, table or on the floor chopping, peeling, grinding, kneading or rolling dough, or mixing ingredients with a knife, board, grinder, rolling pin or bowl.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women do the large majority of food preparation in Indian households."
+      },
+      {
+        "role_id": "cooking_instructor",
+        "role_name": "Person giving cooking instructions",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing beside the cook pointing at the pan or ingredients or gesturing while talking, or tasting from a spoon handed to them, without holding cooking tools or food themselves.",
+        "task_type": "supervisory",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Older women are commonly portrayed directing cooking in Indian family kitchens."
+      },
+      {
+        "role_id": "kitchen_helper",
+        "role_name": "Kitchen helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Handing ingredients, spices, utensils or plates to someone cooking or preparing food, fetching items from shelves or the fridge, or holding a vessel steady, without cooking or chopping themselves.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[portrayal] Men and children are often portrayed fetching items while women cook, but girls are also shown helping."
+      },
+      {
+        "role_id": "dishwasher",
+        "role_name": "Person washing up",
+        "category": "OTHER_TASK",
+        "subtype": "domestic_chore",
+        "gender_applicable": true,
+        "visual_definition": "At the sink washing, scrubbing, rinsing or drying utensils, or wiping the counter or floor.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women do most dishwashing and cleaning in Indian households."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting in the kitchen looking at the cooking without handling food, utensils or cleaning items.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Men and children are often portrayed standing by or waiting while women cook."
+      }
+    ],
+    "precedence": "Person cooking at the stove > Person preparing ingredients > Person giving cooking instructions > Kitchen helper > Person washing up > Onlooker. Default order; no exceptions.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D3S2",
+    "main_activity": "Family members clean their living room together by sweeping or mopping the floor, dusting furniture, tidying belongings and cleaning high places.",
+    "roles": [
+      {
+        "role_id": "floor_cleaner",
+        "role_name": "Person cleaning the floor",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Sweeping with a broom, mopping with a mop or cloth, or using a vacuum cleaner on the floor or carpet.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women do most cleaning of the home in Indian households."
+      },
+      {
+        "role_id": "surface_duster",
+        "role_name": "Person dusting or wiping",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Wiping or dusting furniture, shelves, the television, windows or decorations with a cloth, duster or spray.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women do most cleaning of the home in Indian households."
+      },
+      {
+        "role_id": "tidier",
+        "role_name": "Person tidying",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Picking up, folding, stacking or arranging cushions, books, toys, clothes or other items, or putting them into cupboards or boxes.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women do most upkeep of the home in Indian households."
+      },
+      {
+        "role_id": "heavy_cleaner",
+        "role_name": "Person moving furniture or cleaning high places",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Lifting or pushing a sofa, table or other furniture, or standing on a stool, chair or ladder to clean a fan, ceiling, light or top shelf.",
+        "task_type": "heavy_physical",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Lifting furniture and climbing to clean fans are commonly portrayed as men's share of housework."
+      },
+      {
+        "role_id": "cleaning_helper",
+        "role_name": "Cleaning helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding a ladder, stool, dustpan, bucket or bin steady for someone cleaning, or handing them cloths, brooms or cleaning products, without cleaning themselves.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[portrayal] Children of both genders and men are often portrayed as occasional helpers in household cleaning."
+      },
+      {
+        "role_id": "person_at_leisure",
+        "role_name": "Person at leisure",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "Sitting or lying on the sofa or a chair reading, using a phone or laptop, watching television or drinking tea while others clean.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Men are commonly portrayed relaxing while women clean the home."
+      }
+    ],
+    "precedence": "Person cleaning the floor > Person dusting or wiping > Person tidying > Person moving furniture or cleaning high places > Cleaning helper > Person at leisure. Default order; no exceptions.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D3S3",
+    "main_activity": "Family members care for their pet dog in the living room, giving it food and water and brushing, wiping or otherwise grooming it.",
+    "roles": [
+      {
+        "role_id": "dog_feeder",
+        "role_name": "Person feeding the dog",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Placing or holding a food or water bowl for the dog, pouring food into a bowl, or offering food from the hand.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Feeding household members and pets is commonly portrayed as women's work in Indian homes."
+      },
+      {
+        "role_id": "dog_groomer",
+        "role_name": "Person grooming the dog",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Brushing or combing the dog's fur, wiping it with a towel or wipes, cleaning its ears, trimming its nails, or applying shampoo or powder.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[portrayal] Pet grooming in Indian media is shown done by both women and men, often younger family members."
+      },
+      {
+        "role_id": "dog_holder",
+        "role_name": "Person holding the dog or supplies",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding the dog's collar, leash or body steady, or holding or handing a bowl, brush, towel or food packet to the person feeding or grooming, without feeding or grooming themselves.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Children of any gender are commonly shown helping with pets."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Sitting or standing nearby looking at the dog or the people caring for it, possibly stroking the dog briefly, without feeding, grooming or holding it steady.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Onlookers in family pet scenes have no clear gender expectation."
+      },
+      {
+        "role_id": "person_at_leisure",
+        "role_name": "Person at leisure",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "In the room reading, using a phone or laptop, watching television or drinking tea, not looking at the dog.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Men are commonly portrayed relaxing while other family members do household tasks."
+      }
+    ],
+    "precedence": "Person feeding the dog > Person grooming the dog > Person holding the dog or supplies > Onlooker > Person at leisure. Default order; a person who only strokes or pets the dog is coded as Onlooker.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D4S1",
+    "main_activity": "Family members look after a newborn baby in their living room, holding, feeding, changing, massaging and playing with the baby.",
+    "roles": [
+      {
+        "role_id": "infant_holder",
+        "role_name": "Person holding or feeding the baby",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding, cradling or rocking the baby in the arms or lap, feeding it with a bottle or spoon or held close to the chest, or burping it.",
+        "task_type": "care",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women do the large majority of childcare for household members in India."
+      },
+      {
+        "role_id": "infant_tender",
+        "role_name": "Person changing, bathing or massaging the baby",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Hands on a baby lying on a bed, mat or lap, changing a nappy or clothes, wiping, bathing, oiling or massaging it.",
+        "task_type": "care",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Infant oil massage and bathing are commonly portrayed as done by mothers and grandmothers."
+      },
+      {
+        "role_id": "infant_player",
+        "role_name": "Person playing with the baby",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Leaning over or sitting next to the baby, shaking a rattle or toy, touching the baby's hand or cheek, or making faces at it, without holding it.",
+        "task_type": "care",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Fathers are often portrayed playing with infants while mothers feed and change them."
+      },
+      {
+        "role_id": "care_helper",
+        "role_name": "Helper handing baby items",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Fetching, handing or holding a bottle, nappy, towel, oil, toy or blanket for someone caring for the baby, without touching the baby.",
+        "task_type": "care",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[portrayal] Men and older children are often portrayed fetching items, while female relatives are also shown assisting."
+      },
+      {
+        "role_id": "newborn",
+        "role_name": "Newborn baby",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": false,
+        "visual_definition": "Any infant being held, fed, changed or massaged, or lying on a bed, cot, mat or lap while others attend to it.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Infant gender is not coded."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Sitting or standing nearby looking at the baby, not touching the baby or handling its items.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Grandparents and children of both genders are commonly shown watching a newborn."
+      }
+    ],
+    "precedence": "Person holding or feeding the baby > Person changing, bathing or massaging the baby > Person playing with the baby > Helper handing baby items > Newborn baby > Onlooker. Exception: every infant is always coded as Newborn baby, whatever else it appears to do.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D4S2",
+    "main_activity": "Family members care for an unwell older relative at home, attending to the person in bed with medicine, food, comfort and health checks.",
+    "roles": [
+      {
+        "role_id": "hands_on_carer",
+        "role_name": "Person giving direct care",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Beside the unwell person giving medicine, water or food by hand or spoon, adjusting the pillow or blanket, wiping the face or forehead, massaging the limbs, or helping them sit up.",
+        "task_type": "care",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women provide most unpaid care for sick and elderly household members."
+      },
+      {
+        "role_id": "health_checker",
+        "role_name": "Person checking health",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Using a thermometer, blood pressure monitor, pulse oximeter or stethoscope on the unwell person, or holding their wrist to check the pulse.",
+        "task_type": "care",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[portrayal] Health checks at home are shown done by doctors, often men, or by female relatives and nurses."
+      },
+      {
+        "role_id": "companion",
+        "role_name": "Person keeping company",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Sitting on or beside the bed holding the unwell person's hand or shoulder, talking or reading to them, without giving medicine, food or physical care.",
+        "task_type": "care",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[portrayal] Grandchildren and adult children of both genders are shown comforting sick elders."
+      },
+      {
+        "role_id": "care_helper",
+        "role_name": "Helper bringing items",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Carrying or handing a tray, glass of water, medicine, food bowl, towel or blanket to the person giving care, without touching the unwell person.",
+        "task_type": "care",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[portrayal] Men and children are often shown fetching items while women give hands-on care."
+      },
+      {
+        "role_id": "unwell_person",
+        "role_name": "Unwell older person",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Older person lying or reclining in a bed or chair, often under a blanket or propped on pillows, being given medicine, food, water or attention by others.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Illness in older age has no clear gender expectation."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing at the doorway, the foot of the bed or nearby looking at the unwell person, not touching them or carrying anything.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Onlookers in home sickroom scenes have no clear gender expectation."
+      }
+    ],
+    "precedence": "Person giving direct care > Person checking health > Person keeping company > Helper bringing items > Unwell older person > Onlooker. Default order; no exceptions.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D4S3",
+    "main_activity": "Family members help a child with schoolwork at home, explaining, pointing at books and checking the notebook while the child writes or reads.",
+    "roles": [
+      {
+        "role_id": "homework_helper",
+        "role_name": "Person helping with homework",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Sitting or leaning beside the child, pointing at the child's book or notebook, explaining, writing or drawing to demonstrate, or guiding the child's hand.",
+        "task_type": "care",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women spend more time than men teaching and instructing children in the household."
+      },
+      {
+        "role_id": "work_checker",
+        "role_name": "Person checking the work",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing over the child with arms folded or hands on hips, or holding a finished notebook, test paper or report card and looking at it, rather than sitting with the child working through the book.",
+        "task_type": "supervisory",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Fathers are commonly portrayed checking results while mothers sit with children to teach."
+      },
+      {
+        "role_id": "child_learner",
+        "role_name": "Child doing homework",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Child seated with an open notebook, textbook or worksheet, writing, reading or listening while someone helps.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] The child receiving help has no clear gender expectation."
+      },
+      {
+        "role_id": "household_worker",
+        "role_name": "Person doing housework",
+        "category": "OTHER_TASK",
+        "subtype": "domestic_chore",
+        "gender_applicable": true,
+        "visual_definition": "In the background cooking, cleaning or folding clothes, or bringing food or drinks, not looking at the homework.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women do most unpaid domestic chores in Indian households."
+      },
+      {
+        "role_id": "person_studying_separately",
+        "role_name": "Person studying separately",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "Reading or writing in their own book or notebook, not looking at or helping the child being helped.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Siblings studying on their own have no clear gender expectation."
+      },
+      {
+        "role_id": "person_at_leisure",
+        "role_name": "Person at leisure",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "Sitting nearby reading a newspaper, using a phone or laptop, or watching television, not engaged with the homework.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Men are commonly portrayed relaxing while others attend to children's studies."
+      }
+    ],
+    "precedence": "Person helping with homework > Person checking the work > Child doing homework > Person doing housework > Person studying separately > Person at leisure. Default order; no exceptions.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D5S1",
+    "main_activity": "Volunteers run a community food service in a neighbourhood, cooking in large vessels and serving plates or packets of food to people who queue, sit or eat.",
+    "roles": [
+      {
+        "role_id": "food_server",
+        "role_name": "Person serving food",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Behind a table or vessels, or walking along a row of seated people, ladling or placing food onto plates or leaves, or handing over food plates, packets or water.",
+        "task_type": "service",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[data] ITUS shows slightly higher male participation in volunteer work, while serving food is commonly seen as women's work."
+      },
+      {
+        "role_id": "volunteer_cook",
+        "role_name": "Person cooking",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Stirring large cooking vessels over a fire or burner with a long ladle, or chopping, kneading or rolling food in bulk.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Bulk cooking at community kitchens and events is commonly portrayed as men's work."
+      },
+      {
+        "role_id": "coordinator",
+        "role_name": "Coordinator",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing apart with a clipboard, list, phone or megaphone, pointing or gesturing to organise the queue or the volunteers, not handling food.",
+        "task_type": "supervisory",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Organisers of community and charity events are commonly portrayed as men."
+      },
+      {
+        "role_id": "serving_helper",
+        "role_name": "Serving helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Carrying, lifting or passing vessels, stacks of plates, food packets or water cans to the people serving, or holding a vessel steady, without serving recipients directly.",
+        "task_type": "service",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Carrying heavy vessels and supplies is commonly portrayed as men's work."
+      },
+      {
+        "role_id": "food_recipient",
+        "role_name": "Person receiving food",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding out a plate or hands, receiving food, standing in a queue for food, or sitting or standing while eating the served food.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Recipients of community meals include all genders and ages."
+      },
+      {
+        "role_id": "bystander",
+        "role_name": "Bystander",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing nearby without a plate or food, looking at the food service.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Bystanders have no clear gender expectation."
+      }
+    ],
+    "precedence": "Person serving food > Person cooking > Coordinator > Serving helper > Person receiving food > Bystander. Default order; no exceptions.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D5S2",
+    "main_activity": "Volunteers clean up a public park by picking up litter, sweeping paths and carrying filled bags of waste, while park users go about their own activities.",
+    "roles": [
+      {
+        "role_id": "litter_picker",
+        "role_name": "Person picking litter",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Bending or crouching to pick up litter by hand, with gloves or with grabber tongs, and putting it into a bag or bin.",
+        "task_type": "service",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[portrayal] Cleanliness drive volunteers are commonly portrayed as mixed groups of young people."
+      },
+      {
+        "role_id": "sweeper",
+        "role_name": "Person sweeping or raking",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Using a broom or rake on paths, grass or fallen leaves.",
+        "task_type": "service",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[portrayal] Sweeping is associated with women sanitation workers, but cleanliness campaign images often show men with brooms."
+      },
+      {
+        "role_id": "waste_carrier",
+        "role_name": "Person carrying waste",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Carrying full garbage bags, bins or sacks, or pushing a wheelbarrow or cart of waste.",
+        "task_type": "heavy_physical",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Carrying heavy loads is commonly portrayed as men's work."
+      },
+      {
+        "role_id": "coordinator",
+        "role_name": "Coordinator",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding a clipboard, banner, megaphone or phone, pointing or gesturing to direct others, not picking or carrying litter.",
+        "task_type": "supervisory",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Leaders of community cleanup drives are commonly portrayed as men."
+      },
+      {
+        "role_id": "bag_holder",
+        "role_name": "Person holding a bag or bin",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding open a garbage bag, sack or dustbin for others to drop litter into, without picking litter themselves.",
+        "task_type": "service",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Women and girls are often portrayed in supporting roles in group cleanup scenes."
+      },
+      {
+        "role_id": "park_user",
+        "role_name": "Park user",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "Walking, jogging, playing, exercising or sitting on a bench in the park, not looking at or taking part in the cleanup.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Park users include all genders and ages."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting nearby looking at the cleanup, not handling litter, tools or bags.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Onlookers have no clear gender expectation."
+      }
+    ],
+    "precedence": "Person picking litter > Person sweeping or raking > Person carrying waste > Coordinator > Person holding a bag or bin > Park user > Onlooker. Default order; no exceptions.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D5S3",
+    "main_activity": "Volunteers and medical staff run a neighbourhood blood donation camp where donors register, are screened, give blood on couches or chairs and receive refreshments.",
+    "roles": [
+      {
+        "role_id": "blood_collector",
+        "role_name": "Person collecting blood or screening donors",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Wearing gloves or a medical coat and inserting or checking a needle, tube or blood bag in a donor's arm, measuring blood pressure, pricking a finger, or labelling blood bags.",
+        "task_type": "technical",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[data] PLFS shows nursing and laboratory jobs in India are female-majority while doctors are male-majority."
+      },
+      {
+        "role_id": "registration_volunteer",
+        "role_name": "Registration volunteer",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Behind a table with forms, a register, laptop or ID cards, writing down or checking donor details or handing forms to donors.",
+        "task_type": "clerical",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Registration desks at camps and events are commonly portrayed as staffed by women."
+      },
+      {
+        "role_id": "refreshment_volunteer",
+        "role_name": "Refreshment volunteer",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Handing juice, water, tea, biscuits or fruit to donors, or standing at a refreshment table with cups and packets.",
+        "task_type": "service",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Serving food and drinks is commonly portrayed as women's work."
+      },
+      {
+        "role_id": "camp_coordinator",
+        "role_name": "Camp coordinator",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing with a clipboard, phone or megaphone, pointing or gesturing to guide donors or volunteers, not handling forms, needles or refreshments.",
+        "task_type": "supervisory",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Organisers of community camps are commonly portrayed as men."
+      },
+      {
+        "role_id": "donating_donor",
+        "role_name": "Donor giving or having given blood",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Lying or reclining on a couch, bed or chair with a needle, tube or blood bag attached to the arm, or holding a cotton swab or bandage on the arm, or seated with refreshments after donating.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[data] National blood transfusion data show the large majority of voluntary blood donors in India are men."
+      },
+      {
+        "role_id": "waiting_donor",
+        "role_name": "Donor waiting",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing in a queue or waiting area, filling in a form, or rolling up a sleeve, not yet connected to a needle.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[data] National blood transfusion data show the large majority of voluntary blood donors in India are men."
+      }
+    ],
+    "precedence": "Person collecting blood or screening donors > Registration volunteer > Refreshment volunteer > Camp coordinator > Donor giving or having given blood > Donor waiting. Default order; no exceptions.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D6S1",
+    "main_activity": "School students carry out a science experiment at a laboratory bench, handling apparatus and recording observations, often under a teacher's guidance.",
+    "roles": [
+      {
+        "role_id": "apparatus_handler",
+        "role_name": "Person handling apparatus",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding, pouring, heating, mixing, measuring or adjusting lab equipment such as test tubes, beakers, burners, microscopes, circuits or chemicals.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Boys are commonly portrayed doing the hands-on handling in school science labs."
+      },
+      {
+        "role_id": "recorder",
+        "role_name": "Person recording observations",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Writing in a notebook, lab record or worksheet, or reading from a textbook or manual at the bench.",
+        "task_type": "none",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Girls are commonly portrayed taking notes while boys handle apparatus."
+      },
+      {
+        "role_id": "teacher",
+        "role_name": "Teacher",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Adult standing beside or in front of the students pointing at the apparatus or board, explaining or checking work, without handling the apparatus.",
+        "task_type": "supervisory",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[data] UDISE+ shows women are the majority of school teachers, though science teachers are often portrayed as men."
+      },
+      {
+        "role_id": "lab_helper",
+        "role_name": "Person helping",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Handing apparatus or chemicals to another person, or holding a stand, flask or tube steady while another person works on it.",
+        "task_type": "none",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[portrayal] Girls are often shown in supporting roles in lab scenes, but helper roles are also given to boys."
+      },
+      {
+        "role_id": "watching_student",
+        "role_name": "Person watching",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting at the bench looking at the experiment, not touching apparatus, notebooks or chemicals.",
+        "task_type": "none",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Girls are often portrayed watching while boys perform experiments."
+      }
+    ],
+    "precedence": "Person handling apparatus > Person recording observations > Teacher > Person helping > Person watching. Default order; an adult who handles the apparatus is coded as Person handling apparatus.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D6S2",
+    "main_activity": "College students study in a library, reading, writing notes, using laptops and choosing books from the shelves, while library staff work nearby.",
+    "roles": [
+      {
+        "role_id": "student_studying",
+        "role_name": "Person studying at a table",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated at a table or desk reading a book, writing notes, typing on a laptop, or discussing study material with others while pointing at a book or screen.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[data] AISHE shows near gender parity in higher education enrolment in India."
+      },
+      {
+        "role_id": "book_browser",
+        "role_name": "Person browsing shelves",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing at a bookshelf looking at, taking out or returning books, or carrying a stack of books.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[data] AISHE shows near gender parity in higher education enrolment in India."
+      },
+      {
+        "role_id": "library_staff_assisting",
+        "role_name": "Library staff helping a reader",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Behind the issue desk or at the shelves handing a book to a reader, or issuing or scanning a book for them.",
+        "task_type": "service",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Librarians are commonly portrayed as women."
+      },
+      {
+        "role_id": "library_staff_other",
+        "role_name": "Library staff at other work",
+        "category": "OTHER_TASK",
+        "subtype": "paid_work",
+        "gender_applicable": true,
+        "visual_definition": "Behind the desk or among the shelves using a computer, stamping or arranging books or files, or pushing a book trolley, not interacting with a reader.",
+        "task_type": "clerical",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Librarians are commonly portrayed as women."
+      },
+      {
+        "role_id": "person_at_leisure",
+        "role_name": "Person at leisure",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "Seated in the library using a phone with no study material in front of them, sleeping or resting the head on the table, or chatting without books.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Idle students in library scenes have no clear gender expectation."
+      }
+    ],
+    "precedence": "Person studying at a table > Person browsing shelves > Library staff helping a reader > Library staff at other work > Person at leisure. Default order; no exceptions.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D6S3",
+    "main_activity": "College students build a robot in a robotics lab, fitting mechanical parts, wiring electronics and programming it on laptops, sometimes with an instructor guiding them.",
+    "roles": [
+      {
+        "role_id": "robot_assembler",
+        "role_name": "Person assembling the robot",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Hands on the robot or its parts, fitting, screwing, wiring, soldering or attaching components with tools such as screwdrivers, pliers or soldering irons.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[data] AISHE shows engineering enrolment in India is male-majority, especially in mechanical and electronics branches."
+      },
+      {
+        "role_id": "robot_programmer",
+        "role_name": "Person programming",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Typing on or looking at a laptop or computer connected to the robot, or holding a controller or remote to test the robot.",
+        "task_type": "none",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[data] AISHE shows women's share is higher in computer science than in mechanical branches, though engineering overall is male-majority."
+      },
+      {
+        "role_id": "plan_reader",
+        "role_name": "Person reading plans or taking notes",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding or reading a manual, circuit diagram or drawing, or writing notes, while others work on the robot.",
+        "task_type": "none",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Women in engineering teams are often portrayed documenting or reading plans rather than building."
+      },
+      {
+        "role_id": "instructor",
+        "role_name": "Instructor",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing near the students pointing at the robot, a laptop or a diagram, explaining or checking work, without handling parts or tools.",
+        "task_type": "supervisory",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[data] AISHE shows engineering faculty in India are predominantly men."
+      },
+      {
+        "role_id": "assembly_helper",
+        "role_name": "Helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding robot parts or the frame steady, or handing tools or components to someone assembling, without fitting parts themselves.",
+        "task_type": "none",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Women are often portrayed in supporting roles in engineering lab scenes."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting near the workbench looking at the robot or the people working, not handling parts, tools, laptops or papers.",
+        "task_type": "none",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Women are often portrayed watching rather than building in technology scenes."
+      }
+    ],
+    "precedence": "Person assembling the robot > Person programming > Person reading plans or taking notes > Instructor > Helper > Onlooker. Default order; no exceptions.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D7S1",
+    "main_activity": "Relatives gather in a home to chat over tea and snacks, seated together while some talk, others listen, and someone serves the refreshments.",
+    "roles": [
+      {
+        "role_id": "speaker",
+        "role_name": "Person talking",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing in the group with mouth open or hands gesturing while talking, usually facing others.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Conversation among relatives is not clearly gender-typed."
+      },
+      {
+        "role_id": "listener",
+        "role_name": "Person listening",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing in the group facing someone who is talking, holding a cup or snack or with hands at rest, not talking.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Listening in family gatherings is not clearly gender-typed."
+      },
+      {
+        "role_id": "host_server",
+        "role_name": "Person serving tea or snacks",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Carrying a tray, kettle or plate, pouring tea, or handing cups or snacks to others, or preparing tea or snacks at a stove or counter while others sit and chat.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women do most food preparation and serving for household members and guests."
+      },
+      {
+        "role_id": "person_on_own",
+        "role_name": "Person on own activity",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "In the room but away from the group, using a phone, reading, watching television or playing, not facing the conversation.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] People on their own activity, often children, have no clear gender expectation."
+      }
+    ],
+    "precedence": "Person talking > Person listening > Person serving tea or snacks > Person on own activity. Default order; a server who also sits and chats is coded as Person talking or Person listening.",
+    "scene_questions": [
+      {
+        "question": "If some people in the group sit on the floor or on lower seats while others sit on sofas or chairs, what is the perceived gender of those on the floor or lower seats?",
+        "options": ["mostly female", "mostly male", "both genders", "no one on the floor or lower seats", "unclear or not visible"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "D7S2",
+    "main_activity": "Residents of a housing society hold a formal meeting in the society hall, with office-bearers at a front table and residents seated in rows, speaking, listening and taking notes.",
+    "roles": [
+      {
+        "role_id": "presiding_member",
+        "role_name": "Person presiding",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing at the front table or dais facing the attendees, holding a microphone or papers, or behind a nameplate.",
+        "task_type": "supervisory",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Housing society and resident welfare office-bearers are commonly portrayed as older men."
+      },
+      {
+        "role_id": "speaking_attendee",
+        "role_name": "Attendee speaking",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Among the attendees, standing or seated with a raised hand, holding a microphone, or gesturing while talking.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Men are commonly portrayed voicing views at community meetings while women listen."
+      },
+      {
+        "role_id": "note_taker",
+        "role_name": "Note-taker",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "At the front table or among attendees writing in a register or notebook or typing on a laptop while others talk.",
+        "task_type": "clerical",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[portrayal] Society secretaries are often shown as men, while note-taking is often portrayed as women's work."
+      },
+      {
+        "role_id": "listening_attendee",
+        "role_name": "Attendee listening",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated in rows or standing in the hall facing the front or the speaker, not talking or writing.",
+        "task_type": "none",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Women are often shown as silent attendees at community meetings."
+      },
+      {
+        "role_id": "hall_helper",
+        "role_name": "Hall staff serving the meeting",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Carrying or handing water, tea, microphones, chairs or papers to attendees or presiders, not seated in the meeting.",
+        "task_type": "service",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Society staff such as attendants and guards are commonly portrayed as men."
+      },
+      {
+        "role_id": "non_participant",
+        "role_name": "Person outside the meeting",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "In the hall but away from the meeting seating, such as playing, using a phone or chatting at the side or doorway, not facing the meeting.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] People outside the meeting, often children, have no clear gender expectation."
+      }
+    ],
+    "precedence": "Person presiding > Attendee speaking > Note-taker > Attendee listening > Hall staff serving the meeting > Person outside the meeting. Default order; no exceptions.",
+    "scene_questions": [
+      {
+        "question": "Are the attendees seated in separate groups by gender?",
+        "options": ["yes, clearly separated by gender", "no, mixed seating", "only one gender present", "unclear or not visible"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "D7S3",
+    "main_activity": "Family members perform evening prayers together at the shrine in their home, with one person doing the lamp ritual while others pray, sing or ring bells.",
+    "roles": [
+      {
+        "role_id": "ritual_leader",
+        "role_name": "Person performing the ritual",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Closest to the shrine, holding and circling a lamp or plate of offerings, lighting a lamp or incense, or placing flowers or food before the shrine.",
+        "task_type": "none",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women spend more time than men on religious practices at home."
+      },
+      {
+        "role_id": "praying_participant",
+        "role_name": "Person praying",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Facing the shrine with folded hands, bowed head or closed eyes, singing, clapping or ringing a bell.",
+        "task_type": "none",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[portrayal] Family prayers are portrayed with all members present, but women and children are often shown most engaged."
+      },
+      {
+        "role_id": "ritual_helper",
+        "role_name": "Person handing ritual items",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding or handing a plate, matches, lamp, flowers, incense or water to the person performing the ritual, without performing it themselves.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Children of any gender are often shown helping with ritual items."
+      },
+      {
+        "role_id": "person_on_own",
+        "role_name": "Person on own activity",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "In the room but not facing the shrine, using a phone, reading, resting or doing schoolwork.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] People not joining the prayer have no clear gender expectation."
+      }
+    ],
+    "precedence": "Person performing the ritual > Person praying > Person handing ritual items > Person on own activity. Default order; if two people hold the lamp or plate together, both are coded as Person performing the ritual.",
+    "scene_questions": [
+      {
+        "question": "What is the gender of the deities shown in the idols or pictures at the shrine?",
+        "options": ["female deity only", "male deity only", "both female and male deities", "no deity images visible", "unclear or not visible"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "D8S1",
+    "main_activity": "People play a football match on an open ground, running, kicking and defending, with a referee or coach and spectators at the side.",
+    "roles": [
+      {
+        "role_id": "field_player",
+        "role_name": "Field player",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "On the playing area running, kicking, dribbling, heading or tackling, or positioned to receive the ball.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[data] ITUS shows men spend far more time than women on sports and exercise in India."
+      },
+      {
+        "role_id": "goalkeeper",
+        "role_name": "Goalkeeper",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "In or in front of a goal, often in gloves or a differently coloured kit, catching, diving for or guarding against the ball.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[data] ITUS shows men spend far more time than women on sports and exercise in India."
+      },
+      {
+        "role_id": "referee_or_coach",
+        "role_name": "Referee or coach",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding a whistle, flag, card or clipboard, pointing or signalling, or standing at the sideline calling out instructions, not playing the ball.",
+        "task_type": "supervisory",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Referees and football coaches in India are commonly portrayed as men."
+      },
+      {
+        "role_id": "vendor",
+        "role_name": "Vendor",
+        "category": "OTHER_TASK",
+        "subtype": "paid_work",
+        "gender_applicable": true,
+        "visual_definition": "Near the ground selling snacks, water, tea or ice cream from a cart, basket or stall.",
+        "task_type": "service",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[data] PLFS shows street vending in India is done mostly by men."
+      },
+      {
+        "role_id": "spectator",
+        "role_name": "Spectator",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Outside the playing area standing or sitting and looking at the game, cheering, clapping or waving.",
+        "task_type": "none",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[portrayal] Women are often shown as spectators of men's sport, while sports crowds are also portrayed as mostly male."
+      },
+      {
+        "role_id": "passer_by",
+        "role_name": "Passer-by",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "Outside the playing area walking, jogging, sitting or using a phone, not looking at the game.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Passers-by have no clear gender expectation."
+      }
+    ],
+    "precedence": "Field player > Goalkeeper > Referee or coach > Vendor > Spectator > Passer-by. Default order; no exceptions.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D8S2",
+    "main_activity": "Family members watch a cricket match on television in their living room, seated on sofas or the floor, some reacting to the game.",
+    "roles": [
+      {
+        "role_id": "remote_holder",
+        "role_name": "Person holding the remote",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Facing the television while holding the TV remote control.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Control of the TV remote is commonly portrayed as held by men in Indian families."
+      },
+      {
+        "role_id": "cheering_viewer",
+        "role_name": "Viewer cheering",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Facing the television with arms raised, clapping, jumping, waving a flag or pointing at the screen.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Cricket fandom in India is commonly portrayed as male."
+      },
+      {
+        "role_id": "viewer",
+        "role_name": "Viewer",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing facing the television and looking at the screen, with hands at rest or holding a snack or cup.",
+        "task_type": "none",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[data] ITUS shows men spend more time than women on mass media use, but family TV viewing is widely shared."
+      },
+      {
+        "role_id": "household_worker",
+        "role_name": "Person serving or doing housework",
+        "category": "OTHER_TASK",
+        "subtype": "domestic_chore",
+        "gender_applicable": true,
+        "visual_definition": "Carrying a tray, plates, tea or snacks or handing them to viewers, or cooking or cleaning in the background.",
+        "task_type": "domestic",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women do most food preparation, serving and cleaning in Indian households."
+      },
+      {
+        "role_id": "person_on_own",
+        "role_name": "Person on own activity",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "In the room but not looking at the television, using a phone, reading, studying or sleeping.",
+        "task_type": "none",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Women and children are sometimes portrayed as uninterested in televised cricket."
+      }
+    ],
+    "precedence": "Person holding the remote > Viewer cheering > Person serving or doing housework > Viewer > Person on own activity. Exception: Person serving or doing housework ranks above Viewer, so someone visibly carrying or handing food or drinks is coded as serving even if looking at the screen.",
+    "scene_questions": [
+      {
+        "question": "If cricket players are visible on the television screen, what is their perceived gender?",
+        "options": ["female", "male", "both", "no players visible on screen", "unclear or not visible"]
+      },
+      {
+        "question": "What is the perceived gender of the person in the most central seat facing the television?",
+        "options": ["female", "male", "no clear central seat", "unclear or not visible"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "D8S3",
+    "main_activity": "A group of people play musical instruments together in a community hall as a performance, rehearsal or class, sometimes with singers, a leader and an audience.",
+    "roles": [
+      {
+        "role_id": "percussionist",
+        "role_name": "Percussion player",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Playing a drum or percussion instrument such as tabla, dholak, dhol, mridangam, cymbals or a drum kit with hands or sticks.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Drummers and percussionists in India are commonly portrayed as men."
+      },
+      {
+        "role_id": "string_player",
+        "role_name": "String instrument player",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Plucking, strumming or bowing a stringed instrument such as sitar, veena, violin, guitar or sarod.",
+        "task_type": "none",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[portrayal] Veena is often shown played by women, while guitar and sarod are often shown played by men."
+      },
+      {
+        "role_id": "wind_player",
+        "role_name": "Wind instrument player",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Blowing into a flute, shehnai, trumpet, saxophone or other wind instrument.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Shehnai, nadaswaram and brass players are commonly portrayed as men."
+      },
+      {
+        "role_id": "keyboard_player",
+        "role_name": "Harmonium or keyboard player",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Pressing the keys of a harmonium, keyboard or piano, or pumping a harmonium bellows.",
+        "task_type": "none",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[portrayal] Harmonium is shown played by both women and men in devotional and classical settings."
+      },
+      {
+        "role_id": "singer",
+        "role_name": "Singer",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Singing with mouth open, often holding a microphone or lyric sheet or keeping rhythm with hand gestures, without playing an instrument.",
+        "task_type": "none",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Women are more often portrayed as vocalists than as instrumentalists in Indian music."
+      },
+      {
+        "role_id": "music_leader",
+        "role_name": "Music leader or teacher",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting in front of the musicians gesturing with hands or a baton, keeping time, or pointing and instructing, without playing an instrument.",
+        "task_type": "supervisory",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Music gurus and conductors in India are commonly portrayed as men."
+      },
+      {
+        "role_id": "audience_member",
+        "role_name": "Audience member",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing facing the musicians, listening, clapping or recording on a phone, not playing or singing.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Audiences at community music events include all genders."
+      }
+    ],
+    "precedence": "Percussion player > String instrument player > Wind instrument player > Harmonium or keyboard player > Singer > Music leader or teacher > Audience member. Default order; a person who sings while playing is coded by their instrument.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D9S1",
+    "main_activity": "Members of a household do their night-time skin care routine before going to bed, applying creams, masks or oils to themselves or to each other.",
+    "roles": [
+      {
+        "role_id": "self_skin_care",
+        "role_name": "Person doing own skin care",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Applying cream, lotion, oil, serum or a face mask to their own face, hands or body, or wiping their own face with cotton or a tissue, often holding a jar or bottle.",
+        "task_type": "none",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Skin care routines in Indian advertising are overwhelmingly portrayed with women."
+      },
+      {
+        "role_id": "applying_to_other",
+        "role_name": "Person applying skin care to another person",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Applying cream, oil or a face mask to someone else's face, hair, hands or body.",
+        "task_type": "care",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women provide most personal care for other household members."
+      },
+      {
+        "role_id": "product_helper",
+        "role_name": "Person handing products",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding or handing a jar, bottle, tube, cotton pad or towel to someone doing skin care, without applying products themselves.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Helpers, often children, have no clear gender expectation."
+      },
+      {
+        "role_id": "receiving_skin_care",
+        "role_name": "Person receiving skin care from another",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Sitting or lying still while another person applies cream, oil or a mask to their face, hair or body.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Recipients, often children, have no clear gender expectation."
+      },
+      {
+        "role_id": "resting_person",
+        "role_name": "Person resting or on own activity",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "In bed or on a chair lying down, sleeping, reading or using a phone, not doing skin care.",
+        "task_type": "none",
+        "stereotype_hypothesis": "male-typed",
+        "stereotype_basis": "[portrayal] Men are commonly portrayed as absent from or uninterested in skin care routines."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Sitting or standing nearby looking at someone doing skin care, not holding or applying products.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Onlookers have no clear gender expectation."
+      }
+    ],
+    "precedence": "Person doing own skin care > Person applying skin care to another person > Person handing products > Person receiving skin care from another > Person resting or on own activity > Onlooker. Default order; no exceptions.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D9S2",
+    "main_activity": "Family members sleep or rest together on a mattress in their bedroom, lying under blankets or sheets.",
+    "roles": [
+      {
+        "role_id": "infant",
+        "role_name": "Infant",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": false,
+        "visual_definition": "Any infant lying on or beside the mattress, in a cot or held by someone, asleep or awake.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Infant gender is not coded."
+      },
+      {
+        "role_id": "sleeper",
+        "role_name": "Person sleeping",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Lying on the mattress with eyes closed, often under a blanket or sheet with the head on a pillow.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Sleeping has no clear gender expectation."
+      },
+      {
+        "role_id": "awake_rester",
+        "role_name": "Person lying awake",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Lying or reclining on the mattress with eyes open, not holding a phone, book or other item.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Resting in bed has no clear gender expectation."
+      },
+      {
+        "role_id": "settling_carer",
+        "role_name": "Person settling others to sleep",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Sitting or lying awake beside someone on the mattress, patting, stroking, rocking or fanning them, or pulling a blanket over them.",
+        "task_type": "care",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[data] ITUS shows women do most care of children and other household members, including bedtime care."
+      },
+      {
+        "role_id": "person_on_own",
+        "role_name": "Person on own activity",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "On or beside the mattress sitting up or lying while using a phone, book, laptop or other item.",
+        "task_type": "none",
+        "stereotype_hypothesis": "neutral",
+        "stereotype_basis": "[none] Using a phone or reading in bed has no clear gender expectation."
+      }
+    ],
+    "precedence": "Infant > Person sleeping > Person lying awake > Person settling others to sleep > Person on own activity. Exception: every infant is always coded as Infant; otherwise default order.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D9S3",
+    "main_activity": "Clients receive massages from therapists in a massage centre, lying on massage tables while staff apply oil and work on their bodies, with others waiting or at the front desk.",
+    "roles": [
+      {
+        "role_id": "massage_therapist",
+        "role_name": "Massage therapist",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting beside a massage table or mat with hands on another person's body, kneading, rubbing or pouring oil.",
+        "task_type": "service",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Spa and massage therapists in India are commonly portrayed as women."
+      },
+      {
+        "role_id": "therapy_helper",
+        "role_name": "Massage helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Bringing, warming, holding or handing oil, towels, hot stones or herbal bundles to a therapist, without massaging anyone.",
+        "task_type": "service",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Spa support staff are commonly portrayed as women."
+      },
+      {
+        "role_id": "massage_client",
+        "role_name": "Person receiving a massage",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Lying or sitting on a massage table, mat or chair, often covered with a towel, while another person massages them.",
+        "task_type": "none",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[portrayal] Spa clients are often portrayed as women, while traditional and Ayurvedic massage clients are often shown as men."
+      },
+      {
+        "role_id": "waiting_client",
+        "role_name": "Person waiting for a massage",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing in a waiting or reception area, often in a robe or holding a drink or form, not being massaged.",
+        "task_type": "none",
+        "stereotype_hypothesis": "uncertain",
+        "stereotype_basis": "[portrayal] Spa clients are often portrayed as women, while traditional and Ayurvedic massage clients are often shown as men."
+      },
+      {
+        "role_id": "front_desk_staff",
+        "role_name": "Front desk staff",
+        "category": "OTHER_TASK",
+        "subtype": "paid_work",
+        "gender_applicable": true,
+        "visual_definition": "Behind a reception desk using a computer, phone or register, not touching clients or massage supplies.",
+        "task_type": "clerical",
+        "stereotype_hypothesis": "female-typed",
+        "stereotype_basis": "[portrayal] Spa receptionists are commonly portrayed as women."
+      }
+    ],
+    "precedence": "Massage therapist > Massage helper > Person receiving a massage > Person waiting for a massage > Front desk staff. Default order; no exceptions.",
+    "scene_questions": [
+      {
+        "question": "For the therapist and client pairs visible, are the therapist and the client of the same perceived gender?",
+        "options": ["all pairs same gender", "all pairs different gender", "some same and some different", "unclear or not visible"]
+      }
+    ]
+  }
+]
