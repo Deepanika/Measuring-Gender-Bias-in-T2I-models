@@ -50,7 +50,10 @@ OPENAI_MODEL = os.getenv("OPENAI_IMAGE_MODEL", "gpt-image-2")
 OPENAI_QUALITY = os.getenv("OPENAI_IMAGE_QUALITY", "low")   # low | medium | high
 OPENAI_SIZE = os.getenv("OPENAI_IMAGE_SIZE", "1024x1024")
 
-GEMINI_MODEL = os.getenv("GEMINI_IMAGE_MODEL", "gemini-2.5-flash-image")
+# gemini-2.5-flash-image was shut down on 2026-10-02; 3.1 Flash Image is its GA successor.
+GEMINI_MODEL = os.getenv("GEMINI_IMAGE_MODEL", "gemini-3.1-flash-image")
+GEMINI_ASPECT = os.getenv("GEMINI_ASPECT_RATIO", "1:1")   # match OpenAI's 1024x1024
+GEMINI_SIZE = os.getenv("GEMINI_IMAGE_SIZE", "1K")        # 1K ~ 1024px
 
 # Images-per-minute caps from your account's Limits page (stay a little under).
 RATE_LIMIT_IPM = {
@@ -141,20 +144,29 @@ def make_gemini():
     from google import genai
     from google.genai import types
     client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
-    cfg = types.GenerateContentConfig(response_modalities=["TEXT", "IMAGE"])
+    cfg = types.GenerateContentConfig(
+        response_modalities=["TEXT", "IMAGE"],
+        image_config=types.ImageConfig(aspect_ratio=GEMINI_ASPECT, image_size=GEMINI_SIZE),
+        # no tools are used, so turn off automatic function calling (silences the AFC warning)
+        automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True),
+    )
 
     def gen(prompt):
         resp = client.models.generate_content(model=GEMINI_MODEL, contents=prompt, config=cfg)
-        texts = []
+        texts, final = [], None
         for cand in resp.candidates or []:
             parts = cand.content.parts if cand.content and cand.content.parts else []
             for p in parts:
+                if getattr(p, "thought", False):   # skip interim "thinking" images/text
+                    continue
                 if p.inline_data and p.inline_data.data:
-                    ext = (p.inline_data.mime_type or "image/png").split("/")[-1]
-                    ext = "jpg" if ext == "jpeg" else ext
-                    return p.inline_data.data, ext, ""
-                if p.text:
+                    final = p                        # keep the LAST final image
+                elif p.text:
                     texts.append(p.text)
+        if final is not None:
+            ext = (final.inline_data.mime_type or "image/png").split("/")[-1]
+            ext = "jpg" if ext == "jpeg" else ext
+            return final.inline_data.data, ext, " ".join(texts)[:500]
         reason = (resp.candidates[0].finish_reason if resp.candidates
                   else getattr(resp, "prompt_feedback", None))
         raise NoImageError(f"no image (reason={reason}) text={' '.join(texts)[:200]!r}")
@@ -164,6 +176,8 @@ def make_gemini():
 
 def is_transient(e: Exception) -> bool:
     msg = f"{type(e).__name__} {e}".lower()
+    if "limit: 0" in msg or "billing" in msg or "not found" in msg or "404" in msg:
+        return False   # no quota on this key / wrong model name: retrying won't help
     return any(k in msg for k in ("ratelimit", "rate limit", "429", "resource_exhausted",
                                   "timeout", "timed out", "connection", "500", "502",
                                   "503", "504", "unavailable", "overloaded"))
@@ -290,7 +304,7 @@ def main():
         generators["gemini"] = make_gemini()
 
     manifest = Manifest(out_root / "manifest.csv")
-    random.shuffle(todo)  # spread load across providers/scenarios
+    random.shuffle(todo)  
     if args.max_images:
         todo = todo[:args.max_images]
         print(f"--max-images: generating only {len(todo)} image(s) this run")
