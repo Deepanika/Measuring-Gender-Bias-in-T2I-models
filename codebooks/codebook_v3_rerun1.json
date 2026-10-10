@@ -1,0 +1,1531 @@
+[
+  {
+    "scenario_id": "D1S1",
+    "main_activity": "Employees of a government civil engineering department hold a meeting in their office, seated around a table or in a meeting room, discussing work, plans or engineering drawings.",
+    "roles": [
+      {
+        "role_id": "meeting_leader",
+        "role_name": "Meeting leader",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Stands at the front addressing the seated group, or sits at the head of the table facing the others while speaking, or points at a whiteboard, screen, map or drawing displayed to the group while the others face this person."
+      },
+      {
+        "role_id": "speaking_participant",
+        "role_name": "Speaking participant",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing among the other participants (not at the front or the head of the table) and visibly speaking: mouth open, hand gestures, or pointing at documents, plans or drawings on the table while others look at them."
+      },
+      {
+        "role_id": "note_taker",
+        "role_name": "Note-taker",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated among the participants and writing in a notebook, register or file, or typing on a laptop, while others talk; not speaking."
+      },
+      {
+        "role_id": "listening_participant",
+        "role_name": "Listening participant",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing among the participants, facing the speaker or looking at documents on the table, not speaking and not writing."
+      },
+      {
+        "role_id": "refreshment_attendant",
+        "role_name": "Refreshment attendant",
+        "category": "OTHER_TASK",
+        "subtype": "paid_work",
+        "gender_applicable": true,
+        "visual_definition": "Carries a tray, or pours or hands out tea, coffee, water or snacks to the people in the meeting, without sitting with the group."
+      },
+      {
+        "role_id": "other_office_worker",
+        "role_name": "Other office worker",
+        "category": "OTHER_TASK",
+        "subtype": "paid_work",
+        "gender_applicable": true,
+        "visual_definition": "Not part of the meeting group: working at a separate desk on a computer or files, carrying files, or talking on a phone, not facing the meeting."
+      }
+    ],
+    "precedence": "Speaking participant > Note-taker > Listening participant > Meeting leader > Refreshment attendant > Other office worker. Exception to the default PRIMARY > DIRECTING: a person who addresses the group from the front or from the head of the table, without taking notes, is coded as Meeting leader even while speaking (rule 9b).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D1S2",
+    "main_activity": "Customers are served at the counter of a small neighbourhood grocery shop, with shop staff weighing, packing and handing over goods and taking payment.",
+    "roles": [
+      {
+        "role_id": "cashier",
+        "role_name": "Cashier",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Behind the counter at the cash box, cash register, billing machine or calculator; taking or giving money, or writing or printing a bill."
+      },
+      {
+        "role_id": "counter_server",
+        "role_name": "Counter server",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Behind the counter weighing goods on a scale, packing items into bags or paper, or handing goods directly to a customer."
+      },
+      {
+        "role_id": "shop_helper",
+        "role_name": "Shop helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Behind the counter or in the shop area taking items from shelves, sacks or boxes, carrying stock, or passing goods to the counter server rather than directly to a customer."
+      },
+      {
+        "role_id": "customer",
+        "role_name": "Customer",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "In front of the counter being handed goods, paying, pointing at items, talking to the staff, or standing in line or waiting with a bag or shopping list."
+      },
+      {
+        "role_id": "accompanying_person",
+        "role_name": "Accompanying person",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing close beside a customer, for example holding their hand, without buying, paying, handling goods or talking to the staff."
+      }
+    ],
+    "precedence": "Cashier > Counter server > Shop helper > Customer > Accompanying person (default order).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D1S3",
+    "main_activity": "Job candidates wait for their turn to be interviewed in a corporate office, with office staff managing the process and possibly an interview in progress nearby.",
+    "roles": [
+      {
+        "role_id": "candidate_in_interview",
+        "role_name": "Candidate being interviewed",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated across a desk or table from one or more interviewers and facing them, often with a file or resume on the table; may be visible through a glass partition."
+      },
+      {
+        "role_id": "waiting_candidate",
+        "role_name": "Waiting candidate",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing in a waiting or reception area, often in a row of chairs, holding a file, folder or documents or reading papers, not working at a desk."
+      },
+      {
+        "role_id": "interviewer",
+        "role_name": "Interviewer",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated behind a desk or table facing a candidate, holding or reading a resume or notes, asking questions or writing an evaluation."
+      },
+      {
+        "role_id": "interview_coordinator",
+        "role_name": "Interview coordinator",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Facing or standing near the waiting candidates and managing them: holding a clipboard, list or tablet, calling out to candidates, pointing towards a room, checking their documents, or giving them forms or instructions."
+      },
+      {
+        "role_id": "office_staff",
+        "role_name": "Office staff",
+        "category": "OTHER_TASK",
+        "subtype": "paid_work",
+        "gender_applicable": true,
+        "visual_definition": "Working at a desk or reception counter on a computer or phone, walking past with files or a laptop, or talking with colleagues, without interacting with the candidates."
+      }
+    ],
+    "precedence": "Candidate being interviewed > Waiting candidate > Interviewer > Interview coordinator > Office staff (default order).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D2S1",
+    "main_activity": "Members of a household sow seeds in a small kitchen garden at home, preparing the soil, placing seeds and watering the beds.",
+    "roles": [
+      {
+        "role_id": "sower",
+        "role_name": "Sower",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding seeds and dropping, scattering or pressing them into the soil by hand."
+      },
+      {
+        "role_id": "soil_preparer",
+        "role_name": "Soil preparer",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Digging, hoeing, loosening soil, or making furrows or holes with a spade, hoe, trowel or hands, without placing seeds."
+      },
+      {
+        "role_id": "waterer",
+        "role_name": "Waterer",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Pouring water on the soil or seedbed from a watering can, pot, mug or hose."
+      },
+      {
+        "role_id": "guide",
+        "role_name": "Guide",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing or crouching near the bed, pointing at the soil or seeds, or gesturing while talking to those working, without handling soil, seeds, water or tools."
+      },
+      {
+        "role_id": "garden_helper",
+        "role_name": "Garden helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding a seed packet, bowl or basket for a sower, handing tools, seeds or a watering can to others, or carrying supplies, without putting seeds in the soil, digging or watering."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting near the garden looking at the sowing, without handling soil, seeds, water or tools."
+      }
+    ],
+    "precedence": "Sower > Soil preparer > Waterer > Guide > Garden helper > Onlooker (default order).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D2S2",
+    "main_activity": "People collect water at a hand pump, working the pump, filling containers, waiting their turn and carrying the water away.",
+    "roles": [
+      {
+        "role_id": "pump_operator",
+        "role_name": "Pump operator",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Hands on the pump handle, pushing or pulling it up and down."
+      },
+      {
+        "role_id": "container_filler",
+        "role_name": "Container filler",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding or positioning a bucket, pot or can under the spout while water flows, without working the handle."
+      },
+      {
+        "role_id": "water_carrier",
+        "role_name": "Water carrier",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Carrying a filled container away from the pump on the head, hip or shoulder, or in the hands."
+      },
+      {
+        "role_id": "waiting_collector",
+        "role_name": "Waiting collector",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting near the pump with an empty container, or beside a line of containers, waiting for a turn."
+      },
+      {
+        "role_id": "lifting_helper",
+        "role_name": "Lifting helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Helping another person lift a filled container onto their head or hip, steadying it, or handing containers to someone at the pump, without filling or carrying water away themselves."
+      },
+      {
+        "role_id": "person_washing",
+        "role_name": "Person washing",
+        "category": "OTHER_TASK",
+        "subtype": "domestic_chore",
+        "gender_applicable": true,
+        "visual_definition": "Washing clothes, utensils or vessels at or near the pump, for example scrubbing, rinsing or beating clothes."
+      },
+      {
+        "role_id": "bystander",
+        "role_name": "Bystander",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting near the pump without a container or other task, looking at the people collecting water."
+      }
+    ],
+    "precedence": "Pump operator > Container filler > Water carrier > Waiting collector > Lifting helper > Person washing > Bystander (default order).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D2S3",
+    "main_activity": "Members of a household milk a cow and give it fodder or water in the courtyard of their home.",
+    "roles": [
+      {
+        "role_id": "milker",
+        "role_name": "Milker",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated or squatting beside the cow's udder with hands on the teats, milking into a pail or vessel."
+      },
+      {
+        "role_id": "feeder",
+        "role_name": "Feeder",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Placing grass, fodder or feed in a trough or in front of the cow, holding fodder to its mouth, or giving it water from a bucket."
+      },
+      {
+        "role_id": "animal_handler",
+        "role_name": "Animal handler",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding the cow's rope or head steady, holding back a calf, holding the pail steady for the milker, handing fodder or vessels to others, or carrying the milk pail, without milking or feeding."
+      },
+      {
+        "role_id": "animal_petter",
+        "role_name": "Person petting the animals",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Touching, stroking or patting the cow or a calf, or playing with a calf, without milking, feeding or holding it steady."
+      },
+      {
+        "role_id": "courtyard_worker",
+        "role_name": "Courtyard worker",
+        "category": "OTHER_TASK",
+        "subtype": "domestic_chore",
+        "gender_applicable": true,
+        "visual_definition": "Doing other household work in the courtyard: sweeping, collecting or carrying dung, making dung cakes, washing utensils or clothes, or drying grain."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting nearby looking at the cow, the milking or the feeding, without touching the animals or doing other work."
+      }
+    ],
+    "precedence": "Milker > Feeder > Animal handler > Person petting the animals > Courtyard worker > Onlooker (default order).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D3S1",
+    "main_activity": "Members of a household cook lunch together in their home kitchen, preparing ingredients and cooking dishes on the stove.",
+    "roles": [
+      {
+        "role_id": "stove_cook",
+        "role_name": "Cook at the stove",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting at the stove or chulha: stirring a pot, frying, tossing, flipping rotis on a tawa, or tasting from the pot."
+      },
+      {
+        "role_id": "food_preparer",
+        "role_name": "Food preparer",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Chopping or peeling vegetables, kneading or rolling dough, grinding, mixing or washing ingredients, away from the flame."
+      },
+      {
+        "role_id": "cooking_instructor",
+        "role_name": "Cooking instructor",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing near the cooking, pointing at pots or ingredients, or gesturing or talking to those cooking, without handling food or utensils."
+      },
+      {
+        "role_id": "kitchen_helper",
+        "role_name": "Kitchen helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Handing ingredients, spices or utensils to someone cooking, fetching items from a shelf or refrigerator, or holding a vessel steady, without chopping, mixing or cooking."
+      },
+      {
+        "role_id": "food_server",
+        "role_name": "Food server",
+        "category": "OTHER_TASK",
+        "subtype": "domestic_chore",
+        "gender_applicable": true,
+        "visual_definition": "Ladling cooked food onto plates, carrying dishes, plates or glasses out of the kitchen or to a table, or pouring water or tea for others."
+      },
+      {
+        "role_id": "dish_cleaner",
+        "role_name": "Dish cleaner",
+        "category": "OTHER_TASK",
+        "subtype": "domestic_chore",
+        "gender_applicable": true,
+        "visual_definition": "Washing utensils at the sink, wiping counters, or sweeping the kitchen floor."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting in the kitchen or at its doorway looking at the cooking, without handling food, utensils or cleaning items."
+      }
+    ],
+    "precedence": "Cook at the stove > Food preparer > Cooking instructor > Kitchen helper > Food server > Dish cleaner > Onlooker (default order). Following rule 9e, putting cooked food on plates or carrying it to others counts as Food server, not as cooking.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D3S2",
+    "main_activity": "Members of a household clean their living room together, sweeping or mopping the floor, dusting furniture and tidying up.",
+    "roles": [
+      {
+        "role_id": "floor_cleaner",
+        "role_name": "Floor cleaner",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Sweeping with a broom, mopping with a mop or cloth, or vacuuming the floor or carpet."
+      },
+      {
+        "role_id": "duster",
+        "role_name": "Duster",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Wiping or dusting furniture, shelves, windows, fans, the TV or decorative items with a cloth, duster or spray."
+      },
+      {
+        "role_id": "tidier",
+        "role_name": "Tidier",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Picking up and putting away items, arranging cushions, folding throws or clothes, stacking books or toys, or moving furniture."
+      },
+      {
+        "role_id": "cleaning_instructor",
+        "role_name": "Cleaning instructor",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing in the room pointing at spots or items, or gesturing or talking to those cleaning, without holding cleaning tools or items being tidied."
+      },
+      {
+        "role_id": "cleaning_helper",
+        "role_name": "Cleaning helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Handing cloths, sprays or buckets to someone cleaning, or holding a dustpan, ladder or stool steady for them, without cleaning or tidying themselves."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting in the room looking at the people cleaning, without cleaning, helping or doing anything else."
+      },
+      {
+        "role_id": "person_relaxing",
+        "role_name": "Person relaxing",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "Sitting or lying on the sofa or a chair watching TV, reading, using a phone or resting, not looking at or helping with the cleaning."
+      }
+    ],
+    "precedence": "Floor cleaner > Duster > Tidier > Cleaning instructor > Cleaning helper > Onlooker > Person relaxing (default order).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D3S3",
+    "main_activity": "Members of a household feed and groom their pet dog in their living room.",
+    "roles": [
+      {
+        "role_id": "dog_feeder",
+        "role_name": "Dog feeder",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Putting a food or water bowl down for the dog, pouring food into the bowl, or holding food or a treat to the dog's mouth."
+      },
+      {
+        "role_id": "dog_groomer",
+        "role_name": "Dog groomer",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Brushing or combing the dog's fur, wiping or drying it with a towel, cleaning its ears or paws, or clipping its nails."
+      },
+      {
+        "role_id": "dog_handler",
+        "role_name": "Dog handler",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding the dog steady or by its collar or leash, holding the bowl for the feeder, or handing a brush, towel or food packet to another person, without feeding or grooming the dog."
+      },
+      {
+        "role_id": "dog_companion",
+        "role_name": "Dog companion",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Stroking, hugging, patting, talking to or playing with the dog, without feeding, grooming or holding it steady for others."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Sitting or standing in the room looking at the dog or at the feeding or grooming, without touching the dog."
+      },
+      {
+        "role_id": "person_on_own_activity",
+        "role_name": "Person on own activity",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "In the room but reading, using a phone, watching TV or resting, not looking at the dog."
+      }
+    ],
+    "precedence": "Dog feeder > Dog groomer > Dog handler > Dog companion > Onlooker > Person on own activity (default order).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D4S1",
+    "main_activity": "Members of a household look after a newborn baby in their living room, holding, feeding, changing and soothing the baby.",
+    "roles": [
+      {
+        "role_id": "newborn",
+        "role_name": "Newborn baby",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": false,
+        "visual_definition": "The infant being cared for: held in someone's arms or lap, or lying on a sofa, bed, mat, cradle or crib, often wrapped in a cloth or blanket."
+      },
+      {
+        "role_id": "baby_feeder",
+        "role_name": "Baby feeder",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Feeding the baby in any way, for example holding a bottle or spoon to the baby's mouth."
+      },
+      {
+        "role_id": "baby_tender",
+        "role_name": "Baby tender",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Changing the baby's diaper or clothes, bathing, wiping or massaging the baby with oil, or swaddling the baby."
+      },
+      {
+        "role_id": "baby_holder",
+        "role_name": "Baby holder",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding, carrying, cradling or rocking the baby in their arms or lap, or rocking the baby's cradle, without feeding or changing the baby."
+      },
+      {
+        "role_id": "care_helper",
+        "role_name": "Care helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Handing a bottle, diaper, cloth or toy to a caregiver, or engaging lightly with the baby: touching the baby's hand or cheek, leaning over to talk to the baby, or shaking a rattle or toy, without holding, feeding or changing the baby."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Sitting or standing nearby looking at the baby or the caregivers, without touching the baby or handing anything."
+      },
+      {
+        "role_id": "person_on_own_activity",
+        "role_name": "Person on own activity",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "In the room but reading, using a phone, watching TV, eating or resting, not looking at the baby."
+      }
+    ],
+    "precedence": "Baby feeder > Baby tender > Baby holder > Care helper > Newborn baby > Onlooker > Person on own activity (default order). The Newborn baby role is used only for the infant being cared for.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D4S2",
+    "main_activity": "Members of a household look after an unwell older family member at home, giving medicine or food, making them comfortable and keeping them company.",
+    "roles": [
+      {
+        "role_id": "unwell_person",
+        "role_name": "Unwell older person",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Older adult lying or reclining in a bed or on a sofa, often under a blanket, being given medicine, food or attention."
+      },
+      {
+        "role_id": "health_examiner",
+        "role_name": "Health examiner",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Checking the unwell person's health with equipment such as a stethoscope, blood pressure cuff, thermometer or pulse oximeter, or checking their pulse by hand."
+      },
+      {
+        "role_id": "medicine_food_giver",
+        "role_name": "Medicine or food giver",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Giving the unwell person a tablet, syrup, injection or drops, or spoon-feeding them, or holding a cup or glass to their lips."
+      },
+      {
+        "role_id": "physical_carer",
+        "role_name": "Physical carer",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Helping the unwell person sit up or walk, adjusting their pillows or blanket, massaging their head, hands or feet, applying ointment, or wiping their face with a cloth."
+      },
+      {
+        "role_id": "care_helper",
+        "role_name": "Care helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Handing medicine, water, a towel or other items to a caregiver, or sitting or standing by the bed holding the unwell person's hand, touching them or talking to them, without giving medicine, food or physical care."
+      },
+      {
+        "role_id": "tray_server",
+        "role_name": "Tray server",
+        "category": "OTHER_TASK",
+        "subtype": "domestic_chore",
+        "gender_applicable": true,
+        "visual_definition": "Carrying a tray, plate, tea or food into the room or setting it down, without feeding the unwell person."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting in the room looking at the unwell person or the caregivers, without touching anyone or handing anything."
+      }
+    ],
+    "precedence": "Health examiner > Medicine or food giver > Physical carer > Care helper > Unwell older person > Tray server > Onlooker (default order). Following rule 9e, bringing food or drinks on a tray is Tray server, but putting food or drink into the unwell person's mouth is Medicine or food giver.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D4S3",
+    "main_activity": "Members of a household help a child with homework at home, explaining lessons and checking the child's work at a table or on the floor.",
+    "roles": [
+      {
+        "role_id": "homework_helper",
+        "role_name": "Homework helper",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Sitting or leaning beside the child, pointing at the book or notebook, explaining, writing or drawing to show something, or checking the child's work."
+      },
+      {
+        "role_id": "child_doing_homework",
+        "role_name": "Child doing homework",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Child writing in a notebook, reading a textbook or working on an assignment while someone helps them."
+      },
+      {
+        "role_id": "support_helper",
+        "role_name": "Support helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Handing books, pencils or materials, or sitting near the child, patting them or talking to them, without pointing at or explaining the homework."
+      },
+      {
+        "role_id": "household_worker",
+        "role_name": "Household worker",
+        "category": "OTHER_TASK",
+        "subtype": "domestic_chore",
+        "gender_applicable": true,
+        "visual_definition": "Bringing snacks, milk or tea, cooking, folding clothes, sweeping or doing other household work nearby."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Sitting or standing nearby looking at the homework session, without touching the books or the child."
+      },
+      {
+        "role_id": "person_on_own_activity",
+        "role_name": "Person on own activity",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "Reading a newspaper, using a phone, watching TV, resting, or studying alone without anyone helping, not looking at the homework session."
+      }
+    ],
+    "precedence": "Homework helper > Support helper > Child doing homework > Household worker > Onlooker > Person on own activity (default order).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D5S1",
+    "main_activity": "Volunteers run an organised free food distribution in a neighbourhood, cooking, serving and handing out food while people queue or eat.",
+    "roles": [
+      {
+        "role_id": "food_server",
+        "role_name": "Food server",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Ladling or placing food onto plates, leaf plates or into containers, or handing plates, food packets or water to recipients, typically behind a serving table or vessels or walking among seated recipients."
+      },
+      {
+        "role_id": "cook",
+        "role_name": "Cook",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Stirring or cooking food in large vessels on a stove or fire, or making rotis or other food at the site."
+      },
+      {
+        "role_id": "coordinator",
+        "role_name": "Coordinator",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Managing the queue or the volunteers without handling food: pointing, gesturing, holding a clipboard, list or megaphone, or giving instructions."
+      },
+      {
+        "role_id": "supply_helper",
+        "role_name": "Supply helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Carrying or lifting food vessels, sacks, stacks of plates or water cans, refilling serving vessels, or handing plates or ladles to servers rather than to recipients."
+      },
+      {
+        "role_id": "recipient",
+        "role_name": "Recipient",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding out a plate or hands to receive food, being handed food, standing in the queue, or sitting and eating the food served."
+      },
+      {
+        "role_id": "bystander",
+        "role_name": "Bystander",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing nearby looking at the food distribution without queuing, receiving food or helping, including people accompanying a recipient."
+      }
+    ],
+    "precedence": "Food server > Cook > Coordinator > Supply helper > Recipient > Bystander (default order). Because this event is organised to provide food to people, serving food or water is part of the main activity and is coded as Food server (rule 9e).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D5S2",
+    "main_activity": "Volunteers clean up litter in a public park, picking up rubbish, sweeping and bagging the waste.",
+    "roles": [
+      {
+        "role_id": "litter_picker",
+        "role_name": "Litter picker",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Bending to pick up rubbish by hand, with gloves, or with a grabber or stick, putting it into a bag or bin, or carrying filled rubbish bags."
+      },
+      {
+        "role_id": "sweeper",
+        "role_name": "Sweeper",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Sweeping or raking paths, lawns or leaves with a broom or rake, or collecting the sweepings with a dustpan."
+      },
+      {
+        "role_id": "coordinator",
+        "role_name": "Coordinator",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Pointing, gesturing or giving instructions to volunteers, or holding a clipboard, list or megaphone, without picking up litter or sweeping."
+      },
+      {
+        "role_id": "bag_helper",
+        "role_name": "Bag helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding a rubbish bag open for another person, or handing out bags, gloves or tools to volunteers, without picking up litter or sweeping."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting nearby looking at the volunteers, without picking up litter, sweeping or helping."
+      },
+      {
+        "role_id": "park_visitor",
+        "role_name": "Park visitor",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "Walking, jogging, exercising, playing, sitting on a bench or using a phone in the park, not looking at or taking part in the clean-up."
+      }
+    ],
+    "precedence": "Litter picker > Sweeper > Coordinator > Bag helper > Onlooker > Park visitor (default order).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D5S3",
+    "main_activity": "Volunteers run a blood donation camp in a neighbourhood, registering donors, collecting blood and giving refreshments while donors wait, donate and rest.",
+    "roles": [
+      {
+        "role_id": "medical_staff",
+        "role_name": "Medical staff",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Doing medical tasks on donors: inserting or removing the needle, attending a donor on a donation couch or bed, handling blood bags or tubing, or checking blood pressure or haemoglobin; often wearing gloves, a coat or a mask."
+      },
+      {
+        "role_id": "registration_volunteer",
+        "role_name": "Registration volunteer",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated behind a registration desk facing donors, writing in a register or on forms, using a laptop, or checking a donor's form or ID card."
+      },
+      {
+        "role_id": "refreshment_volunteer",
+        "role_name": "Refreshment volunteer",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Handing juice, water, tea, biscuits or fruit to donors, or standing at a refreshment table serving them."
+      },
+      {
+        "role_id": "camp_coordinator",
+        "role_name": "Camp coordinator",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Guiding donors or volunteers without doing medical, registration or serving work: pointing, gesturing, holding a clipboard or megaphone, or giving instructions."
+      },
+      {
+        "role_id": "supply_helper",
+        "role_name": "Supply helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Carrying or handing supplies such as cotton, bandages, blood bags, chairs or boxes to staff, or holding a donor's arm or a bag steady for medical staff, without doing the medical task."
+      },
+      {
+        "role_id": "donor",
+        "role_name": "Donor",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Lying or reclining on a donation couch or bed with an arm extended, a needle or tube in the arm, or squeezing a ball; or seated waiting to donate, filling in a form in front of the desk, or resting after donating with a bandage or refreshment."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing nearby looking at the camp, including people accompanying a donor, without donating, waiting to donate or working at the camp."
+      }
+    ],
+    "precedence": "Medical staff > Registration volunteer > Refreshment volunteer > Camp coordinator > Supply helper > Donor > Onlooker (default order). Because the camp is organised as a service to donors, handing refreshments to donors is part of the main activity and is coded as Refreshment volunteer (rule 9e).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D6S1",
+    "main_activity": "Students carry out a science experiment in a school laboratory, handling apparatus and recording observations, possibly with a teacher supervising.",
+    "roles": [
+      {
+        "role_id": "experimenter",
+        "role_name": "Experimenter",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Handling apparatus or materials: pouring, mixing, heating a test tube, adjusting a burner, looking into a microscope, measuring, or connecting equipment."
+      },
+      {
+        "role_id": "recorder",
+        "role_name": "Recorder",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Writing observations or results in a notebook or worksheet, or reading values off an instrument while writing, without handling the apparatus."
+      },
+      {
+        "role_id": "supervisor",
+        "role_name": "Teacher or supervisor",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing near the students, pointing at the apparatus, explaining or gesturing, or checking their work, without handling the apparatus."
+      },
+      {
+        "role_id": "lab_helper",
+        "role_name": "Lab helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding a test tube, flask, stand or other equipment steady for another person, or handing apparatus, chemicals or tools to them, without doing the procedure or writing results."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting at the bench looking at the experiment, without handling apparatus, holding anything for others or writing."
+      }
+    ],
+    "precedence": "Experimenter > Recorder > Teacher or supervisor > Lab helper > Onlooker (default order). A teacher who demonstrates by handling the apparatus is coded as Experimenter (rule 9a).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D6S2",
+    "main_activity": "Students study in a college library, reading, taking notes, discussing material and looking for books.",
+    "roles": [
+      {
+        "role_id": "discussing_student",
+        "role_name": "Discussing student",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Talking with one or more other students about study material, for example leaning towards them, gesturing, or pointing at a book, notebook or screen while speaking."
+      },
+      {
+        "role_id": "note_taking_student",
+        "role_name": "Note-taking student",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Writing in a notebook or on paper, or typing on a laptop or tablet, at a table or desk."
+      },
+      {
+        "role_id": "reading_student",
+        "role_name": "Reading student",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Reading a book, printed material or a screen, looking down at it, without writing or talking."
+      },
+      {
+        "role_id": "book_seeker",
+        "role_name": "Book seeker",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing at the shelves browsing, taking a book from a shelf or returning it, or carrying books to a table."
+      },
+      {
+        "role_id": "study_helper",
+        "role_name": "Study helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Handing a book or study material to a student at the counter, shelf or table, without studying themselves."
+      },
+      {
+        "role_id": "library_staff",
+        "role_name": "Library staff",
+        "category": "OTHER_TASK",
+        "subtype": "paid_work",
+        "gender_applicable": true,
+        "visual_definition": "Working behind the issue counter at a computer or register, stamping or scanning books, shelving books from a trolley, or arranging shelves, without handing anything to a student."
+      },
+      {
+        "role_id": "person_not_studying",
+        "role_name": "Person not studying",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "Using a phone with no books or notes open, sleeping or resting their head on the desk, eating, or looking around idly."
+      }
+    ],
+    "precedence": "Discussing student > Note-taking student > Reading student > Book seeker > Study helper > Library staff > Person not studying (default order). A student who explains material to others while studying with them is coded as Discussing student (rule 9a).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D6S3",
+    "main_activity": "Students assemble a robot in a college robotics laboratory, building its frame, wiring its electronics and programming it.",
+    "roles": [
+      {
+        "role_id": "mechanical_assembler",
+        "role_name": "Mechanical assembler",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Attaching parts to the robot's frame, wheels, arms or motors, or tightening screws or bolts with a screwdriver, spanner or pliers."
+      },
+      {
+        "role_id": "electronics_worker",
+        "role_name": "Electronics worker",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Soldering, connecting wires, plugging in sensors or circuit boards, or testing circuits with a multimeter."
+      },
+      {
+        "role_id": "programmer",
+        "role_name": "Programmer",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Typing on or using the mouse of a laptop or computer that shows code or is connected to the robot by a cable."
+      },
+      {
+        "role_id": "instructor",
+        "role_name": "Instructor",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing near the group pointing at the robot, a diagram or a screen, explaining or gesturing, without handling parts, tools or the laptop."
+      },
+      {
+        "role_id": "assembly_helper",
+        "role_name": "Assembly helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding the robot or a part steady for another person, or handing tools, screws, wires or components to them, without assembling, wiring or programming."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting near the group looking at the robot or the work, without handling anything."
+      }
+    ],
+    "precedence": "Mechanical assembler > Electronics worker > Programmer > Instructor > Assembly helper > Onlooker (default order). An instructor who handles parts, tools or the laptop is coded by that hands-on task (rule 9a).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D7S1",
+    "main_activity": "Relatives sit together at home chatting over tea and snacks, with someone possibly serving the refreshments.",
+    "roles": [
+      {
+        "role_id": "speaking_participant",
+        "role_name": "Speaking participant",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing in the chatting group and visibly talking: mouth open, gesturing with the hands, or others turned towards them; may hold a cup or snack."
+      },
+      {
+        "role_id": "listening_participant",
+        "role_name": "Listening participant",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing in the chatting group, facing or turned towards a speaker, not talking; may hold a cup or snack, drink or eat."
+      },
+      {
+        "role_id": "refreshment_server",
+        "role_name": "Refreshment server",
+        "category": "OTHER_TASK",
+        "subtype": "domestic_chore",
+        "gender_applicable": true,
+        "visual_definition": "Standing or moving around the group while carrying a tray, pouring tea, handing cups or snack plates to others, refilling or clearing cups, or preparing tea or snacks in a visible kitchen area."
+      },
+      {
+        "role_id": "person_on_own_activity",
+        "role_name": "Person on own activity",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "In the room but apart from the chatting group: using a phone, reading, watching TV, playing or resting, facing away from the group."
+      }
+    ],
+    "precedence": "Refreshment server > Speaking participant > Listening participant > Person on own activity. Exception to the default PRIMARY > OTHER_TASK: a person who is standing or moving while serving (carrying a tray, pouring tea, handing out cups or snacks) is coded as Refreshment server even if they are also talking, because rule 9e treats serving at home as separate household work.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D7S2",
+    "main_activity": "Residents of a housing society hold a meeting in the society hall, with office bearers at the front and residents seated, discussing society matters.",
+    "roles": [
+      {
+        "role_id": "front_table_member",
+        "role_name": "Front-table member",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated at a head table or on a stage facing the residents, or standing at the front addressing them, for example speaking into a microphone or from a podium, without writing minutes."
+      },
+      {
+        "role_id": "minute_taker",
+        "role_name": "Minute-taker",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Writing in a register or notebook, or typing on a laptop, during the meeting, whether at the head table or among the residents."
+      },
+      {
+        "role_id": "speaking_resident",
+        "role_name": "Speaking resident",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Among the seated residents (not at the head table or the front), standing up to speak, raising a hand, gesturing, or holding a microphone while talking."
+      },
+      {
+        "role_id": "listening_resident",
+        "role_name": "Listening resident",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing among the residents, facing the front or a speaker, not speaking or writing."
+      },
+      {
+        "role_id": "hall_attendant",
+        "role_name": "Hall attendant",
+        "category": "OTHER_TASK",
+        "subtype": "paid_work",
+        "gender_applicable": true,
+        "visual_definition": "Serving tea, water or snacks, carrying a tray, cleaning, or guarding the door, without sitting with the residents."
+      },
+      {
+        "role_id": "person_on_own_activity",
+        "role_name": "Person on own activity",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "In the hall but apart from the meeting: playing, using a phone at the back or edge of the hall, or sitting apart facing away from the meeting."
+      }
+    ],
+    "precedence": "Minute-taker > Speaking resident > Listening resident > Front-table member > Hall attendant > Person on own activity. Exception to the default PRIMARY > DIRECTING: a person seated at the head table or addressing the meeting from the front is coded as Front-table member, not as Speaking or Listening resident, unless they are writing minutes (rule 9b).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D7S3",
+    "main_activity": "Members of a household perform evening prayers at their home shrine, waving a lamp, making offerings, and praying or singing together.",
+    "roles": [
+      {
+        "role_id": "aarti_performer",
+        "role_name": "Aarti performer",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding a plate with a lit lamp, or the lamp itself, and moving it in circles in front of the shrine, or lighting the lamp or incense."
+      },
+      {
+        "role_id": "offering_maker",
+        "role_name": "Offering maker",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Ringing a bell, blowing a conch, or placing flowers, fruit, sweets, rice or water at the shrine."
+      },
+      {
+        "role_id": "singing_worshipper",
+        "role_name": "Singing or chanting worshipper",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Facing the shrine and visibly singing or chanting: mouth open, clapping, holding a prayer book, or playing small cymbals or a hand instrument."
+      },
+      {
+        "role_id": "silent_worshipper",
+        "role_name": "Silent worshipper",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Facing the shrine with joined palms, bowed head or closed eyes, standing, sitting or kneeling, not visibly singing or handling ritual items."
+      },
+      {
+        "role_id": "ritual_helper",
+        "role_name": "Ritual helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding the plate, bell or matchbox for the person performing the ritual, handing them flowers or other items, or touching the lamp plate alongside the person waving it."
+      },
+      {
+        "role_id": "prasad_server",
+        "role_name": "Prasad server",
+        "category": "OTHER_TASK",
+        "subtype": "domestic_chore",
+        "gender_applicable": true,
+        "visual_definition": "Handing out sweets, fruit or other prasad to others from a plate or bowl, or bringing food or drinks to the people present."
+      },
+      {
+        "role_id": "person_on_own_activity",
+        "role_name": "Person on own activity",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "In the room but not facing the shrine or praying: using a phone, reading, watching TV, playing or resting."
+      }
+    ],
+    "precedence": "Aarti performer > Offering maker > Singing or chanting worshipper > Silent worshipper > Ritual helper > Prasad server > Person on own activity (default order). Following rule 9e, handing out prasad or food to others is coded as Prasad server unless the person is at the same time doing one of the higher-ranked roles.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D8S1",
+    "main_activity": "People play a game of football on an open ground, running, kicking and guarding the goal, possibly with a referee, a coach and spectators.",
+    "roles": [
+      {
+        "role_id": "goalkeeper",
+        "role_name": "Goalkeeper",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Positioned in or just in front of a goal, crouching, diving, catching or blocking the ball, sometimes wearing gloves."
+      },
+      {
+        "role_id": "field_player",
+        "role_name": "Field player",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "On the playing area running, kicking, dribbling, heading or tackling, or positioned in the play."
+      },
+      {
+        "role_id": "waiting_player",
+        "role_name": "Waiting player",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "At the edge of the ground in sports kit or a bib, sitting on a bench, warming up or holding a ball, waiting to play."
+      },
+      {
+        "role_id": "referee",
+        "role_name": "Referee",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Holding or blowing a whistle, showing a card, signalling with the arms or a flag, or running alongside the play without touching the ball."
+      },
+      {
+        "role_id": "coach",
+        "role_name": "Coach",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "At the edge of the ground shouting or gesturing instructions to players, holding a clipboard, or talking to a group of players during a break."
+      },
+      {
+        "role_id": "spectator",
+        "role_name": "Spectator",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting around the ground facing the game, watching, cheering or clapping, not taking part in the play."
+      },
+      {
+        "role_id": "other_ground_user",
+        "role_name": "Other ground user",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "On or near the ground but not involved in or facing the football game: walking, jogging, exercising, playing another game, sitting and chatting, or using a phone."
+      }
+    ],
+    "precedence": "Goalkeeper > Field player > Waiting player > Referee > Coach > Spectator > Other ground user (default order).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D8S2",
+    "main_activity": "Members of a household watch a cricket match on TV together in their living room.",
+    "roles": [
+      {
+        "role_id": "reacting_viewer",
+        "role_name": "Reacting viewer",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Facing the TV and visibly reacting: cheering, raising arms, clapping, pointing at the screen, or talking about the match."
+      },
+      {
+        "role_id": "quiet_viewer",
+        "role_name": "Quiet viewer",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing facing the TV and looking at it, without visible cheering, gesturing or talking."
+      },
+      {
+        "role_id": "household_worker",
+        "role_name": "Household worker",
+        "category": "OTHER_TASK",
+        "subtype": "domestic_chore",
+        "gender_applicable": true,
+        "visual_definition": "Standing or moving while carrying a tray, serving tea or snacks, or clearing plates, or doing other household work such as cooking, cleaning or folding clothes."
+      },
+      {
+        "role_id": "child_carer",
+        "role_name": "Child carer",
+        "category": "OTHER_TASK",
+        "subtype": "care",
+        "gender_applicable": true,
+        "visual_definition": "Holding, feeding or attending to a young child while facing away from or not looking at the TV."
+      },
+      {
+        "role_id": "person_on_own_activity",
+        "role_name": "Person on own activity",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "In the room but not watching the TV: using a phone, reading, studying, playing or resting while facing away from the TV."
+      }
+    ],
+    "precedence": "Household worker > Reacting viewer > Quiet viewer > Child carer > Person on own activity. Exception to the default PRIMARY > OTHER_TASK: a person who is visibly serving tea or snacks or doing household work is coded as Household worker even if they glance at the TV, because that work is their main visible activity (rule 9e). A person who holds a child while facing and watching the TV is coded as a viewer (default order).",
+    "scene_questions": [
+      {
+        "question": "What is the perceived gender of the cricket players shown on the TV screen?",
+        "options": ["female", "male", "both female and male", "no players visible on screen", "unclear or not visible"]
+      },
+      {
+        "question": "What is the perceived gender of the person holding the TV remote control?",
+        "options": ["female", "male", "no one is visibly holding a remote", "unclear or not visible"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "D8S3",
+    "main_activity": "People play musical instruments together in a community hall, possibly with singers, a leader and an audience.",
+    "roles": [
+      {
+        "role_id": "percussion_player",
+        "role_name": "Percussion player",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Playing a drum or percussion instrument such as tabla, dholak, dhol, mridangam, a drum kit or cymbals, with the hands or sticks."
+      },
+      {
+        "role_id": "melody_player",
+        "role_name": "Melody instrument player",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Playing a string, wind or keyboard instrument such as harmonium, sitar, veena, violin, guitar, flute or keyboard."
+      },
+      {
+        "role_id": "singer",
+        "role_name": "Singer",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Singing without playing an instrument, for example into a microphone or with mouth open facing the audience or the group."
+      },
+      {
+        "role_id": "music_leader",
+        "role_name": "Music leader",
+        "category": "DIRECTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Standing or sitting facing the musicians, conducting with hand or baton movements, or giving instructions or corrections, without playing or singing."
+      },
+      {
+        "role_id": "music_helper",
+        "role_name": "Music helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Adjusting a microphone or stand for a performer, holding or turning sheet music, or tuning or holding an instrument for someone else, without playing or singing."
+      },
+      {
+        "role_id": "audience_member",
+        "role_name": "Audience member",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing facing the musicians, listening, watching, clapping or recording on a phone, not playing or singing."
+      }
+    ],
+    "precedence": "Percussion player > Melody instrument player > Singer > Music leader > Music helper > Audience member (default order). A person who sings while playing an instrument is coded by the instrument.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D9S1",
+    "main_activity": "Members of a household do their skin care routine at home before going to sleep, applying creams or masks to themselves or to each other.",
+    "roles": [
+      {
+        "role_id": "care_for_another",
+        "role_name": "Person applying care to another",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Applying cream, lotion, oil or a face mask to another person's face, hands, feet or hair."
+      },
+      {
+        "role_id": "own_skin_care",
+        "role_name": "Person doing own skin care",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Applying cream, lotion, serum or a face mask to their own face or skin, cleansing or wiping their own face, often looking into a mirror; or sitting with a face mask on while no one else is applying it."
+      },
+      {
+        "role_id": "care_helper",
+        "role_name": "Care helper",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Handing a jar, bottle, towel or tissue to someone doing skin care, or holding a mirror for them, without applying products."
+      },
+      {
+        "role_id": "care_receiver",
+        "role_name": "Person receiving skin care",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Sitting or lying still while another person applies cream, oil or a mask to their face, skin or hair."
+      },
+      {
+        "role_id": "onlooker",
+        "role_name": "Onlooker",
+        "category": "OBSERVING",
+        "subtype": "watching",
+        "gender_applicable": true,
+        "visual_definition": "Sitting or standing nearby looking at someone doing skin care, without applying or handing products."
+      },
+      {
+        "role_id": "person_on_own_activity",
+        "role_name": "Person on own activity",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "Reading, using a phone, lying in bed, sleeping or resting, not doing skin care and not looking at it."
+      }
+    ],
+    "precedence": "Person applying care to another > Person doing own skin care > Care helper > Person receiving skin care > Onlooker > Person on own activity (default order).",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D9S2",
+    "main_activity": "Members of a household sleep together on a mattress in their bedroom, with some possibly settling others to sleep.",
+    "roles": [
+      {
+        "role_id": "infant",
+        "role_name": "Infant",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": false,
+        "visual_definition": "A baby lying on the mattress, in a cradle or in someone's arms, asleep or being settled to sleep."
+      },
+      {
+        "role_id": "settler",
+        "role_name": "Person settling another to sleep",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Awake and patting, rocking or fanning another sleeper, covering them with a blanket, or holding a baby or child to put them to sleep."
+      },
+      {
+        "role_id": "sleeper",
+        "role_name": "Sleeper",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Lying in a sleeping position on the mattress, eyes closed or resting quietly, under or on a blanket, not doing anything else."
+      },
+      {
+        "role_id": "comforter",
+        "role_name": "Comforter",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Lying or sitting awake next to a sleeper and lightly stroking their hair or back, or keeping them company, without patting, rocking, fanning or covering them."
+      },
+      {
+        "role_id": "awake_person",
+        "role_name": "Awake person",
+        "category": "OBSERVING",
+        "subtype": "own_activity",
+        "gender_applicable": true,
+        "visual_definition": "Sitting up, or lying awake while using a phone, reading or talking, on the mattress or elsewhere in the room, without touching or settling a sleeper."
+      }
+    ],
+    "precedence": "Infant > Person settling another to sleep > Sleeper > Comforter > Awake person (default order). Any baby is coded as Infant whatever they are doing.",
+    "scene_questions": []
+  },
+  {
+    "scenario_id": "D9S3",
+    "main_activity": "Clients receive massages from therapists in a massage centre, while other clients wait and staff attend to them.",
+    "roles": [
+      {
+        "role_id": "massage_therapist",
+        "role_name": "Massage therapist",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Hands on a client's back, head, shoulders, legs or feet, kneading, pressing, rubbing or applying oil, usually standing or sitting beside the massage table or chair."
+      },
+      {
+        "role_id": "front_desk_attendant",
+        "role_name": "Front desk attendant",
+        "category": "PRIMARY",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Behind the reception desk talking to a client, writing in a register, using a computer or phone, or taking payment."
+      },
+      {
+        "role_id": "therapy_assistant",
+        "role_name": "Therapy assistant",
+        "category": "ASSISTING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Handing oil, towels or stones to a therapist, pouring oil into a bowl, placing a towel over a client, or preparing the massage table, without massaging."
+      },
+      {
+        "role_id": "client_being_massaged",
+        "role_name": "Client being massaged",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Lying or sitting on a massage table, bed or chair while someone massages them, often partly covered with a towel."
+      },
+      {
+        "role_id": "waiting_client",
+        "role_name": "Waiting client",
+        "category": "RECEIVING",
+        "subtype": "none",
+        "gender_applicable": true,
+        "visual_definition": "Seated or standing in a reception or waiting area, or resting after a massage, possibly in a robe or with a drink, not being massaged."
+      }
+    ],
+    "precedence": "Massage therapist > Front desk attendant > Therapy assistant > Client being massaged > Waiting client (default order).",
+    "scene_questions": []
+  }
+]
