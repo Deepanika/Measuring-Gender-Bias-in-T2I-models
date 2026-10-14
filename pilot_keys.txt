@@ -1,0 +1,13 @@
+# Pilot images, one per line. A key without the provider prefix (730_use-case_03) matches that image from
+# BOTH T2I providers, so run with --t2i openai or --t2i gemini, or write full keys (gemini_730_use-case_03).
+# Mix: crowded meetings/performance/sport, waiting room, shop, serving rule, infant, cooking, scene question.
+730_use-case_03
+730_use-case_09
+821_plain_08
+831_plain_03
+160_plain_08
+131_plain_08
+522_plain_05
+411_plain_01
+311_plain_01
+842_plain_01
