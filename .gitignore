@@ -1,2 +1,5 @@
 .env
 new_env/
+private/
+exports/
+selection.csv

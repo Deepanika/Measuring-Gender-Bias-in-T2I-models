@@ -31,15 +31,12 @@ import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
-
 import pandas as pd
 from dotenv import load_dotenv
-
 load_dotenv()
 
 # ---------------------------------------------------------------- CONFIG ---
 # Google Drive for Desktop path. Windows: "G:/My Drive"
-# macOS: "~/Library/CloudStorage/GoogleDrive-<you@gmail.com>/My Drive"
 DRIVE_ROOT = Path(os.path.expanduser(os.getenv("DRIVE_ROOT", "G:/My Drive")))
 OUTPUT_DIRNAME = "Images-generated"
 PROMPTS_FILE = Path(os.getenv("PROMPTS_FILE", "prompts.xlsx"))
@@ -47,15 +44,15 @@ PROMPTS_FILE = Path(os.getenv("PROMPTS_FILE", "prompts.xlsx"))
 N_PER_PHRASING = 10
 
 OPENAI_MODEL = os.getenv("OPENAI_IMAGE_MODEL", "gpt-image-2")
-OPENAI_QUALITY = os.getenv("OPENAI_IMAGE_QUALITY", "low")   # low | medium | high
+OPENAI_QUALITY = os.getenv("OPENAI_IMAGE_QUALITY", "low")   
 OPENAI_SIZE = os.getenv("OPENAI_IMAGE_SIZE", "1024x1024")
 
-# gemini-2.5-flash-image was shut down on 2026-10-02; 3.1 Flash Image is its GA successor.
+
 GEMINI_MODEL = os.getenv("GEMINI_IMAGE_MODEL", "gemini-3.1-flash-image")
 GEMINI_ASPECT = os.getenv("GEMINI_ASPECT_RATIO", "1:1")   # match OpenAI's 1024x1024
 GEMINI_SIZE = os.getenv("GEMINI_IMAGE_SIZE", "1K")        # 1K ~ 1024px
 
-# Images-per-minute caps from your account's Limits page (stay a little under).
+
 RATE_LIMIT_IPM = {
     "openai": float(os.getenv("OPENAI_IPM", "5")),
     "gemini": float(os.getenv("GEMINI_IPM", "10")),
@@ -66,8 +63,8 @@ TEMPLATES = {
     "use-case": "Generate an image of {S} for a social media post {purpose}.",
 }
 
-MAX_TRANSIENT_RETRIES = 6   # rate limits, 5xx, network
-MAX_CONTENT_RETRIES = 2     # refusals / no image returned -> logged, not looped
+MAX_TRANSIENT_RETRIES = 6   
+MAX_CONTENT_RETRIES = 2    
 # ---------------------------------------------------------------------------
 
 
@@ -76,7 +73,6 @@ class NoImageError(Exception):
 
 
 def safe_name(s: str) -> str:
-    """Make a string safe as a folder name on Windows/macOS."""
     s = re.sub(r'[<>:"/\\|?*]', "-", str(s)).strip().rstrip(".")
     return re.sub(r"\s+", " ", s)
 
@@ -123,7 +119,7 @@ def already_done(job) -> bool:
 # ------------------------------------------------------------ PROVIDERS ---
 def make_openai():
     from openai import OpenAI
-    client = OpenAI()  # reads OPENAI_API_KEY
+    client = OpenAI()  
 
     def gen(prompt):
         kwargs = dict(model=OPENAI_MODEL, prompt=prompt, size=OPENAI_SIZE, n=1)
@@ -147,7 +143,6 @@ def make_gemini():
     cfg = types.GenerateContentConfig(
         response_modalities=["TEXT", "IMAGE"],
         image_config=types.ImageConfig(aspect_ratio=GEMINI_ASPECT, image_size=GEMINI_SIZE),
-        # no tools are used, so turn off automatic function calling (silences the AFC warning)
         automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True),
     )
 
@@ -157,10 +152,10 @@ def make_gemini():
         for cand in resp.candidates or []:
             parts = cand.content.parts if cand.content and cand.content.parts else []
             for p in parts:
-                if getattr(p, "thought", False):   # skip interim "thinking" images/text
+                if getattr(p, "thought", False):   
                     continue
                 if p.inline_data and p.inline_data.data:
-                    final = p                        # keep the LAST final image
+                    final = p                        
                 elif p.text:
                     texts.append(p.text)
         if final is not None:
@@ -177,7 +172,7 @@ def make_gemini():
 def is_transient(e: Exception) -> bool:
     msg = f"{type(e).__name__} {e}".lower()
     if "limit: 0" in msg or "billing" in msg or "not found" in msg or "404" in msg:
-        return False   # no quota on this key / wrong model name: retrying won't help
+        return False  
     return any(k in msg for k in ("ratelimit", "rate limit", "429", "resource_exhausted",
                                   "timeout", "timed out", "connection", "500", "502",
                                   "503", "504", "unavailable", "overloaded"))
@@ -210,7 +205,7 @@ class Manifest:
     def __init__(self, path: Path):
         self.path, self.lock = path, threading.Lock()
         rows = []
-        if path.exists():  # upgrade an older manifest that lacks new columns
+        if path.exists():  
             with open(path, newline="", encoding="utf-8") as f:
                 reader = csv.DictReader(f)
                 if reader.fieldnames == self.FIELDS:
@@ -237,7 +232,7 @@ def run_job(job, generators, manifest):
     while True:
         try:
             LIMITERS[job["provider"]].wait()
-            t0 = time.perf_counter()  # times the API call only, not the rate-limit wait
+            t0 = time.perf_counter()  
             data, ext, revised = gen(job["prompt"])
             secs = round(time.perf_counter() - t0, 1)
             out = job["folder"] / f"{job['stem']}.{ext}"
