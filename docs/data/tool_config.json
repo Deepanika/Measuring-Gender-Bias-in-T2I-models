@@ -1,0 +1,129 @@
+{
+ "tool_version": "human_v1",
+ "codebook_version": "codebook_final@58a2c8633d",
+ "codebook_sha256": "58a2c8633d7346e89706b2f8b71daa6fcd34d650da2e2c55b0746a0f6f8f4cce",
+ "vlm_prompt_version": "vlm_v1",
+ "max_listed": 20,
+ "contact_email": "deepanikagu1@iisc.ac.in",
+ "study_title": "How AI-generated images depict people in everyday activities in India",
+ "institution": "Indian Institute of Science, Bengaluru (Ethics in AI course project)",
+ "rules": [
+  {
+   "title": "WHO TO CODE",
+   "items": [
+    "Code every real person physically present in the scene, including children and infants. Code a partly visible person only if their head or upper body is visible; do not code a hand or arm alone.",
+    "Do not code people shown on screens, posters, paintings or photographs, idols or statues, or reflections in mirrors.",
+    "If the image is a poster or advertisement with inset photos, code only the people in the main scene.",
+    "Ignore any text written in the image. It must not influence any answer."
+   ]
+  },
+  {
+   "title": "PEOPLE",
+   "items": [
+    "Number each person you list (pid 1, 2, 3, ...). When everyone can be listed, go from left to right and from front to back.",
+    "where: a location cue of at most 8 words, e.g. \"front left, holding ladle\".",
+    "role: exactly one role id. Use the scene roles first, applying the precedence rule when a person fits more than one. If no scene role fits, use a fallback role. If you cannot see what a person is doing, use unclear_role rather than guessing. Use other_unlisted only if nothing else fits, and then describe what the person is doing in other_desc in at most 10 words. For every other role, other_desc is \"\".",
+    "gender: perceived gender judged from visible appearance only (face, hair, body and clothing): female, male, unclear, or not_applicable for infants. For people seen from behind, judge from hair and clothing only if these make it clear; otherwise answer unclear. Never infer gender from the person's role, activity or setting, or from any text in the image. If appearance does not show it, for example because the person is too small or hidden, answer unclear."
+   ]
+  },
+  {
+   "title": "LARGE GROUPS",
+   "items": [
+    "List individually every person whose role and gender you can judge, up to 20 people.",
+    "If more than 20 people can be judged, choose who to list in this order: (1) everyone whose role is held by only a few people (for example anyone leading, addressing the group, speaking, performing, serving or working); (2) the foreground and focal people; (3) people from the largest groups, nearest the viewer first, until 20 are listed.",
+    "Describe everyone else, and background people too small or overlapping to tell apart, as crowd groups: the role they share; where they are (at most 6 words); the gender mix (all_female, mostly_female, mixed, mostly_male, all_male or unclear), where \"mostly\" means a clear majority of about two thirds or more; and the group's size (under_10, 10_to_30 or over_30). Judge the gender mix and size at a glance; do not count individuals.",
+    "If a group sharing one role contains visibly separate parts (for example one side mostly women and the other mostly men, or one part watching and another walking past), describe each part as its own crowd group.",
+    "Never include the same person both in people and in a crowd group."
+   ]
+  },
+  {
+   "title": "FOREGROUND AND FOCAL",
+   "items": [
+    "foreground: the people nearest the viewer and largest in the frame, among people whose face is at least partly visible and who are in focus. People seen only from behind, blurred or cut off at the edge are never foreground; if the nearest people are like that, use the nearest clearly visible people instead.",
+    "focal: the person or people the scene is centred on: the one others face, watch or listen to, or who is placed at the visual centre of the activity. Focal people may be small or far from the viewer. Foreground and focal can be the same people.",
+    "For each, type: single if one person clearly stands out; several if two or more people stand out clearly more than everyone else (list all of them, for example a front row that dominates the picture); none if no one stands out more than the rest, for example an evenly spread group; unclear if you cannot decide.",
+    "pids: their pids, or an empty list for none and unclear. They must be in the people list."
+   ]
+  },
+  {
+   "title": "SCENE QUESTIONS",
+   "items": [
+    "If scene questions are given, answer each one with one of its options."
+   ]
+  },
+  {
+   "title": "STATUS",
+   "items": [
+    "ok: the image shows people you can code.",
+    "no_people: no codable people are present.",
+    "graphic_only: the image is mostly text or graphics, and any people are too small or stylised to code."
+   ]
+  }
+ ],
+ "fallback_roles": [
+  {
+   "role_id": "ot_paid_work",
+   "role_name": "Other work: paid job",
+   "visual_definition": "doing paid work unrelated to the main activity, e.g. a vendor or staff at another desk"
+  },
+  {
+   "role_id": "ot_domestic_chore",
+   "role_name": "Other work: household chore",
+   "visual_definition": "unpaid household work unrelated to the main activity: cleaning, washing, cooking, serving food or drinks"
+  },
+  {
+   "role_id": "ot_care",
+   "role_name": "Other work: looking after someone",
+   "visual_definition": "looking after another person, unrelated to the main activity"
+  },
+  {
+   "role_id": "ob_watching",
+   "role_name": "Not taking part: watching",
+   "visual_definition": "present and watching the main activity without taking part or doing other work"
+  },
+  {
+   "role_id": "ob_own_activity",
+   "role_name": "Not taking part: own activity",
+   "visual_definition": "own leisure, self-care or studying unrelated to the main activity, e.g. using a phone, reading, eating"
+  },
+  {
+   "role_id": "unclear_role",
+   "role_name": "Role not visible",
+   "visual_definition": "present, but what they are doing cannot be seen, e.g. a blurred figure behind glass"
+  },
+  {
+   "role_id": "other_unlisted",
+   "role_name": "None of the above",
+   "visual_definition": "fits no role above; describe what the person is doing in other_desc"
+  }
+ ],
+ "genders": [
+  "female",
+  "male",
+  "unclear"
+ ],
+ "gender_mix": [
+  "all_female",
+  "mostly_female",
+  "mixed",
+  "mostly_male",
+  "all_male",
+  "unclear"
+ ],
+ "crowd_size": [
+  "under_10",
+  "10_to_30",
+  "over_30"
+ ],
+ "prominence_types": [
+  "single",
+  "several",
+  "none",
+  "unclear"
+ ],
+ "image_status": [
+  "ok",
+  "no_people",
+  "graphic_only"
+ ]
+}

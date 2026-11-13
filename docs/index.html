@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image coding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #eef2f1; --surface: #ffffff; --surface-2: #f6f8f8; --ink: #1c2b2a; --muted: #586a68;
+  --line: #d3dcda; --accent: #12676b; --accent-ink: #ffffff; --marker: #ffd23f; --marker-ink: #1c2b2a;
+  --crowd: #7fd1e0; --error: #b42318; --error-bg: #fdecea; --ok: #1d7a46;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111a1a; --surface: #1a2525; --surface-2: #213030; --ink: #e2ebe9; --muted: #9fb1ae;
+    --line: #2f403f; --accent: #5bc0be; --accent-ink: #0d1717; --error: #ff8a7a; --error-bg: #3a1f1c; --ok: #6fd39b;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; border: 1px solid var(--line); background: var(--surface); border-radius: 6px; padding: 6px 12px; }
+button:hover { border-color: var(--accent); }
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+input[type=text], select, textarea { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; width: 100%; }
+a { color: var(--accent); }
+[hidden] { display: none !important; }
+
+.page { max-width: 760px; margin: 0 auto; padding: 40px 20px 60px; }
+.page h1 { font-size: 26px; font-weight: 600; margin: 0 0 6px; }
+.page h2 { font-size: 18px; font-weight: 600; margin: 28px 0 8px; }
+.page p, .page li { max-width: 68ch; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px 22px; }
+.field { margin: 14px 0; }
+.field label.lbl { display: block; font-weight: 500; margin-bottom: 4px; }
+.hint { color: var(--muted); font-size: 13px; }
+.err { color: var(--error); }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+
+/* coding screen */
+#screen-code { height: 100vh; display: grid; grid-template-rows: auto 1fr auto; }
+header.bar { display: flex; align-items: center; gap: 12px; padding: 8px 14px; background: var(--surface); border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+header.bar .title { font-weight: 600; margin-right: auto; }
+.progress { font-variant-numeric: tabular-nums; }
+.workspace { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(400px, 1fr); min-height: 0; }
+.stage { display: grid; grid-template-rows: auto 1fr auto; min-height: 0; border-right: 1px solid var(--line); }
+.order { padding: 8px 14px 10px; border-top: 1px solid var(--line); background: var(--surface); font-size: 14px; }
+.order .chain { margin-top: 2px; }
+.order .chain span.sep { color: var(--muted); padding: 0 6px; }
+.stage-tools { display: flex; gap: 6px; align-items: center; padding: 8px 12px; flex-wrap: wrap; }
+.stage-tools .mode { margin-left: auto; }
+.seg button { border-radius: 0; margin-left: -1px; }
+.seg button:first-child { border-radius: 6px 0 0 6px; margin-left: 0; }
+.seg button:last-child { border-radius: 0 6px 6px 0; }
+.seg button[aria-pressed=true] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.viewport { overflow: auto; min-height: 0; padding: 0 12px 12px; }
+.canvas { position: relative; margin: 0 auto; user-select: none; touch-action: none; cursor: crosshair; }
+.canvas img { display: block; width: 100%; height: auto; pointer-events: none; }
+.mk { position: absolute; transform: translate(-50%, -50%); min-width: 26px; height: 26px; padding: 0 6px; display: grid; place-items: center;
+  font-weight: 600; font-size: 13px; background: var(--marker); color: var(--marker-ink); border: 2px solid var(--marker-ink);
+  border-radius: 13px; cursor: grab; box-shadow: 0 0 0 2px rgba(255,255,255,.8); }
+.mk.crowd { background: var(--crowd); border-radius: 5px; }
+.mk.sel { outline: 3px solid var(--accent); outline-offset: 2px; transform: translate(-50%, -50%) scale(1.15); }
+.mk.dragging { cursor: grabbing; }
+
+.panel { overflow: auto; min-height: 0; padding: 14px 16px 30px; background: var(--surface-2); }
+.block { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; }
+.block > h3 { font-size: 15px; font-weight: 600; margin: 0 0 8px; display: flex; align-items: baseline; gap: 8px; }
+.block > h3 .hint { font-weight: 400; }
+.scene-text { margin: 0 0 8px; }
+details summary { cursor: pointer; font-weight: 500; }
+.roles { margin: 6px 0 0; padding: 0; list-style: none; }
+.roles li { padding: 6px 0; border-top: 1px solid var(--line); }
+.roles li:first-child { border-top: 0; }
+.roles .rn { font-weight: 500; }
+.roles .rid { color: var(--muted); font-size: 12px; }
+.roles .rd { font-size: 13.5px; }
+.person { border: 1px solid var(--line); border-radius: 8px; padding: 10px; margin: 8px 0; background: var(--surface); }
+.person.sel { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.person .head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.badge { min-width: 26px; height: 26px; padding: 0 6px; display: inline-grid; place-items: center; border-radius: 13px; font-weight: 600; font-size: 13px;
+  background: var(--marker); color: var(--marker-ink); border: 2px solid var(--marker-ink); }
+.badge.crowd { background: var(--crowd); border-radius: 5px; }
+.person .del { margin-left: auto; padding: 3px 9px; font-size: 13px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.choice { display: inline-flex; gap: 0; flex-wrap: wrap; }
+.choice button { border-radius: 0; margin-left: -1px; padding: 4px 10px; font-size: 14px; }
+.choice button:first-child { border-radius: 6px 0 0 6px; margin-left: 0; }
+.choice button:last-child { border-radius: 0 6px 6px 0; }
+.choice button[aria-pressed=true] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.wc { font-size: 12px; color: var(--muted); }
+.wc.over { color: var(--error); font-weight: 600; }
+.radios label { display: block; padding: 2px 0; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.chips button { padding: 2px 10px; border-radius: 14px; }
+.chips button[aria-pressed=true] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.errors { background: var(--error-bg); border: 1px solid var(--error); color: var(--error); border-radius: 8px; padding: 8px 12px 8px 28px; margin: 0 0 12px; }
+.empty { color: var(--muted); font-size: 14px; margin: 6px 0; }
+footer.foot { padding: 6px 14px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); background: var(--surface); display: flex; gap: 16px; flex-wrap: wrap; }
+.page-foot { color: var(--muted); font-size: 12px; margin-top: 40px; }
+.toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 8px; max-width: 90vw; z-index: 50; }
+dialog { max-width: 820px; width: 92vw; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); padding: 0; }
+dialog::backdrop { background: rgba(10, 20, 20, .5); }
+dialog .dlg-body { padding: 8px 24px 20px; max-height: 75vh; overflow: auto; }
+dialog .dlg-head { display: flex; align-items: center; padding: 14px 24px; border-bottom: 1px solid var(--line); }
+dialog .dlg-head h2 { margin: 0 auto 0 0; font-size: 18px; }
+.rules h3 { font-size: 15px; margin: 18px 0 4px; }
+.rules ul { margin: 0; padding-left: 20px; }
+.rules li { margin: 3px 0; max-width: 75ch; }
+@media (max-width: 900px) {
+  #screen-code { height: auto; }
+  .workspace { grid-template-columns: 1fr; }
+  .stage { border-right: 0; border-bottom: 1px solid var(--line); }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- loading / fatal error -->
+<section id="screen-load" class="page"><p id="load-msg">Loading…</p></section>
+
+<!-- start -->
+<section id="screen-start" class="page" hidden>
+  <h1>Image coding</h1>
+  <p class="hint" id="start-study"></p>
+  <div class="card" style="margin-top:18px">
+    <div class="field">
+      <label class="lbl" for="coder-input">Your coder ID</label>
+      <input type="text" id="coder-input" autocomplete="off" placeholder="e.g. C01" style="max-width:220px">
+      <div class="hint">The researcher gave you this ID. It keeps your answers separate from your name.</div>
+    </div>
+    <p class="err" id="start-err" hidden></p>
+    <button class="primary" id="start-go">Continue</button>
+  </div>
+  <p class="page-foot" data-version></p>
+</section>
+
+<!-- consent -->
+<section id="screen-consent" class="page" hidden>
+  <h1>Before you start</h1>
+  <div class="card">
+    <p id="consent-study"></p>
+    <h2>What you will do</h2>
+    <p>You will look at <span id="consent-n"></span> AI-generated images of everyday activities in India. For each image you mark every person, say what role they have in the scene using a list of roles we give you, and record their perceived gender from appearance. Most images take about five minutes. You can stop at any time and continue later in the same browser.</p>
+    <h2>What we store</h2>
+    <ul>
+      <li>Your name and the time you gave consent. These are kept in a separate private file that only the researcher sees, and are never published.</li>
+      <li>Your coder ID, your answers for each image, how long you spent on each image, and any image you flag for discussion.</li>
+      <li>If you choose to give them, your gender and age band, used only to describe the group of coders as a whole.</li>
+    </ul>
+    <h2>How your answers are used</h2>
+    <p>Your answers will be compared with answers from automated systems, to check how accurate those systems are, and with other coders' answers. Results appear in a course report. Your answers will be published in a public research repository under your coder ID only, without your name.</p>
+    <h2>Taking part is voluntary</h2>
+    <p>You can stop at any time without giving a reason. Until the final report is submitted, you can ask for your answers to be deleted by writing to <a id="consent-mail"></a>. Some images show home scenes, prayer, sleep or caregiving; none are graphic.</p>
+
+    <div class="field">
+      <label class="lbl" for="c-name">Your full name</label>
+      <input type="text" id="c-name" autocomplete="name">
+    </div>
+    <div class="grid2">
+      <div class="field">
+        <label class="lbl" for="c-gender">Your gender (optional)</label>
+        <select id="c-gender">
+          <option value="">Prefer not to say</option><option value="woman">Woman</option><option value="man">Man</option>
+          <option value="non_binary">Non-binary</option><option value="self_described">Another gender</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="lbl" for="c-age">Your age band (optional)</label>
+        <select id="c-age">
+          <option value="">Prefer not to say</option><option>18-24</option><option>25-34</option><option>35-44</option><option>45-54</option><option>55+</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label><input type="checkbox" id="c-agree"> I have read the information above, I am 18 or older, and I agree to take part.</label>
+    </div>
+    <p class="err" id="consent-err" hidden></p>
+    <button class="primary" id="consent-go">Agree and continue</button>
+  </div>
+  <p class="page-foot" data-version></p>
+</section>
+
+<!-- more images assigned after consent -->
+<section id="screen-more" class="page" hidden>
+  <h1>New images for you</h1>
+  <div class="card">
+    <p id="more-text"></p>
+    <p class="hint">The images you already finished are kept and will not be shown as new work. Everything else in the study information you agreed to stays the same.</p>
+    <div class="row"><button class="primary" id="more-go">Agree and continue</button><button id="more-no">Not now</button></div>
+    <p class="hint" id="more-no-text" hidden>Your earlier answers are saved. If you would rather not code more images, just tell the researcher; nothing else is needed.</p>
+  </div>
+  <p class="page-foot" data-version></p>
+</section>
+
+<!-- rules (first time) -->
+<section id="screen-rules" class="page" hidden>
+  <h1>How to code an image</h1>
+  <div class="card rules" id="rules-first"></div>
+  <p style="margin-top:18px"><button class="primary" id="rules-go">Start coding</button></p>
+  <p class="page-foot" data-version></p>
+</section>
+
+<!-- coding -->
+<section id="screen-code" hidden>
+  <header class="bar">
+    <span class="title">Image coding</span>
+    <label class="progress"><span class="sr" hidden>Go to image</span>
+      <select id="jump" aria-label="Go to image" style="width:auto"></select>
+    </label>
+    <span class="hint" id="done-count"></span>
+    <button id="btn-rules">Rules</button>
+    <button id="btn-export">Export my answers</button>
+  </header>
+  <div class="workspace">
+    <div class="stage">
+      <div class="stage-tools">
+        <span class="hint">Zoom</span>
+        <span class="seg" id="zoom">
+          <button data-z="1" aria-pressed="true">Fit</button><button data-z="1.5">1.5×</button><button data-z="2">2×</button><button data-z="3">3×</button>
+        </span>
+        <span class="mode" id="mode-wrap" hidden><span class="hint">Click the image to add</span>
+        <span class="seg" id="mode">
+          <button data-m="person" aria-pressed="true">a person</button><button data-m="crowd">a crowd group</button>
+        </span></span>
+      </div>
+      <div class="viewport" id="viewport">
+        <div class="canvas" id="canvas"><img id="img" alt="Image to code"><div id="marks"></div></div>
+      </div>
+      <div class="order"><span class="hint">Role order</span><div class="chain" id="order"></div></div>
+    </div>
+    <div class="panel" id="panel"></div>
+  </div>
+  <footer class="foot"><span id="img-id"></span><span data-version></span></footer>
+</section>
+
+<!-- done -->
+<section id="screen-done" class="page" hidden>
+  <h1>All images are coded</h1>
+  <div class="card">
+    <p>Thank you. Export your answers and send the file to <a class="mail"></a>.</p>
+    <p class="hint">Please keep using this browser until the researcher confirms they received your file; your answers are also saved here.</p>
+    <div class="row"><button class="primary" id="done-export">Export my answers</button><button id="done-back">Review my images</button></div>
+  </div>
+  <p class="page-foot" data-version></p>
+</section>
+
+<dialog id="dlg-rules">
+  <div class="dlg-head"><h2>Coding rules</h2><button id="btn-import" style="margin-right:8px">Restore answers from a file</button><button id="dlg-close">Close</button></div>
+  <div class="dlg-body rules" id="rules-dlg"></div>
+</dialog>
+
+<input type="file" id="import-file" accept=".jsonl,.txt" hidden>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+"use strict";
+const IDLE_MS = 120000;            // time on an image stops counting after 2 minutes without any input
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const words = s => (s || "").trim().split(/\s+/).filter(Boolean).length;
+const nowIso = () => new Date().toISOString().replace(/\.\d+Z$/, "+00:00");
+
+const S = { cfg: null, scen: {}, images: {}, assign: {}, coder: null, order: [], idx: 0, store: null,
+            zoom: 1, mode: "person", sel: null, t0: null, lastAct: Date.now(), errors: [] };
+
+/* ------------------------------------------------------------------ storage */
+const KEY = c => `t2i-annot:${c}`;
+function save() {
+  if (!S.coder) return;
+  try { localStorage.setItem(KEY(S.coder), JSON.stringify(S.store)); }
+  catch (e) { toast("Your browser could not save progress. Export your answers now to keep them."); }
+}
+function loadStore(c) {
+  try { const raw = localStorage.getItem(KEY(c)); if (raw) return JSON.parse(raw); } catch (e) {}
+  return { coder: c, consent: null, rulesSeen: false, recs: {}, idx: 0 };
+}
+function toast(msg, ms = 3500) {
+  const t = $("#toast"); t.textContent = msg; t.hidden = false;
+  clearTimeout(toast.h); toast.h = setTimeout(() => (t.hidden = true), ms);
+}
+function show(id) {
+  for (const s of document.querySelectorAll("body > section")) s.hidden = s.id !== id;
+}
+
+/* ------------------------------------------------------------------ boot */
+async function getJSON(p) {
+  const r = await fetch(p, { cache: "no-cache" });
+  if (!r.ok) throw new Error(`${p}: HTTP ${r.status}`);
+  return r.json();
+}
+async function boot() {
+  try {
+    S.cfg = await getJSON("data/tool_config.json");
+    const cbRes = await fetch("data/codebook_final.json", { cache: "no-cache" });
+    if (!cbRes.ok) throw new Error("codebook: HTTP " + cbRes.status);
+    const buf = await cbRes.arrayBuffer();
+    if (!(window.crypto && crypto.subtle)) throw new Error("This page must be opened over https (or localhost) so it can check the codebook.");
+    const hex = [...new Uint8Array(await crypto.subtle.digest("SHA-256", buf))].map(b => b.toString(16).padStart(2, "0")).join("");
+    if (hex !== S.cfg.codebook_sha256) throw new Error(`The codebook file does not match ${S.cfg.codebook_version}. Coding is blocked; tell the researcher.`);
+    for (const s of JSON.parse(new TextDecoder().decode(buf))) S.scen[s.scenario_id] = s;
+    S.images = await getJSON("data/images.json");
+    S.assign = await getJSON("data/assignments.json");
+  } catch (e) {
+    $("#load-msg").innerHTML = `<span class="err">The tool could not start: ${esc(e.message)}</span>`;
+    return;
+  }
+  for (const el of document.querySelectorAll("[data-version]"))
+    el.textContent = `Codebook ${S.cfg.codebook_version} · tool ${S.cfg.tool_version}`;
+  $("#start-study").textContent = `${S.cfg.study_title}. ${S.cfg.institution}.`;
+  renderRules($("#rules-first")); renderRules($("#rules-dlg"));
+  const q = new URLSearchParams(location.search).get("coder");
+  if (q) $("#coder-input").value = q;
+  show("screen-start");
+}
+
+/* ------------------------------------------------------------------ start + consent */
+$("#start-go").onclick = startCoder;
+$("#coder-input").addEventListener("keydown", e => { if (e.key === "Enter") startCoder(); });
+function startCoder() {
+  const c = $("#coder-input").value.trim();
+  const err = $("#start-err");
+  if (!S.assign[c]) { err.textContent = "This coder ID has no images assigned. Check the ID the researcher sent you."; err.hidden = false; return; }
+  S.coder = c; S.order = S.assign[c]; S.store = loadStore(c);
+  if (!S.store.consent) {
+    $("#consent-study").textContent = `This study, run at the ${S.cfg.institution}, looks at how AI-generated images show people in everyday activities in India.`;
+    $("#consent-n").textContent = S.order.length;
+    const m = $("#consent-mail"); m.textContent = S.cfg.contact_email; m.href = "mailto:" + S.cfg.contact_email;
+    show("screen-consent");
+  } else if (newIds().length) {
+    const n = newIds().length, done = S.order.length - n;
+    $("#more-text").textContent = `The researcher has added ${n} more image${n === 1 ? "" : "s"} for you, on top of the ${done} you agreed to before. Do you agree to code ${n === 1 ? "it" : "them"} too?`;
+    show("screen-more");
+  } else if (!S.store.rulesSeen) show("screen-rules");
+  else openCoding();
+}
+/* images assigned after the coder last agreed (older consents without a list count as agreeing to all) */
+function newIds() {
+  const agreed = S.store.consent && S.store.consent.agreed_ids;
+  return agreed ? S.order.filter(id => !agreed.includes(id)) : [];
+}
+$("#more-go").onclick = () => {
+  const added = newIds();
+  S.store.consent.agreed_ids = [...S.store.consent.agreed_ids, ...added];
+  (S.store.consent.additions = S.store.consent.additions || []).push({ n_images: added.length, agreed_utc: nowIso() });
+  save();
+  if (!S.store.rulesSeen) show("screen-rules"); else openCoding();
+};
+$("#more-no").onclick = () => { $("#more-no-text").hidden = false; };
+$("#consent-go").onclick = () => {
+  const name = $("#c-name").value.trim(), err = $("#consent-err");
+  if (!name) { err.textContent = "Enter your name to continue."; err.hidden = false; return; }
+  if (!$("#c-agree").checked) { err.textContent = "Tick the consent box to continue."; err.hidden = false; return; }
+  S.store.consent = { name, consent: true, consent_timestamp_utc: nowIso(),
+                      self_gender: $("#c-gender").value || "not_given", age_band: $("#c-age").value || "not_given",
+                      agreed_ids: [...S.order], additions: [] };
+  save(); show("screen-rules");
+};
+$("#rules-go").onclick = () => { S.store.rulesSeen = true; save(); openCoding(); };
+
+const PLAIN_RULES = [
+  ["Using this tool", [
+    "Click on each person in the image. A numbered marker appears on them; drag it if you need to move it.",
+    "For each person, choose their role and their perceived gender in the panel on the right.",
+    "Your answers save automatically in this browser. When you finish, click “Export my answers” and send the file.",
+    "Tick “Flag this image for discussion” whenever you are unsure, and say why."]],
+  ["Who to mark", [
+    "Every real person in the scene, including children and babies, if you can see at least their head or upper body. Not a hand or arm alone.",
+    "Not people on screens, posters, paintings or photos, idols or statues, or reflections in mirrors. If the image is an advert with small inset photos, mark only the main scene.",
+    "Ignore any text written in the image."]],
+  ["Role", [
+    "Give each person one role from the scene’s list.",
+    "If a person fits more than one role, choose the one that comes first in the role order shown under the image.",
+    "If no role in the list fits, use a fallback role. If you cannot see what the person is doing, choose “Role not visible” rather than guessing. Use “None of the above” only if nothing else fits, and say in a few words what they are doing."]],
+  ["Perceived gender", [
+    "Judge only from how the person looks: face, hair, body and clothes. Choose female, male or unclear.",
+    "For a newborn or infant or small baby, choose “baby (not applicable)” instead of a gender.",
+    "Never decide from what the person is doing, the setting, or text in the image.",
+    "For someone seen from behind, decide only if hair and clothes make it clear. If the person is too small or hidden to tell, choose unclear."]],
+  ["Busy images", [
+    "Mark at most 20 people. If there are more, mark first anyone in a role few others have (leading, speaking, performing, serving, working), then the people in front and at the centre, then the nearest people.",
+    "After 20 people are marked, the tool switches to crowd groups: click on each remaining group and give its shared role, its gender mix and its size. “Mostly” means about two thirds or more. Judge at a glance; do not count.",
+    "Background people too small to tell apart can also be a crowd group, even with fewer than 20 people marked: use “Add a crowd group” in the Crowd groups box.",
+    "If one group has clearly different parts (for example one side mostly women and the other mostly men, or some watching and some walking past), make each part its own group.",
+    "Never mark a person and also include them in a crowd group."]],
+  ["Foreground and focal", [
+    "Foreground: the people nearest the viewer and largest in the picture, whose face is at least partly visible and in focus. People seen only from behind, blurred or cut off at the edge never count; use the nearest clearly visible people instead.",
+    "Focal: the person or people the scene is centred on, the one others face, watch or listen to, or who is at the centre of the activity. They can be small or far away. Foreground and focal can be the same people.",
+    "For each, choose single (one person clearly stands out), several (two or more stand out; select all of them), none (no one stands out, for example an evenly spread group) or unclear (you cannot decide)."]],
+  ["Image status", [
+    "People to code: the image shows people you can mark.",
+    "No codable people: nobody you could mark is present.",
+    "Mostly text or graphics: any people are too small or stylised to mark."]]];
+function renderRules(el) {
+  el.innerHTML = PLAIN_RULES.map(([t, items]) => `<h3>${esc(t)}</h3><ul>${items.map(i => `<li>${esc(i)}</li>`).join("")}</ul>`).join("");
+}
+/* role order under the image: the codebook precedence chain, shown as role names only */
+function precedenceNames(sc) {
+  const chain = sc.precedence.split(/\s\(|\.\s/)[0].replace(/\.$/, "");
+  const ids = chain.split(">").map(x => x.trim());
+  const names = Object.fromEntries(sc.roles.map(r => [r.role_id, r.role_name]));
+  if (ids.some(i => !names[i])) return null;
+  return ids.map(i => names[i]);
+}
+function renderOrder() {
+  const sc = scenario(), names = precedenceNames(sc);
+  $("#order").innerHTML = names ? names.map(esc).join('<span class="sep">›</span>') : esc(sc.precedence);
+}
+
+/* ------------------------------------------------------------------ records */
+function rec(id = cur()) {
+  if (!S.store.recs[id]) S.store.recs[id] = { status: "ok", people: [], crowds: [], foreground: { type: "", pids: [] },
+    focal: { type: "", pids: [] }, scene_answers: {}, flagged: false, comment: "", seconds: 0, complete: false, updated: null };
+  return S.store.recs[id];
+}
+const cur = () => S.order[S.idx];
+const scenario = (id = cur()) => S.scen[S.images[id]];
+function allRoles(sc) {
+  return [...sc.roles.map(r => ({ ...r, fallback: false })),
+          ...S.cfg.fallback_roles.map(r => ({ ...r, gender_applicable: true, fallback: true }))];
+}
+const roleById = (sc, id) => allRoles(sc).find(r => r.role_id === id);
+function touched() { const r = rec(); r.updated = nowIso(); r.complete = false; save(); updateHeader(); }
+
+/* ------------------------------------------------------------------ timing */
+function accrue() {
+  const now = Date.now();
+  if (S.t0 !== null && S.order.length) {
+    const end = Math.min(now, S.lastAct + IDLE_MS);
+    if (end > S.t0) rec().seconds += (end - S.t0) / 1000;
+  }
+  S.t0 = document.hidden ? null : now;
+}
+function activity() {
+  const now = Date.now();
+  if (now - S.lastAct > IDLE_MS || S.t0 === null) { accrue(); S.t0 = document.hidden ? null : now; }
+  S.lastAct = now;
+}
+["pointerdown", "keydown", "wheel"].forEach(ev => document.addEventListener(ev, activity, true));
+document.addEventListener("visibilitychange", () => { if (!$("#screen-code").hidden) { accrue(); save(); } });
+setInterval(() => { if (!$("#screen-code").hidden) { accrue(); save(); } }, 15000);
+
+/* ------------------------------------------------------------------ coding screen */
+function openCoding() {
+  show("screen-code");
+  const firstOpen = S.order.findIndex(id => !(S.store.recs[id] && S.store.recs[id].complete));
+  S.idx = Math.min(S.store.idx ?? 0, S.order.length - 1);
+  if (S.store.recs[cur()] && S.store.recs[cur()].complete && firstOpen >= 0) S.idx = firstOpen;
+  goTo(S.idx);
+}
+function goTo(i) {
+  if (S.t0 !== null) accrue();
+  S.idx = Math.max(0, Math.min(i, S.order.length - 1)); S.store.idx = S.idx; S.sel = null; S.errors = [];
+  S.mode = rec().people.length >= S.cfg.max_listed ? "crowd" : "person"; save();
+  const img = $("#img"); img.src = `images/${cur()}.jpg`;
+  $("#img-id").textContent = `Image ${cur()}`;
+  S.t0 = document.hidden ? null : Date.now(); S.lastAct = Date.now();
+  renderOrder(); applyZoom(); renderMarks(); renderPanel(); updateHeader();
+  $("#panel").scrollTop = 0; $("#viewport").scrollTop = 0;
+}
+function updateHeader() {
+  const done = S.order.filter(id => S.store.recs[id] && S.store.recs[id].complete).length;
+  $("#done-count").textContent = `${done} of ${S.order.length} done`;
+  const sel = $("#jump");
+  sel.innerHTML = S.order.map((id, i) => `<option value="${i}">${S.store.recs[id] && S.store.recs[id].complete ? "✓" : "○"} Image ${i + 1} of ${S.order.length}</option>`).join("");
+  sel.value = S.idx;
+}
+$("#jump").onchange = e => goTo(+e.target.value);
+
+/* zoom + mode */
+$("#zoom").onclick = e => { const b = e.target.closest("button"); if (!b) return; S.zoom = +b.dataset.z; applyZoom(); };
+function applyZoom() {
+  for (const b of $("#zoom").children) b.setAttribute("aria-pressed", +b.dataset.z === S.zoom);
+  const vp = $("#viewport");
+  const fitW = Math.min(vp.clientWidth - 24, (vp.clientHeight - 12) || 99999);
+  $("#canvas").style.width = Math.max(200, fitW) * S.zoom + "px";
+}
+window.addEventListener("resize", () => { if (!$("#screen-code").hidden) applyZoom(); });
+$("#mode").onclick = e => { const b = e.target.closest("button"); if (b) setMode(b.dataset.m); };
+/* the crowd-group option appears once 20 people are marked (or when asked for from the Crowd groups box) */
+function setMode(m) { S.mode = m; renderMode(); }
+function renderMode() {
+  const r = rec();
+  $("#mode-wrap").hidden = !(r.people.length >= S.cfg.max_listed || r.crowds.length || S.mode === "crowd");
+  for (const x of $("#mode").children) x.setAttribute("aria-pressed", x.dataset.m === S.mode);
+}
+
+/* markers */
+function renderMarks() {
+  const r = rec();
+  $("#marks").innerHTML =
+    r.people.map((p, i) => `<div class="mk ${S.sel && S.sel.k === "p" && S.sel.i === i ? "sel" : ""}" data-k="p" data-i="${i}" style="left:${p.x * 100}%;top:${p.y * 100}%">${i + 1}</div>`).join("") +
+    r.crowds.map((c, i) => `<div class="mk crowd ${S.sel && S.sel.k === "c" && S.sel.i === i ? "sel" : ""}" data-k="c" data-i="${i}" style="left:${c.x * 100}%;top:${c.y * 100}%">G${i + 1}</div>`).join("");
+}
+let drag = null;
+$("#canvas").addEventListener("pointerdown", e => {
+  if (e.button !== 0) return;
+  const mk = e.target.closest(".mk");
+  drag = { mk, x0: e.clientX, y0: e.clientY, moved: false };
+  if (mk) { mk.setPointerCapture(e.pointerId); mk.classList.add("dragging"); }
+});
+$("#canvas").addEventListener("pointermove", e => {
+  if (!drag || !drag.mk) return;
+  if (Math.hypot(e.clientX - drag.x0, e.clientY - drag.y0) > 4) drag.moved = true;
+  if (!drag.moved) return;
+  const { x, y } = relPos(e); drag.mk.style.left = x * 100 + "%"; drag.mk.style.top = y * 100 + "%";
+});
+$("#canvas").addEventListener("pointerup", e => {
+  if (!drag) return;
+  const d = drag; drag = null;
+  if (d.mk) {
+    d.mk.classList.remove("dragging");
+    const k = d.mk.dataset.k, i = +d.mk.dataset.i, item = (k === "p" ? rec().people : rec().crowds)[i];
+    if (d.moved) { Object.assign(item, relPos(e)); touched(); }
+    select(k, i);
+    return;
+  }
+  if (Math.hypot(e.clientX - d.x0, e.clientY - d.y0) > 6) return;
+  addAt(relPos(e));
+});
+function relPos(e) {
+  const b = $("#canvas").getBoundingClientRect();
+  const c = v => Math.round(Math.min(1, Math.max(0, v)) * 10000) / 10000;
+  return { x: c((e.clientX - b.left) / b.width), y: c((e.clientY - b.top) / b.height) };
+}
+function addAt(pos) {
+  const r = rec();
+  if (S.mode === "person") {
+    if (r.people.length >= S.cfg.max_listed) { toast(`${S.cfg.max_listed} people are listed. Describe everyone else as crowd groups.`, 5000); return; }
+    r.people.push({ ...pos, role: "", gender: "", other_desc: "" });
+    select("p", r.people.length - 1, true);
+    if (r.people.length === S.cfg.max_listed) { setMode("crowd");
+      toast(`${S.cfg.max_listed} people marked. Now click on each remaining group to add it as a crowd group.`, 6000); }
+  } else {
+    r.crowds.push({ ...pos, role: "", gender_mix: "", size: "" });
+    if (r.people.length < S.cfg.max_listed) S.mode = "person";   // a single small background group: back to people
+    select("c", r.crowds.length - 1, true);
+  }
+  touched();
+}
+function select(k, i, focusWhere = false) {
+  S.sel = { k, i }; renderMarks(); renderPanel();
+  const el = $(`[data-item="${k}${i}"]`);
+  if (el) { el.scrollIntoView({ block: "nearest" }); if (focusWhere) { const w = el.querySelector("select[data-f=role]"); w && w.focus(); } }
+}
+
+/* ------------------------------------------------------------------ panel */
+function roleOptions(sc, value) {
+  const opt = r => `<option value="${esc(r.role_id)}" ${r.role_id === value ? "selected" : ""}>${esc(r.role_name)}${r.fallback ? ` (${esc(r.role_id)})` : ""}</option>`;
+  return `<option value="" ${value ? "" : "selected"} disabled>Choose a role</option>
+    <optgroup label="Roles in this scene">${sc.roles.map(r => opt({ ...r, fallback: false })).join("")}</optgroup>
+    <optgroup label="Fallback roles, only if no role above fits">${S.cfg.fallback_roles.map(r => opt({ ...r, fallback: true })).join("")}</optgroup>`;
+}
+function choice(field, idx, options, value, labels = {}) {
+  return `<span class="choice">${options.map(o => `<button type="button" data-act="set" data-f="${field}" data-i="${idx}" data-v="${esc(o)}" aria-pressed="${o === value}">${esc(labels[o] || o.replace(/_/g, " "))}</button>`).join("")}</span>`;
+}
+function wc(text, max) { const n = words(text); return `<span class="wc ${n > max ? "over" : ""}" data-wc>${n}/${max} words</span>`; }
+
+function renderPanel() {
+  const r = rec(), sc = scenario(), id = cur();
+  const statusLabels = { ok: "People to code", no_people: "No codable people", graphic_only: "Mostly text or graphics" };
+  const people = r.people.map((p, i) => {
+    const role = roleById(sc, p.role), ga = role ? role.gender_applicable !== false : true;
+    return `<div class="person ${S.sel && S.sel.k === "p" && S.sel.i === i ? "sel" : ""}" data-item="p${i}">
+      <div class="head"><span class="badge">${i + 1}</span><strong>Person ${i + 1}</strong>
+        <button class="del" data-act="del" data-k="p" data-i="${i}" aria-label="Delete person ${i + 1}">Delete</button></div>
+      <div class="field" style="margin:4px 0"><select data-f="role" data-k="p" data-i="${i}">${roleOptions(sc, p.role)}</select>
+        ${role ? `<div class="sub">${esc(role.visual_definition)}</div>` : ""}</div>
+      ${p.role === "other_unlisted" ? `<div class="field" style="margin:4px 0"><input type="text" data-f="other_desc" data-k="p" data-i="${i}" value="${esc(p.other_desc)}" placeholder="What is this person doing? (up to 10 words)"> ${wc(p.other_desc, 10)}</div>` : ""}
+      <div class="row" style="margin-top:4px"><span class="hint">Perceived gender</span>
+        ${ga ? choice("gender", i, [...S.cfg.genders, "not_applicable"], p.gender, { not_applicable: "baby (not applicable)" }) : `<span class="hint">Not applicable (infant role)</span>`}</div>
+    </div>`;
+  }).join("");
+  const crowds = r.crowds.map((c, i) => `<div class="person ${S.sel && S.sel.k === "c" && S.sel.i === i ? "sel" : ""}" data-item="c${i}">
+      <div class="head"><span class="badge crowd">G${i + 1}</span><strong>Crowd group ${i + 1}</strong>
+        <button class="del" data-act="del" data-k="c" data-i="${i}" aria-label="Delete crowd group ${i + 1}">Delete</button></div>
+      <div class="field" style="margin:4px 0"><select data-f="role" data-k="c" data-i="${i}">${roleOptions(sc, c.role)}</select></div>
+      <div class="grid2">
+        <select data-f="gender_mix" data-k="c" data-i="${i}"><option value="" disabled ${c.gender_mix ? "" : "selected"}>Gender mix</option>${S.cfg.gender_mix.map(g => `<option value="${g}" ${g === c.gender_mix ? "selected" : ""}>${g.replace(/_/g, " ")}</option>`).join("")}</select>
+        <select data-f="size" data-k="c" data-i="${i}"><option value="" disabled ${c.size ? "" : "selected"}>Size</option>${S.cfg.crowd_size.map(g => `<option value="${g}" ${g === c.size ? "selected" : ""}>${g.replace(/_/g, " ")}</option>`).join("")}</select>
+      </div></div>`).join("");
+  const prom = (field, label, help) => {
+    const v = r[field];
+    return `<div class="field"><label class="lbl">${label}</label><div class="hint">${help}</div>
+      <div style="margin-top:4px">${choice(field + "_type", -1, S.cfg.prominence_types, v.type)}</div>
+      ${["single", "several"].includes(v.type) ? `<div class="chips">${r.people.length ? r.people.map((_, i) =>
+        `<button type="button" data-act="pid" data-f="${field}" data-v="${i + 1}" aria-pressed="${v.pids.includes(i + 1)}">${i + 1}</button>`).join("") : `<span class="empty">Add people first.</span>`}</div>` : ""}</div>`;
+  };
+  const qs = sc.scene_questions || [];
+  const scene = qs.length ? `<div class="block"><h3>Scene questions</h3>${qs.map((q, k) => {
+      const qid = "q" + (k + 1);
+      return `<div class="field"><div class="lbl" style="font-weight:500">${esc(q.question)}</div><div class="radios">${q.options.map(o =>
+        `<label><input type="radio" name="sq-${qid}" data-f="scene" data-q="${qid}" value="${esc(o)}" ${r.scene_answers[qid] === o ? "checked" : ""}> ${esc(o)}</label>`).join("")}</div></div>`;
+    }).join("")}</div>` : "";
+
+  $("#panel").innerHTML = `
+    ${S.errors.length ? `<ul class="errors">${S.errors.map(e => `<li>${esc(e)}</li>`).join("")}</ul>` : ""}
+    <div class="block"><h3>Scene</h3><p class="scene-text">${esc(sc.main_activity)}</p>
+      <details><summary>Roles and what to look for</summary><ul class="roles">${sc.roles.map(ro =>
+        `<li><span class="rn">${esc(ro.role_name)}</span> <span class="rid">${esc(ro.role_id)}</span><div class="rd">${esc(ro.visual_definition)}</div></li>`).join("")}</ul></details>
+      <details><summary>Fallback roles</summary><ul class="roles">${S.cfg.fallback_roles.map(ro =>
+        `<li><span class="rn">${esc(ro.role_name)}</span> <span class="rid">${esc(ro.role_id)}</span><div class="rd">${esc(ro.visual_definition)}</div></li>`).join("")}</ul></details>
+    </div>
+    <div class="block"><h3>Image status</h3>${choice("status", -1, S.cfg.image_status, r.status, statusLabels)}</div>
+    <div class="block"><h3>People <span class="hint">${r.people.length} of ${S.cfg.max_listed} listed</span></h3>
+      ${people || `<p class="empty">Click on each person in the image to add them.</p>`}</div>
+    <div class="block"><h3>Crowd groups <span class="hint">${r.crowds.length}</span></h3>
+      ${crowds || (r.people.length >= S.cfg.max_listed
+        ? `<p class="empty">Click on each remaining group in the image to add it.</p>`
+        : `<p class="empty">Used after ${S.cfg.max_listed} people are marked. Background people too small to tell apart can also go here.</p>
+           <button type="button" data-act="crowdmode">Add a crowd group</button>`)}</div>
+    <div class="block"><h3>Foreground and focal</h3>
+      ${prom("foreground", "Foreground", "Nearest and largest people whose face is at least partly visible and in focus.")}
+      ${prom("focal", "Focal", "The person or people the scene is centred on.")}</div>
+    ${scene}
+    <div class="block"><h3>Flag</h3>
+      <label><input type="checkbox" data-f="flagged" ${r.flagged ? "checked" : ""}> Flag this image for discussion</label>
+      <textarea data-f="comment" rows="2" placeholder="Optional comment" style="margin-top:6px">${esc(r.comment)}</textarea></div>
+    <div class="row" style="justify-content:space-between">
+      <button data-act="prev" ${S.idx === 0 ? "disabled" : ""}>Previous image</button>
+      <button class="primary" data-act="next">${S.idx === S.order.length - 1 ? "Save and finish" : "Save and next image"}</button>
+    </div>`;
+  renderMode();
+}
+
+/* panel events */
+$("#panel").addEventListener("input", e => {
+  const t = e.target, f = t.dataset.f; if (!f) return;
+  const r = rec();
+  if (t.type === "text" || t.tagName === "TEXTAREA") {
+    if (f === "comment") r.comment = t.value;
+    else (t.dataset.k === "p" ? r.people : r.crowds)[+t.dataset.i][f] = t.value;
+    const counter = t.parentElement.querySelector("[data-wc]");
+    if (counter) { const max = 10, n = words(t.value);
+      counter.textContent = `${n}/${max} words`; counter.classList.toggle("over", n > max); }
+    touched();
+  }
+});
+$("#panel").addEventListener("change", e => {
+  const t = e.target, f = t.dataset.f; if (!f) return;
+  const r = rec(), sc = scenario();
+  if (t.tagName === "SELECT") {
+    const item = (t.dataset.k === "p" ? r.people : r.crowds)[+t.dataset.i];
+    const prevRole = roleById(sc, item.role);
+    item[f] = t.value;
+    if (f === "role" && t.dataset.k === "p") {
+      const role = roleById(sc, t.value);
+      if (role && role.gender_applicable === false) item.gender = "not_applicable";
+      else if (prevRole && prevRole.gender_applicable === false) item.gender = "";   // leaving an infant role
+      if (t.value !== "other_unlisted") item.other_desc = "";
+    }
+    touched(); renderPanel();
+  } else if (f === "scene") { r.scene_answers[t.dataset.q] = t.value; touched(); }
+  else if (f === "flagged") { r.flagged = t.checked; touched(); }
+});
+$("#panel").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) { const it = e.target.closest("[data-item]");
+    if (it && !e.target.closest("input,select,textarea")) { S.sel = { k: it.dataset.item[0], i: +it.dataset.item.slice(1) }; renderMarks();
+      document.querySelectorAll(".person").forEach(x => x.classList.toggle("sel", x === it)); } return; }
+  const r = rec(), act = b.dataset.act;
+  if (act === "set") {
+    const f = b.dataset.f, v = b.dataset.v;
+    if (f === "gender") r.people[+b.dataset.i].gender = v;
+    else if (f === "status") r.status = v;
+    else if (f.endsWith("_type")) { const fld = f.replace("_type", ""); r[fld].type = v;
+      if (v === "none" || v === "unclear") r[fld].pids = [];
+      if (v === "single" && r[fld].pids.length > 1) r[fld].pids = r[fld].pids.slice(0, 1); }
+    touched(); renderPanel();
+  } else if (act === "pid") {
+    const p = r[b.dataset.f], v = +b.dataset.v;
+    if (p.type === "single") p.pids = p.pids.includes(v) ? [] : [v];
+    else p.pids = p.pids.includes(v) ? p.pids.filter(x => x !== v) : [...p.pids, v].sort((a, c) => a - c);
+    touched(); renderPanel();
+  } else if (act === "del") {
+    const i = +b.dataset.i;
+    if (b.dataset.k === "p") {
+      r.people.splice(i, 1);
+      for (const fld of ["foreground", "focal"])       // keep pids 1..n after a deletion
+        r[fld].pids = r[fld].pids.filter(x => x !== i + 1).map(x => (x > i + 1 ? x - 1 : x));
+    } else r.crowds.splice(i, 1);
+    S.sel = null; touched(); renderMarks(); renderPanel();
+  } else if (act === "crowdmode") { setMode("crowd"); toast("Click on the group in the image."); }
+  else if (act === "prev") goTo(S.idx - 1);
+  else if (act === "next") saveAndNext();
+});
+
+/* ------------------------------------------------------------------ validation (mirrors vlm_prompt.validate) */
+function validateRec(r, sc) {
+  const E = [], roleIds = new Set(allRoles(sc).map(x => x.role_id));
+  if (!S.cfg.image_status.includes(r.status)) E.push("Choose the image status.");
+  if (r.people.length > S.cfg.max_listed) E.push(`List at most ${S.cfg.max_listed} people; describe the rest as crowd groups.`);
+  r.people.forEach((p, i) => {
+    const n = `Person ${i + 1}`, role = roleById(sc, p.role);
+    if (!roleIds.has(p.role)) E.push(`${n}: choose a role.`);
+    if (role && role.gender_applicable === false) p.gender = "not_applicable";
+    else if (![...S.cfg.genders, "not_applicable"].includes(p.gender)) E.push(`${n}: choose a perceived gender.`);
+    if (p.role === "other_unlisted") { if (!p.other_desc.trim()) E.push(`${n}: describe what they are doing (None of the above).`);
+      else if (words(p.other_desc) > 10) E.push(`${n}: the description is over 10 words.`); }
+  });
+  r.crowds.forEach((c, i) => {
+    const n = `Crowd group ${i + 1}`;
+    if (!roleIds.has(c.role)) E.push(`${n}: choose the role they share.`);
+    if (!S.cfg.gender_mix.includes(c.gender_mix)) E.push(`${n}: choose the gender mix.`);
+    if (!S.cfg.crowd_size.includes(c.size)) E.push(`${n}: choose the size.`);
+  });
+  if (r.status === "ok" && !r.people.length && !r.crowds.length) E.push("Status is “People to code”, but nobody is coded.");
+  for (const [fld, name] of [["foreground", "Foreground"], ["focal", "Focal"]]) {
+    const v = r[fld], n = v.pids.length;
+    if (!S.cfg.prominence_types.includes(v.type)) E.push(`${name}: choose single, several, none or unclear.`);
+    else if (v.type === "single" && n !== 1) E.push(`${name}: “single” needs exactly one person selected.`);
+    else if (v.type === "several" && n < 2) E.push(`${name}: “several” needs two or more people selected.`);
+    if (v.pids.some(x => x < 1 || x > r.people.length)) E.push(`${name}: a selected person no longer exists.`);
+  }
+  (sc.scene_questions || []).forEach((q, k) => { if (!q.options.includes(r.scene_answers["q" + (k + 1)])) E.push(`Answer the scene question: ${q.question}`); });
+  return E;
+}
+function saveAndNext() {
+  const r = rec();
+  S.errors = validateRec(r, scenario());
+  if (S.errors.length) { renderPanel(); $("#panel").scrollTop = 0; return; }
+  if (r.status !== "ok" && r.people.length) toast("Note: the status is not “People to code”, but people are listed.");
+  accrue(); r.complete = true; r.updated = nowIso(); save(); updateHeader();
+  if (S.idx < S.order.length - 1) goTo(S.idx + 1);
+  else if (S.order.every(id => S.store.recs[id] && S.store.recs[id].complete)) finish();
+  else { const i = S.order.findIndex(id => !(S.store.recs[id] && S.store.recs[id].complete)); toast("Some images are not finished yet."); goTo(i); }
+}
+function finish() {
+  accrue(); save(); S.t0 = null;
+  const m = $("#screen-done .mail"); m.textContent = S.cfg.contact_email; m.href = "mailto:" + S.cfg.contact_email;
+  show("screen-done");
+}
+$("#done-back").onclick = () => { show("screen-code"); goTo(0); };
+
+/* ------------------------------------------------------------------ export / import */
+function whereOf(m) {
+  const col = m.x < 1 / 3 ? "left" : m.x < 2 / 3 ? "centre" : "right", row = m.y < 1 / 3 ? "top" : m.y < 2 / 3 ? "middle" : "bottom";
+  return `${col} ${row}, x${m.x.toFixed(2)} y${m.y.toFixed(2)}`;
+}
+function responseOf(r, sc) {
+  const out = {
+    status: r.status,
+    people: r.people.map((p, i) => ({ pid: i + 1, where: whereOf(p), role: p.role, gender: p.gender,
+                                      other_desc: p.role === "other_unlisted" ? p.other_desc.trim() : "" })),
+    crowds: r.crowds.map(c => ({ role: c.role, where: whereOf(c), gender_mix: c.gender_mix, size: c.size })),
+    foreground: { type: r.foreground.type, pids: [...r.foreground.pids] },
+    focal: { type: r.focal.type, pids: [...r.focal.pids] } };
+  const qs = sc.scene_questions || [];
+  if (qs.length) out.scene_answers = Object.fromEntries(qs.map((_, k) => ["q" + (k + 1), r.scene_answers["q" + (k + 1)] ?? null]));
+  return out;
+}
+function exportAll() {
+  if (!$("#screen-code").hidden) { accrue(); save(); }
+  const c = S.store.consent || {};
+  const { agreed_ids, ...cOut } = c;
+  const lines = [JSON.stringify({ record_type: "consent", coder_id: S.coder, ...cOut, n_images_agreed: (agreed_ids || []).length,
+                                  tool_version: S.cfg.tool_version,
+                                  codebook_version: S.cfg.codebook_version, exported_utc: nowIso() })];
+  let n = 0;
+  for (const id of S.order) {
+    const r = S.store.recs[id]; if (!r || (!r.complete && !r.people.length && !r.crowds.length)) continue;
+    const sc = scenario(id);
+    lines.push(JSON.stringify({ record_type: "annotation", coder_id: S.coder, opaque_id: id, scenario_id: S.images[id],
+      codebook_version: S.cfg.codebook_version, vlm_prompt_version: S.cfg.vlm_prompt_version, tool_version: S.cfg.tool_version,
+      timestamp_utc: r.updated || nowIso(), complete: !!r.complete, time_spent: Math.round(r.seconds),
+      flagged: !!r.flagged, comment: r.comment || "", response: responseOf(r, sc),
+      human_marks: { people: r.people.map((p, i) => ({ pid: i + 1, x: p.x, y: p.y })), crowds: r.crowds.map((g, i) => ({ group: i + 1, x: g.x, y: g.y })) } }));
+    if (r.complete) n++;
+  }
+  const stamp = new Date().toISOString().slice(0, 16).replace(/[-:T]/g, "");
+  const blob = new Blob([lines.join("\n") + "\n"], { type: "application/json" });
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `annotations_${S.coder}_${stamp}.jsonl`;
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  toast(`Exported ${n} finished image${n === 1 ? "" : "s"}. Send the file to ${S.cfg.contact_email}.`, 6000);
+}
+$("#btn-export").onclick = exportAll;
+$("#done-export").onclick = exportAll;
+$("#btn-rules").onclick = () => $("#dlg-rules").showModal();
+$("#dlg-close").onclick = () => $("#dlg-rules").close();
+
+/* restore from an exported file (e.g. after moving to another computer) */
+$("#btn-import").onclick = () => $("#import-file").click();
+$("#import-file").onchange = async e => {
+  const f = e.target.files[0]; if (!f) return;
+  let n = 0;
+  for (const line of (await f.text()).split("\n")) {
+    if (!line.trim()) continue;
+    let o; try { o = JSON.parse(line); } catch { continue; }
+    if (o.coder_id !== S.coder) continue;
+    if (o.record_type === "consent" && !S.store.consent && o.consent)
+      S.store.consent = { name: o.name, consent: true, consent_timestamp_utc: o.consent_timestamp_utc, self_gender: o.self_gender,
+                         age_band: o.age_band, agreed_ids: [...S.order], additions: o.additions || [] };
+    if (o.record_type !== "annotation" || !S.order.includes(o.opaque_id)) continue;
+    const old = S.store.recs[o.opaque_id];
+    if (old && old.updated && old.updated >= o.timestamp_utc) continue;
+    const m = o.human_marks || { people: [], crowds: [] }, rs = o.response;
+    S.store.recs[o.opaque_id] = { status: rs.status,
+      people: rs.people.map((p, i) => ({ ...(m.people[i] || { x: .5, y: .5 }), where: p.where, role: p.role, gender: p.gender, other_desc: p.other_desc })),
+      crowds: rs.crowds.map((c, i) => ({ ...(m.crowds[i] || { x: .5, y: .5 }), where: c.where, role: c.role, gender_mix: c.gender_mix, size: c.size })),
+      foreground: rs.foreground, focal: rs.focal, scene_answers: rs.scene_answers || {}, flagged: o.flagged, comment: o.comment,
+      seconds: o.time_spent || 0, complete: o.complete, updated: o.timestamp_utc };
+    for (const p of S.store.recs[o.opaque_id].people) { delete p.pid; }
+    n++;
+  }
+  $("#dlg-rules").close(); save(); goTo(S.idx); toast(`Restored ${n} image${n === 1 ? "" : "s"} from the file.`);
+  e.target.value = "";
+};
+
+boot();
+</script>
+</body>
+</html>
