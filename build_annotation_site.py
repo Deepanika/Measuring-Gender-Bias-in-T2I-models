@@ -210,6 +210,16 @@ def main():
         if previous.get(coder) and len(ids) > len(kept):
             print(f"  {coder}: {len(ids) - len(kept)} new images added after their existing {len(kept)}")
 
+    # checks for hand edits: who gained or lost images since the last build, and images with one coder
+    for coder in sorted(set(previous) | set(assignments)):
+        before, after = set(previous.get(coder, [])), set(assignments.get(coder, []))
+        if previous and (after - before or before - after):
+            print(f"  CHANGE {coder}: +{len(after - before)} new, -{len(before - after)} removed "
+                  f"({len(after)} images now)")
+    one = [k for k, c in chosen.items() if len(c) < 2]
+    if one:
+        print(f"  WARNING: {len(one)} images have only one coder, e.g. {', '.join(sorted(one)[:3])}")
+
     config = dict(
         tool_version=TOOL_VERSION, codebook_version=version, codebook_sha256=sha_full,
         vlm_prompt_version=VLM_PROMPT_VERSION, max_listed=MAX_LISTED_PEOPLE, contact_email=args.contact_email,
