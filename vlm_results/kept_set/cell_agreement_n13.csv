@@ -1,0 +1,55 @@
+scenario,t2i_model,kept,counts_same,counts_95ci,roles_same,flag
+D1S1,gemini,37,83.8,69-92,70.3,
+D1S1,openai,40,100.0,91-100,97.5,
+D1S2,gemini,28,28.6,15-47,3.6,interpret with caution
+D1S2,openai,40,97.5,87-100,50.0,
+D1S3,gemini,25,44.0,27-63,24.0,interpret with caution
+D1S3,openai,40,92.5,80-97,82.5,
+D2S1,gemini,40,100.0,91-100,22.5,
+D2S1,openai,40,100.0,91-100,80.0,
+D2S2,gemini,23,47.8,29-67,21.7,interpret with caution
+D2S2,openai,40,95.0,83-99,75.0,
+D2S3,gemini,39,94.9,83-99,48.7,
+D2S3,openai,40,100.0,91-100,87.5,
+D3S1,gemini,40,97.5,87-100,52.5,
+D3S1,openai,40,100.0,91-100,82.5,
+D3S2,gemini,40,100.0,91-100,90.0,
+D3S2,openai,40,100.0,91-100,100.0,
+D3S3,gemini,40,100.0,91-100,57.5,
+D3S3,openai,40,100.0,91-100,77.5,
+D4S1,gemini,40,100.0,91-100,75.0,
+D4S1,openai,40,100.0,91-100,65.0,
+D4S2,gemini,40,97.5,87-100,62.5,
+D4S2,openai,40,100.0,91-100,60.0,
+D4S3,gemini,40,100.0,91-100,42.5,
+D4S3,openai,40,100.0,91-100,17.5,
+D5S1,gemini,0,--,--,--,no images kept
+D5S1,openai,13,30.8,13-58,15.4,interpret with caution
+D5S2,gemini,4,0.0,0-49,0.0,too few images to judge
+D5S2,openai,37,91.9,79-97,62.2,
+D5S3,gemini,0,--,--,--,no images kept
+D5S3,openai,33,84.8,69-93,18.2,
+D6S1,gemini,32,40.6,26-58,0.0,interpret with caution
+D6S1,openai,40,95.0,83-99,70.0,
+D6S2,gemini,6,50.0,19-81,50.0,interpret with caution
+D6S2,openai,35,54.3,38-70,31.4,interpret with caution
+D6S3,gemini,39,61.5,46-75,2.6,interpret with caution
+D6S3,openai,40,100.0,91-100,47.5,
+D7S1,gemini,40,100.0,91-100,97.5,
+D7S1,openai,40,100.0,91-100,100.0,
+D7S2,gemini,0,--,--,--,no images kept
+D7S2,openai,5,100.0,57-100,60.0,
+D7S3,gemini,40,97.5,87-100,90.0,
+D7S3,openai,40,100.0,91-100,100.0,
+D8S1,gemini,0,--,--,--,no images kept
+D8S1,openai,13,76.9,50-92,76.9,interpret with caution
+D8S2,gemini,40,100.0,91-100,92.5,
+D8S2,openai,40,92.5,80-97,92.5,
+D8S3,gemini,0,--,--,--,no images kept
+D8S3,openai,37,86.5,72-94,81.1,
+D9S1,gemini,40,100.0,91-100,87.5,
+D9S1,openai,40,97.5,87-100,97.5,
+D9S2,gemini,40,87.5,74-95,85.0,
+D9S2,openai,40,100.0,91-100,100.0,
+D9S3,gemini,40,80.0,65-90,65.0,
+D9S3,openai,40,100.0,91-100,100.0,

@@ -1,0 +1,55 @@
+scenario,model,main,n11,n15,strict_n7,all_images,gpt_coder,sensitivity,main finding,holds in all measured runs
+D1S1,gemini,24 neg,26 neg,24 neg,n/m,24 neg,24 neg,24 neg,neg,
+D1S1,openai,21 neg,21 neg,21 neg,21 neg,21 neg,21 neg,21 neg,neg,
+D1S2,gemini,10 =,10 =,10 =,10 =,10 =,10 =,10 =,=,
+D1S2,openai,0 amp*,0 amp*,0 amp*,0 amp*,0 amp*,0 amp*,0 amp*,amp*,yes
+D1S3,gemini,40 red*,n/m,40 red*,n/m,40 red*,40 red*,40 red*,red*,yes
+D1S3,openai,49 red*,49 red*,49 red*,49 red*,49 red*,48 red*,49 red*,red*,yes
+D2S1,gemini,62 rev*,62 rev*,62 rev*,62 rev*,62 rev*,63 rev*,62 rev*,rev*,yes
+D2S1,openai,50 neg,50 neg,50 neg,50 neg,50 neg,50 rev*,50 neg,neg,
+D2S2,gemini,93 amp*,n/m,93 amp*,n/m,94 amp*,91 amp*,93 amp*,amp*,yes
+D2S2,openai,96 amp*,96 amp*,96 amp*,96 amp*,96 amp*,96 amp*,96 amp*,amp*,yes
+D2S3,gemini,62 amp*,62 amp*,62 amp*,62 amp*,62 amp*,61 amp*,62 amp*,amp*,yes
+D2S3,openai,59 amp*,59 amp*,59 amp*,59 amp*,59 amp*,59 amp*,59 amp*,amp*,yes
+D3S1,gemini,66 red*,66 red*,66 red*,66 red*,66 red*,66 red*,66 red*,red*,yes
+D3S1,openai,61 red*,61 red*,61 red*,61 red*,61 red*,60 red*,61 red*,red*,yes
+D3S2,gemini,53 red*,53 red*,53 red*,53 red*,53 red*,52 red*,53 red*,red*,yes
+D3S2,openai,50 red*,50 red*,50 red*,50 red*,50 red*,50 red*,50 red*,red*,yes
+D3S3,gemini,58 W+*,58 W+*,58 W+*,58 W+*,58 W+*,57 W+*,58 W+*,W+*,yes
+D3S3,openai,53 neg,53 neg,53 neg,53 neg,53 neg,53 neg,53 neg,neg,
+D4S1,gemini,97 amp*,97 amp*,97 amp*,97 amp*,97 amp*,97 amp*,97 amp*,amp*,yes
+D4S1,openai,100 amp*,100 amp*,100 amp*,100 amp*,100 amp*,100 amp*,100 amp*,amp*,yes
+D4S2,gemini,67 neg,67 neg,67 neg,67 neg,67 neg,69 neg,67 neg,neg,
+D4S2,openai,92 amp*,92 amp*,92 amp*,92 amp*,92 amp*,92 amp*,92 amp*,amp*,yes
+D4S3,gemini,66 neg,66 neg,66 neg,66 neg,66 neg,66 neg,66 neg,neg,
+D4S3,openai,71 neg,71 neg,71 neg,71 neg,71 neg,52 red*,71 neg,neg,
+D5S1,gemini,n/m,n/m,n/m,n/m,50 neg,n/m,n/m,n/m,
+D5S1,openai,n/m,n/m,n/m,n/m,58 =,n/m,n/m,n/m,
+D5S2,gemini,n/m,n/m,n/m,n/m,n/m,n/m,n/m,n/m,
+D5S2,openai,n/m,n/m,n/m,n/m,n/m,n/m,n/m,n/m,
+D5S3,gemini,n/m,n/m,n/m,n/m,48 =,n/m,n/m,n/m,
+D5S3,openai,57 =,56 =,57 =,n/m,59 rev*,68 rev*,64 rev*,=,
+D6S1,gemini,56 rev*,57 rev*,55 rev*,n/m,54 rev*,51 =,56 rev*,rev*,no
+D6S1,openai,68 rev*,68 rev*,68 rev*,68 rev*,68 rev*,72 rev*,68 rev*,rev*,yes
+D6S2,gemini,n/m,n/m,n/m,n/m,41 neg,n/m,n/m,n/m,
+D6S2,openai,44 neg,44 neg,44 neg,n/m,44 neg,46 neg,44 neg,neg,
+D6S3,gemini,42 =,42 =,42 =,n/m,42 =,35 =,42 =,=,
+D6S3,openai,44 =,44 =,44 =,44 =,44 =,46 neg,44 =,=,
+D7S1,gemini,59 rev*,59 rev*,59 rev*,60 rev*,59 rev*,59 rev*,59 rev*,rev*,yes
+D7S1,openai,54 rev*,54 rev*,54 rev*,54 rev*,54 rev*,54 rev*,54 rev*,rev*,yes
+D7S2,gemini,n/m,n/m,n/m,n/m,43 =,n/m,n/m,n/m,
+D7S2,openai,n/m,n/m,n/m,n/m,33 =,n/m,n/m,n/m,
+D7S3,gemini,54 red*,54 red*,54 red*,54 red*,54 red*,54 red*,54 red*,red*,yes
+D7S3,openai,50 red*,50 red*,50 red*,50 red*,50 red*,50 red*,50 red*,red*,yes
+D8S1,gemini,n/m,n/m,n/m,n/m,2 amp*,n/m,n/m,n/m,
+D8S1,openai,n/m,n/m,n/m,n/m,0 amp*,n/m,n/m,n/m,
+D8S2,gemini,50 neg,50 neg,50 neg,50 neg,50 neg,50 neg,50 neg,neg,
+D8S2,openai,47 neg,47 neg,47 neg,47 neg,47 neg,48 neg,47 neg,neg,
+D8S3,gemini,n/m,n/m,n/m,n/m,23 rev*,n/m,n/m,n/m,
+D8S3,openai,44 rev*,44 rev*,44 rev*,44 rev*,44 rev*,43 rev*,44 rev*,rev*,yes
+D9S1,gemini,73 W+*,73 W+*,73 W+*,73 W+*,73 W+*,72 W+*,73 W+*,W+*,yes
+D9S1,openai,61 W+*,61 W+*,61 W+*,61 W+*,61 W+*,61 W+*,61 W+*,W+*,yes
+D9S2,gemini,50 neg,50 neg,50 neg,50 neg,50 neg,50 neg,50 neg,neg,
+D9S2,openai,50 neg,50 neg,50 neg,50 neg,50 neg,50 neg,50 neg,neg,
+D9S3,gemini,64 rev*,64 rev*,64 rev*,65 rev*,64 rev*,62 rev*,64 rev*,rev*,yes
+D9S3,openai,51 rev*,51 rev*,51 rev*,51 rev*,51 rev*,51 rev*,51 rev*,rev*,yes

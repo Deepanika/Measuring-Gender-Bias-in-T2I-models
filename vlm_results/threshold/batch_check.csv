@@ -1,0 +1,5 @@
+t2i_model,batch,images,crowded_pct,mean_people
+gemini,1-10,540,28.3,8.21
+gemini,11-20,540,27.4,7.98
+openai,1-10,540,7.6,5.26
+openai,11-20,540,8.0,5.15

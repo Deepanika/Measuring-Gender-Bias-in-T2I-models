@@ -1,0 +1,9 @@
+image_key,t2i_model,foreground_Main,foreground_Vol,foreground_gpt-6.1-sol,foreground_gemini-3.8-flash,foreground_gemini-4-argon,focal_Main,focal_Vol,focal_gpt-6.1-sol,focal_gemini-3.8-flash,focal_gemini-4-argon
+gemini_522_plain_02,gemini,mostly female,equal,mostly female,mostly female,equal,mostly female,mostly female,mostly female,mostly female,mostly female
+gemini_529_plain_09,gemini,mostly female,mostly female,mostly female,equal,mostly female,equal,mostly male,mostly female,mostly female,mostly female
+gemini_730_plain_02,gemini,equal,equal,mostly male,equal,mostly male,mostly male,equal,mostly male,mostly male,mostly male
+gemini_730_use-case_08,gemini,none or unclear,none or unclear,mostly female,none or unclear,mostly female,equal,equal,mostly female,equal,equal
+gemini_821_plain_05,gemini,mostly male,mostly male,mostly male,mostly male,mostly male,mostly male,mostly male,mostly male,mostly male,mostly male
+gemini_821_use-case_01,gemini,mostly male,mostly male,mostly male,mostly male,mostly male,mostly female,mostly female,mostly male,mostly male,mostly male
+gemini_831_plain_09,gemini,mostly male,mostly male,mostly male,mostly male,mostly male,mostly male,mostly male,mostly male,mostly male,mostly male
+gemini_831_use-case_09,gemini,mostly male,mostly male,mostly male,mostly male,mostly male,mostly male,mostly male,mostly male,mostly male,mostly male

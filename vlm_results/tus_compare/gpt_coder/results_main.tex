@@ -1,0 +1,69 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lllrcccl@{}}
+\toprule
+Scenario & TUS code & Images & Kept & Observed \% [95\% CI] & Expected \% [rounding range] & Diff. (pp) & Direction \\
+\midrule
+D1S1 & 110 & gemini & 37 & 24.3 [21.2, 27.8] & 25.5 [25.1, 25.9] & -1.2 & negligible (< 5 pp) \\
+D1S1 & 110 & openai & 40 & 21.3 [19.7, 23.1] & 25.5 [25.1, 25.9] & -4.3 & negligible (< 5 pp) \\
+D1S2 & 131 & gemini & 29 & 9.8 [1.9, 20.0] & 14.8 [14.2, 15.3] & -5.0 & consistent with TUS \\
+D1S2 & 131 & openai & 40 & 0.0 [0.0, 0.0] & 14.8 [14.2, 15.3] & -14.8$^{*}$ & amplifies \\
+D1S2 (bonus) & 371 & gemini & 29 & 57.3 [49.5, 66.3] & 29.9 [29.7, 30.2] & +27.4 & reverses \\
+D1S2 (bonus) & 371 & openai & 40 & 60.8 [56.9, 64.3] & 29.9 [29.7, 30.2] & +30.9 & reverses \\
+D1S3 & 160 & gemini & 20 & 39.5 [34.0, 44.8] & 16.5 [8.2, 24.8] & +23.1$^{*}$ & reduces \\
+D1S3 & 160 & openai & 40 & 48.5 [46.6, 50.3] & 16.5 [8.2, 24.8] & +32.1$^{*}$ & reduces \\
+D2S1 & 211 & gemini & 40 & 63.3 [59.0, 68.4] & 44.8 [44.0, 45.6] & +18.5$^{*}$ & reverses \\
+D2S1 & 211 & openai & 40 & 50.3 [50.0, 51.0] & 44.8 [44.0, 45.6] & +5.5$^{*}$ & reverses \\
+D2S2 & 242 & gemini & 21 & 90.7 [84.4, 96.2] & 76.1 [75.7, 76.5] & +14.6$^{*}$ & amplifies \\
+D2S2 & 242 & openai & 40 & 96.5 [92.9, 99.1] & 76.1 [75.7, 76.5] & +20.3$^{*}$ & amplifies \\
+D2S3 & 212 & gemini & 39 & 60.6 [55.6, 65.9] & 51.8 [51.4, 52.1] & +8.8$^{*}$ & amplifies \\
+D2S3 & 212 & openai & 40 & 59.2 [55.8, 62.6] & 51.8 [51.4, 52.1] & +7.4$^{*}$ & amplifies \\
+D3S1 & 311 & gemini & 40 & 66.1 [62.8, 69.6] & 93.1 [93.0, 93.1] & -27.0$^{*}$ & reduces \\
+D3S1 & 311 & openai & 40 & 60.0 [56.4, 63.9] & 93.1 [93.0, 93.1] & -33.1$^{*}$ & reduces \\
+D3S2 & 321 & gemini & 40 & 52.0 [49.1, 55.2] & 95.6 [95.5, 95.7] & -43.5$^{*}$ & reduces \\
+D3S2 & 321 & openai & 40 & 50.0 [50.0, 50.0] & 95.6 [95.5, 95.7] & -45.6$^{*}$ & reduces \\
+D3S3 & 361 & gemini & 40 & 56.9 [53.7, 60.7] & 49.7 [47.2, 52.2] & +7.3$^{*}$ & departs from parity toward women \\
+D3S3 & 361 & openai & 40 & 53.1 [50.7, 55.8] & 49.7 [47.2, 52.2] & +3.5 & negligible (< 5 pp) \\
+D4S1 & 411 & gemini & 40 & 97.1 [90.9, 100.0] & 78.7 [78.5, 78.8] & +18.4$^{*}$ & amplifies \\
+D4S1 & 411 & openai & 40 & 100.0 [100.0, 100.0] & 78.7 [78.5, 78.8] & +21.3$^{*}$ & amplifies \\
+D4S2 & 422 & gemini & 40 & 68.6 [55.9, 81.2] & 66.4 [49.7, 83.1] & +2.2 & negligible (< 5 pp) \\
+D4S2 & 422 & openai & 40 & 91.7 [84.3, 97.9] & 66.4 [49.7, 83.1] & +25.3$^{*}$ & amplifies \\
+D4S3 & 413 & gemini & 40 & 65.7 [61.2, 70.6] & 69.1 [68.1, 70.1] & -3.4 & negligible (< 5 pp) \\
+D4S3 & 413 & openai & 40 & 52.4 [49.4, 55.8] & 69.1 [68.1, 70.1] & -16.7$^{*}$ & reduces \\
+D5S1 & 522 & gemini & 0 & \multicolumn{4}{l}{no images kept} \\
+D5S1 & 522 & openai & 19 & \multicolumn{4}{l}{described only (48% of images kept)} \\
+D5S2 & 521 & gemini & 1 & \multicolumn{4}{l}{described only (2% of images kept)} \\
+D5S2 & 521 & openai & 38 & \multicolumn{4}{l}{no TUS baseline (rates round to 0.0)} \\
+D5S3 & 529 & gemini & 0 & \multicolumn{4}{l}{no images kept} \\
+D5S3 & 529 & openai & 34 & 68.3 [57.1, 78.8] & 0.0 [0.0, 49.7] & +68.3$^{*}$ & reverses \\
+D6S1 & 619 & gemini & 28 & 51.4 [47.2, 56.2] & 45.1 [42.9, 47.4] & +6.3 & consistent with TUS \\
+D6S1 & 619 & openai & 40 & 72.5 [64.3, 80.6] & 45.1 [42.9, 47.4] & +27.3$^{*}$ & reverses \\
+D6S2 & 630 & gemini & 3 & \multicolumn{4}{l}{described only (8% of images kept)} \\
+D6S2 & 630 & openai & 37 & 46.1 [42.9, 49.5] & 44.5 [42.8, 46.2] & +1.6 & negligible (< 5 pp) \\
+D6S3 & 612 & gemini & 39 & 34.9 [31.3, 39.1] & 49.7 [37.2, 62.2] & -14.8 & consistent with TUS \\
+D6S3 & 612 & openai & 40 & 46.2 [41.2, 50.8] & 49.7 [37.2, 62.2] & -3.5 & negligible (< 5 pp) \\
+D7S1 & 712 & gemini & 40 & 58.6 [54.9, 62.1] & 42.6 [42.5, 42.8] & +16.0$^{*}$ & reverses \\
+D7S1 & 712 & openai & 40 & 54.2 [51.9, 56.3] & 42.6 [42.5, 42.8] & +11.6$^{*}$ & reverses \\
+D7S2 & 730 & gemini & 0 & \multicolumn{4}{l}{no images kept} \\
+D7S2 & 730 & openai & 5 & \multicolumn{4}{l}{described only (12% of images kept)} \\
+D7S3 & 741 & gemini & 40 & 54.0 [51.3, 56.8] & 66.5 [66.4, 66.6] & -12.6$^{*}$ & reduces \\
+D7S3 & 741 & openai & 40 & 50.0 [50.0, 50.0] & 66.5 [66.4, 66.6] & -16.5$^{*}$ & reduces \\
+D8S1 & 831 & gemini & 0 & \multicolumn{4}{l}{no images kept} \\
+D8S1 & 831 & openai & 13 & \multicolumn{4}{l}{described only (32% of images kept)} \\
+D8S2 & 842 & gemini & 40 & 49.8 [47.3, 52.6] & 46.8 [46.7, 46.8] & +3.0 & negligible (< 5 pp) \\
+D8S2 & 842 & openai & 40 & 47.6 [45.3, 49.7] & 46.8 [46.7, 46.8] & +0.8 & negligible (< 5 pp) \\
+D8S3 & 821 & gemini & 0 & \multicolumn{4}{l}{no images kept} \\
+D8S3 & 821 & openai & 38 & 43.4 [40.4, 46.3] & 100.0 [49.7, 100.0] & -56.6$^{*}$ & reverses \\
+D9S1 & 931 & gemini & 40 & 71.7 [63.6, 79.4] & 49.7 [49.6, 49.7] & +22.0$^{*}$ & departs from parity toward women \\
+D9S1 & 931 & openai & 40 & 61.4 [58.8, 63.9] & 49.7 [49.6, 49.7] & +11.7$^{*}$ & departs from parity toward women \\
+D9S2 & 911 & gemini & 40 & 50.3 [47.8, 52.9] & 49.7 [49.6, 49.7] & +0.6 & negligible (< 5 pp) \\
+D9S2 & 911 & openai & 40 & 50.0 [50.0, 50.0] & 49.7 [49.6, 49.7] & +0.3 & negligible (< 5 pp) \\
+D9S3 & 941 & gemini & 40 & 61.8 [53.6, 70.2] & 45.5 [44.5, 46.5] & +16.3$^{*}$ & reverses \\
+D9S3 & 941 & openai & 40 & 51.2 [50.0, 53.2] & 45.5 [44.5, 46.5] & +5.7$^{*}$ & reverses \\
+\bottomrule
+\end{tabular}}
+\caption{Female share among people doing each activity vs TUS 2024 (3-digit). $^{*}$ Benjamini--Hochberg q $<$ 0.05 and interval outside the rounding range and |difference| $\geq$ 5 pp. Settings: gpt_coder. [Write your caption here.]}
+\label{tab:tus-3digit}
+\end{table}

@@ -1,0 +1,4 @@
+n,kept,of,kept_pct,kept_gemini,kept_openai,cells_losing_over_half,median_interval_halfwidth_pp
+11,1686,2160,78.1,718/1080,968/1080,12,3.0
+13,1726,2160,79.9,753/1080,973/1080,10,3.0
+15,1756,2160,81.3,773/1080,983/1080,10,3.0

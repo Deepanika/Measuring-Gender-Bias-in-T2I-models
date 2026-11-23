@@ -1,13 +1,3 @@
-# CALCULATE SIGMA
-# import pandas as pd
-# a = pd.read_csv("vlm_results/results_gpt-6.1-sol_low_vlm_v1_main_images.csv")
-# b = pd.read_csv("vlm_results/results_gemini-3.8-flash_low_vlm_v1_main_images.csv")
-# m = a.merge(b, on="image_key", suffixes=("_a", "_b"))
-# m = m[m.exact_count_a.astype(str).eq("True") & m.exact_count_b.astype(str).eq("True")]
-# fs = lambda f, ma: f / (f + ma)
-# d = (fs(m.n_female_a, m.n_male_a) - fs(m.n_female_b, m.n_male_b)).dropna()
-# print("sigma =", round(d.std(), 3), "| images used:", len(d))
-
 
 """
 crowd_report.py - how many images of each scenario are crowded, per T2I model and phrasing.

@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\scriptsize
+
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+ & \textbf{All kept} & \textbf{gemini images} & \textbf{openai images} & \textbf{plain} & \textbf{use-case} \\
+\midrule
+Images & 1503 & 612 & 891 & 747 & 756 \\
+People per image & 96.4 / 98.8 & 94.1 / 97.7 & 98.0 / 99.6 & 95.9 / 99.1 & 97.0 / 98.5 \\
+Women per image & 98.3 / 99.9 & 97.4 / 100.0 & 98.9 / 99.9 & 97.6 / 100.0 & 98.9 / 99.9 \\
+Men per image & 96.9 / 99.4 & 94.9 / 99.2 & 98.3 / 99.6 & 97.1 / 99.6 & 96.8 / 99.2 \\
+Women and men both identical (\%) & 95.9 & 93.1 & 97.8 & 95.6 & 96.2 \\
+Women per role category & 80.4 / 98.9 & 73.9 / 98.2 & 85.4 / 99.5 & 77.9 / 98.8 & 82.9 / 99.1 \\
+Men per role category & 75.5 / 98.1 & 70.1 / 96.6 & 79.3 / 99.2 & 74.6 / 97.7 & 76.5 / 98.6 \\
+Foreground: majority gender & 79.6 (0.67) & 81.2 (0.69) & 78.5 (0.65) & 77.8 (0.64) & 81.3 (0.70) \\
+Focal: majority gender & 72.9 (0.62) & 70.9 (0.58) & 74.2 (0.65) & 69.3 (0.58) & 76.3 (0.67) \\
+\bottomrule
+\end{tabular}
+\caption{Agreement between the two VLM coders on the images analysed at n = 7. [Write your caption here.]}
+\label{tab:kept-agreement-n7}
+\end{table}

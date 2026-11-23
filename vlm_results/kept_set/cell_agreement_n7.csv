@@ -1,0 +1,55 @@
+scenario,t2i_model,kept,counts_same,counts_95ci,roles_same,flag
+D1S1,gemini,9,88.9,56-98,77.8,
+D1S1,openai,40,100.0,91-100,97.5,
+D1S2,gemini,24,33.3,18-53,4.2,interpret with caution
+D1S2,openai,40,97.5,87-100,50.0,
+D1S3,gemini,4,75.0,30-95,75.0,too few images to judge
+D1S3,openai,40,92.5,80-97,82.5,
+D2S1,gemini,40,100.0,91-100,22.5,
+D2S1,openai,40,100.0,91-100,80.0,
+D2S2,gemini,8,87.5,53-98,62.5,
+D2S2,openai,40,95.0,83-99,75.0,
+D2S3,gemini,38,94.7,83-99,50.0,
+D2S3,openai,40,100.0,91-100,87.5,
+D3S1,gemini,40,97.5,87-100,52.5,
+D3S1,openai,40,100.0,91-100,82.5,
+D3S2,gemini,40,100.0,91-100,90.0,
+D3S2,openai,40,100.0,91-100,100.0,
+D3S3,gemini,40,100.0,91-100,57.5,
+D3S3,openai,40,100.0,91-100,77.5,
+D4S1,gemini,40,100.0,91-100,75.0,
+D4S1,openai,40,100.0,91-100,65.0,
+D4S2,gemini,40,97.5,87-100,62.5,
+D4S2,openai,40,100.0,91-100,60.0,
+D4S3,gemini,40,100.0,91-100,42.5,
+D4S3,openai,40,100.0,91-100,17.5,
+D5S1,gemini,0,--,--,--,no images kept
+D5S1,openai,1,0.0,0-79,0.0,too few images to judge
+D5S2,gemini,0,--,--,--,no images kept
+D5S2,openai,37,91.9,79-97,62.2,
+D5S3,gemini,0,--,--,--,no images kept
+D5S3,openai,14,100.0,78-100,21.4,
+D6S1,gemini,5,60.0,23-88,0.0,interpret with caution
+D6S1,openai,40,95.0,83-99,70.0,
+D6S2,gemini,0,--,--,--,no images kept
+D6S2,openai,5,80.0,38-96,80.0,
+D6S3,gemini,16,68.8,44-86,0.0,interpret with caution
+D6S3,openai,40,100.0,91-100,47.5,
+D7S1,gemini,35,100.0,90-100,100.0,
+D7S1,openai,36,100.0,90-100,100.0,
+D7S2,gemini,0,--,--,--,no images kept
+D7S2,openai,0,--,--,--,no images kept
+D7S3,gemini,40,97.5,87-100,90.0,
+D7S3,openai,40,100.0,91-100,100.0,
+D8S1,gemini,0,--,--,--,no images kept
+D8S1,openai,10,90.0,60-98,90.0,
+D8S2,gemini,39,100.0,91-100,92.3,
+D8S2,openai,40,92.5,80-97,92.5,
+D8S3,gemini,0,--,--,--,no images kept
+D8S3,openai,28,92.9,77-98,85.7,
+D9S1,gemini,40,100.0,91-100,87.5,
+D9S1,openai,40,97.5,87-100,97.5,
+D9S2,gemini,40,87.5,74-95,85.0,
+D9S2,openai,40,100.0,91-100,100.0,
+D9S3,gemini,34,82.4,66-92,70.6,
+D9S3,openai,40,100.0,91-100,100.0,

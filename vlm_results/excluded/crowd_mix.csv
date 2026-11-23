@@ -1,0 +1,13 @@
+t2i_model,category,crowd_groups,images,male-leaning,mixed,female-leaning,unclear
+gemini,ALL,312,262,26.6,67.3,1.6,4.5
+gemini,ASSISTING,1,1,0.0,100.0,0.0,0.0
+gemini,OBSERVING,192,162,33.3,60.9,1.6,4.2
+gemini,OTHER_TASK,10,10,20.0,70.0,0.0,10.0
+gemini,OTHER_UNLISTED,1,1,0.0,100.0,0.0,0.0
+gemini,PRIMARY,69,60,18.8,78.3,2.9,0.0
+gemini,RECEIVING,27,27,3.7,96.3,0.0,0.0
+gemini,UNCLEAR_ROLE,12,11,25.0,33.3,0.0,41.7
+openai,ALL,73,69,37.0,31.5,2.7,28.8
+openai,OBSERVING,37,34,54.1,5.4,2.7,37.8
+openai,PRIMARY,16,16,31.2,56.2,0.0,12.5
+openai,RECEIVING,20,20,10.0,60.0,5.0,25.0

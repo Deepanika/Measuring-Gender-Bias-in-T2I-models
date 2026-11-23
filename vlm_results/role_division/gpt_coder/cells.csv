@@ -1,0 +1,325 @@
+scenario,model,category,images_kept,images_total,women,men,people,scene_female_share,category_female_share,status,gap_pp,ci_low,ci_high,p,q_bh,finding,verdict
+D1S1,gemini,PRIMARY,37,40,76,203,279,24.3,27.2,measured,2.9,1.2,4.9,0.0009995002498750624,0.0028831737977165267,False,negligible (< 5 pp)
+D1S1,gemini,DIRECTING,37,40,5,30,35,24.3,14.3,measured,-10.0,-20.2,1.6,0.08595702148925537,0.16089516217501007,False,no clear difference
+D1S1,gemini,ASSISTING,37,40,0,0,0,24.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D1S1,gemini,RECEIVING,37,40,0,0,0,24.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D1S1,gemini,OTHER_TASK,37,40,1,22,23,24.3,4.3,measured,-20.0,-26.7,-9.5,0.005997001499250375,0.016063396872992075,True,women under-represented
+D1S1,gemini,OBSERVING,37,40,0,0,0,24.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D1S1,openai,PRIMARY,40,40,44,123,167,21.3,26.3,measured,5.1,4.7,5.6,0.0009995002498750624,0.0028831737977165267,True,women over-represented
+D1S1,openai,DIRECTING,40,40,0,40,40,21.3,0.0,measured,-21.3,-23.1,-19.7,0.0009995002498750624,0.0028831737977165267,True,women under-represented
+D1S1,openai,ASSISTING,40,40,0,0,0,21.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D1S1,openai,RECEIVING,40,40,0,0,0,21.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D1S1,openai,OTHER_TASK,40,40,0,0,0,21.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D1S1,openai,OBSERVING,40,40,0,0,0,21.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D1S2,gemini,PRIMARY,29,40,5,45,50,34.2,10.0,measured,-24.2,-31.7,-15.4,0.0009995002498750624,0.0028831737977165267,True,women under-represented
+D1S2,gemini,DIRECTING,29,40,0,0,0,34.2,,too few people (< 20),,,,,,False,too few people (< 20)
+D1S2,gemini,ASSISTING,29,40,0,1,1,34.2,0.0,too few people (< 20),,,,,,False,too few people (< 20)
+D1S2,gemini,RECEIVING,29,40,55,41,96,34.2,57.3,measured,23.1,17.4,29.4,0.0009995002498750624,0.0028831737977165267,True,women over-represented
+D1S2,gemini,OTHER_TASK,29,40,0,0,0,34.2,,too few people (< 20),,,,,,False,too few people (< 20)
+D1S2,gemini,OBSERVING,29,40,1,10,11,34.2,9.1,too few people (< 20),,,,,,False,too few people (< 20)
+D1S2,openai,PRIMARY,40,40,0,41,41,39.7,0.0,measured,-39.7,-43.0,-36.4,0.0009995002498750624,0.0028831737977165267,True,women under-represented
+D1S2,openai,DIRECTING,40,40,0,0,0,39.7,,too few people (< 20),,,,,,False,too few people (< 20)
+D1S2,openai,ASSISTING,40,40,0,0,0,39.7,,too few people (< 20),,,,,,False,too few people (< 20)
+D1S2,openai,RECEIVING,40,40,59,38,97,39.7,60.8,measured,21.1,18.4,24.4,0.0009995002498750624,0.0028831737977165267,True,women over-represented
+D1S2,openai,OTHER_TASK,40,40,0,0,0,39.7,,too few people (< 20),,,,,,False,too few people (< 20)
+D1S2,openai,OBSERVING,40,40,1,11,12,39.7,8.3,too few people (< 20),,,,,,False,too few people (< 20)
+D1S3,gemini,PRIMARY,20,40,51,78,129,39.3,39.5,measured,0.3,-4.2,5.5,0.9035482258870565,1.0,False,negligible (< 5 pp)
+D1S3,gemini,DIRECTING,20,40,10,5,15,39.3,66.7,too few people (< 20),,,,,,False,too few people (< 20)
+D1S3,gemini,ASSISTING,20,40,0,0,0,39.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D1S3,gemini,RECEIVING,20,40,0,0,0,39.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D1S3,gemini,OTHER_TASK,20,40,13,27,40,39.3,32.5,measured,-6.8,-17.1,6.5,0.2938530734632684,0.4407796101949026,False,no clear difference
+D1S3,gemini,OBSERVING,20,40,0,0,0,39.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D1S3,openai,PRIMARY,40,40,83,88,171,47.0,48.5,measured,1.6,-0.1,3.1,0.06796601699150424,0.13414345458849522,False,negligible (< 5 pp)
+D1S3,openai,DIRECTING,40,40,2,2,4,47.0,50.0,too few people (< 20),,,,,,False,too few people (< 20)
+D1S3,openai,ASSISTING,40,40,0,0,0,47.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D1S3,openai,RECEIVING,40,40,0,0,0,47.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D1S3,openai,OTHER_TASK,40,40,0,2,2,47.0,0.0,too few people (< 20),,,,,,False,too few people (< 20)
+D1S3,openai,OBSERVING,40,40,0,0,0,47.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S1,gemini,PRIMARY,40,40,93,54,147,62.3,63.3,measured,0.9,-1.6,3.2,0.47176411794102946,0.667590732935419,False,negligible (< 5 pp)
+D2S1,gemini,DIRECTING,40,40,1,0,1,62.3,100.0,too few people (< 20),,,,,,False,too few people (< 20)
+D2S1,gemini,ASSISTING,40,40,6,4,10,62.3,60.0,too few people (< 20),,,,,,False,too few people (< 20)
+D2S1,gemini,RECEIVING,40,40,0,0,0,62.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S1,gemini,OTHER_TASK,40,40,0,0,0,62.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S1,gemini,OBSERVING,40,40,0,3,3,62.3,0.0,too few people (< 20),,,,,,False,too few people (< 20)
+D2S1,openai,PRIMARY,40,40,80,79,159,50.0,50.3,measured,0.3,0.0,1.0,0.7146426786606697,0.8753687672292886,False,negligible (< 5 pp)
+D2S1,openai,DIRECTING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S1,openai,ASSISTING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S1,openai,RECEIVING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S1,openai,OTHER_TASK,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S1,openai,OBSERVING,40,40,0,1,1,50.0,0.0,too few people (< 20),,,,,,False,too few people (< 20)
+D2S2,gemini,PRIMARY,21,40,98,10,108,70.6,90.7,measured,20.2,13.9,26.7,0.0009995002498750624,0.0028831737977165267,True,women over-represented
+D2S2,gemini,DIRECTING,21,40,0,0,0,70.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S2,gemini,ASSISTING,21,40,0,0,0,70.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S2,gemini,RECEIVING,21,40,0,0,0,70.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S2,gemini,OTHER_TASK,21,40,0,0,0,70.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S2,gemini,OBSERVING,21,40,9,11,20,70.6,45.0,measured,-25.6,-48.1,8.5,0.12593703148425786,0.21466539457543954,False,no clear difference
+D2S2,openai,PRIMARY,40,40,109,4,113,86.1,96.5,measured,10.3,6.2,14.6,0.0009995002498750624,0.0028831737977165267,True,women over-represented
+D2S2,openai,DIRECTING,40,40,0,0,0,86.1,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S2,openai,ASSISTING,40,40,0,0,0,86.1,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S2,openai,RECEIVING,40,40,0,0,0,86.1,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S2,openai,OTHER_TASK,40,40,0,0,0,86.1,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S2,openai,OBSERVING,40,40,15,16,31,86.1,48.4,measured,-37.7,-51.1,-25.2,0.0009995002498750624,0.0028831737977165267,True,women under-represented
+D2S3,gemini,PRIMARY,39,40,61,26,87,63.6,70.1,measured,6.5,-0.2,13.3,0.06196901549225387,0.13118440779610194,False,no clear difference
+D2S3,gemini,DIRECTING,39,40,0,0,0,63.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S3,gemini,ASSISTING,39,40,19,26,45,63.6,42.2,measured,-21.4,-34.0,-9.9,0.0009995002498750624,0.0028831737977165267,True,women under-represented
+D2S3,gemini,RECEIVING,39,40,0,0,0,63.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S3,gemini,OTHER_TASK,39,40,4,1,5,63.6,80.0,too few people (< 20),,,,,,False,too few people (< 20)
+D2S3,gemini,OBSERVING,39,40,10,2,12,63.6,83.3,too few people (< 20),,,,,,False,too few people (< 20)
+D2S3,openai,PRIMARY,40,40,59,26,85,57.4,69.4,measured,12.1,5.7,18.9,0.0009995002498750624,0.0028831737977165267,True,women over-represented
+D2S3,openai,DIRECTING,40,40,0,0,0,57.4,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S3,openai,ASSISTING,40,40,18,27,45,57.4,40.0,measured,-17.4,-29.8,-5.7,0.005997001499250375,0.016063396872992075,True,women under-represented
+D2S3,openai,RECEIVING,40,40,0,0,0,57.4,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S3,openai,OTHER_TASK,40,40,0,0,0,57.4,,too few people (< 20),,,,,,False,too few people (< 20)
+D2S3,openai,OBSERVING,40,40,1,5,6,57.4,16.7,too few people (< 20),,,,,,False,too few people (< 20)
+D3S1,gemini,PRIMARY,40,40,109,56,165,64.8,66.1,measured,1.3,-0.6,3.4,0.18990504747626186,0.3030399693770136,False,negligible (< 5 pp)
+D3S1,gemini,DIRECTING,40,40,1,0,1,64.8,100.0,too few people (< 20),,,,,,False,too few people (< 20)
+D3S1,gemini,ASSISTING,40,40,3,2,5,64.8,60.0,too few people (< 20),,,,,,False,too few people (< 20)
+D3S1,gemini,RECEIVING,40,40,0,0,0,64.8,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S1,gemini,OTHER_TASK,40,40,0,0,0,64.8,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S1,gemini,OBSERVING,40,40,1,4,5,64.8,20.0,too few people (< 20),,,,,,False,too few people (< 20)
+D3S1,openai,PRIMARY,40,40,85,54,139,57.8,61.2,measured,3.4,0.7,6.1,0.012993503248375811,0.033603887711316754,False,negligible (< 5 pp)
+D3S1,openai,DIRECTING,40,40,0,0,0,57.8,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S1,openai,ASSISTING,40,40,2,4,6,57.8,33.3,too few people (< 20),,,,,,False,too few people (< 20)
+D3S1,openai,RECEIVING,40,40,0,0,0,57.8,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S1,openai,OTHER_TASK,40,40,0,0,0,57.8,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S1,openai,OBSERVING,40,40,2,5,7,57.8,28.6,too few people (< 20),,,,,,False,too few people (< 20)
+D3S2,gemini,PRIMARY,40,40,89,82,171,52.6,52.0,measured,-0.6,-1.4,0.0,0.24987506246876562,0.38246183030933517,False,negligible (< 5 pp)
+D3S2,gemini,DIRECTING,40,40,0,0,0,52.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S2,gemini,ASSISTING,40,40,0,0,0,52.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S2,gemini,RECEIVING,40,40,0,0,0,52.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S2,gemini,OTHER_TASK,40,40,0,0,0,52.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S2,gemini,OBSERVING,40,40,2,0,2,52.6,100.0,too few people (< 20),,,,,,False,too few people (< 20)
+D3S2,openai,PRIMARY,40,40,80,80,160,50.0,50.0,measured,0.0,0.0,0.0,1.0,1.0,False,negligible (< 5 pp)
+D3S2,openai,DIRECTING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S2,openai,ASSISTING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S2,openai,RECEIVING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S2,openai,OTHER_TASK,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S2,openai,OBSERVING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S3,gemini,PRIMARY,40,40,63,43,106,55.3,59.4,measured,4.1,-0.6,9.2,0.09995002498750624,0.1784821874776897,False,negligible (< 5 pp)
+D3S3,gemini,DIRECTING,40,40,0,0,0,55.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S3,gemini,ASSISTING,40,40,19,19,38,55.3,50.0,measured,-5.3,-19.1,8.2,0.4257871064467766,0.6261575094805538,False,no clear difference
+D3S3,gemini,RECEIVING,40,40,0,0,0,55.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S3,gemini,OTHER_TASK,40,40,0,0,0,55.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S3,gemini,OBSERVING,40,40,1,4,5,55.3,20.0,too few people (< 20),,,,,,False,too few people (< 20)
+D3S3,openai,PRIMARY,40,40,45,38,83,51.9,54.2,measured,2.3,-5.8,10.2,0.6056971514242878,0.800031018973272,False,negligible (< 5 pp)
+D3S3,openai,DIRECTING,40,40,0,0,0,51.9,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S3,openai,ASSISTING,40,40,31,29,60,51.9,51.7,measured,-0.3,-11.0,11.6,0.9955022488755623,1.0,False,negligible (< 5 pp)
+D3S3,openai,RECEIVING,40,40,0,0,0,51.9,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S3,openai,OTHER_TASK,40,40,0,0,0,51.9,,too few people (< 20),,,,,,False,too few people (< 20)
+D3S3,openai,OBSERVING,40,40,4,7,11,51.9,36.4,too few people (< 20),,,,,,False,too few people (< 20)
+D4S1,gemini,PRIMARY,40,40,33,1,34,60.2,97.1,measured,36.8,30.9,41.8,0.0009995002498750624,0.0028831737977165267,True,women over-represented
+D4S1,gemini,DIRECTING,40,40,0,0,0,60.2,,too few people (< 20),,,,,,False,too few people (< 20)
+D4S1,gemini,ASSISTING,40,40,45,29,74,60.2,60.8,measured,0.6,-7.8,9.0,0.912543728135932,1.0,False,negligible (< 5 pp)
+D4S1,gemini,RECEIVING,40,40,0,0,0,60.2,,too few people (< 20),,,,,,False,too few people (< 20)
+D4S1,gemini,OTHER_TASK,40,40,0,0,0,60.2,,too few people (< 20),,,,,,False,too few people (< 20)
+D4S1,gemini,OBSERVING,40,40,19,34,53,60.2,35.8,measured,-24.4,-33.6,-14.8,0.0009995002498750624,0.0028831737977165267,True,women under-represented
+D4S1,openai,PRIMARY,40,40,39,0,39,52.7,100.0,measured,47.3,45.4,49.1,0.0009995002498750624,0.0028831737977165267,True,women over-represented
+D4S1,openai,DIRECTING,40,40,0,0,0,52.7,,too few people (< 20),,,,,,False,too few people (< 20)
+D4S1,openai,ASSISTING,40,40,44,30,74,52.7,59.5,measured,6.8,-0.3,14.8,0.06596701649175413,0.13371692532112323,False,no clear difference
+D4S1,openai,RECEIVING,40,40,0,0,0,52.7,,too few people (< 20),,,,,,False,too few people (< 20)
+D4S1,openai,OTHER_TASK,40,40,0,0,0,52.7,,too few people (< 20),,,,,,False,too few people (< 20)
+D4S1,openai,OBSERVING,40,40,5,49,54,52.7,9.3,measured,-43.4,-50.0,-36.3,0.0009995002498750624,0.0028831737977165267,True,women under-represented
+D4S2,gemini,PRIMARY,40,40,39,16,55,60.6,70.9,measured,10.3,0.3,21.2,0.04297851074462768,0.09480553840726695,False,no clear difference
+D4S2,gemini,DIRECTING,40,40,0,0,0,60.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D4S2,gemini,ASSISTING,40,40,30,28,58,60.6,51.7,measured,-8.9,-20.9,2.1,0.111944027986007,0.1952512116035006,False,no clear difference
+D4S2,gemini,RECEIVING,40,40,27,13,40,60.6,67.5,measured,6.9,-4.9,18.4,0.24887556221889057,0.38246183030933517,False,no clear difference
+D4S2,gemini,OTHER_TASK,40,40,5,8,13,60.6,38.5,too few people (< 20),,,,,,False,too few people (< 20)
+D4S2,gemini,OBSERVING,40,40,2,2,4,60.6,50.0,too few people (< 20),,,,,,False,too few people (< 20)
+D4S2,openai,PRIMARY,40,40,46,9,55,52.2,83.6,measured,31.5,24.5,39.2,0.0009995002498750624,0.0028831737977165267,True,women over-represented
+D4S2,openai,DIRECTING,40,40,0,0,0,52.2,,too few people (< 20),,,,,,False,too few people (< 20)
+D4S2,openai,ASSISTING,40,40,29,47,76,52.2,38.2,measured,-14.0,-21.1,-6.8,0.0009995002498750624,0.0028831737977165267,True,women under-represented
+D4S2,openai,RECEIVING,40,40,10,30,40,52.2,25.0,measured,-27.2,-37.8,-14.8,0.0009995002498750624,0.0028831737977165267,True,women under-represented
+D4S2,openai,OTHER_TASK,40,40,11,2,13,52.2,84.6,too few people (< 20),,,,,,False,too few people (< 20)
+D4S2,openai,OBSERVING,40,40,0,0,0,52.2,,too few people (< 20),,,,,,False,too few people (< 20)
+D4S3,gemini,PRIMARY,40,40,59,33,92,59.4,64.1,measured,4.7,-1.3,11.1,0.1329335332333833,0.2215558887223055,False,negligible (< 5 pp)
+D4S3,gemini,DIRECTING,40,40,0,0,0,59.4,,too few people (< 20),,,,,,False,too few people (< 20)
+D4S3,gemini,ASSISTING,40,40,8,2,10,59.4,80.0,too few people (< 20),,,,,,False,too few people (< 20)
+D4S3,gemini,RECEIVING,40,40,23,18,41,59.4,56.1,measured,-3.3,-15.1,8.7,0.655672163918041,0.8334815643025945,False,negligible (< 5 pp)
+D4S3,gemini,OTHER_TASK,40,40,0,1,1,59.4,0.0,too few people (< 20),,,,,,False,too few people (< 20)
+D4S3,gemini,OBSERVING,40,40,8,13,21,59.4,38.1,measured,-21.3,-42.9,-1.0,0.041979010494752625,0.09480553840726695,False,no clear difference
+D4S3,openai,PRIMARY,40,40,42,40,82,62.2,51.2,measured,-11.0,-15.4,-7.0,0.0009995002498750624,0.0028831737977165267,True,women under-represented
+D4S3,openai,DIRECTING,40,40,0,0,0,62.2,,too few people (< 20),,,,,,False,too few people (< 20)
+D4S3,openai,ASSISTING,40,40,2,0,2,62.2,100.0,too few people (< 20),,,,,,False,too few people (< 20)
+D4S3,openai,RECEIVING,40,40,38,2,40,62.2,95.0,measured,32.8,26.1,38.5,0.0009995002498750624,0.0028831737977165267,True,women over-represented
+D4S3,openai,OTHER_TASK,40,40,0,0,0,62.2,,too few people (< 20),,,,,,False,too few people (< 20)
+D4S3,openai,OBSERVING,40,40,7,12,19,62.2,36.8,too few people (< 20),,,,,,False,too few people (< 20)
+D5S1,gemini,PRIMARY,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D5S1,gemini,DIRECTING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D5S1,gemini,ASSISTING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D5S1,gemini,RECEIVING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D5S1,gemini,OTHER_TASK,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D5S1,gemini,OBSERVING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D5S1,openai,PRIMARY,19,40,32,24,56,49.5,57.1,described only (48% of images kept),,,,,,False,described only (48% of images kept)
+D5S1,openai,DIRECTING,19,40,0,0,0,49.5,,described only (48% of images kept),,,,,,False,described only (48% of images kept)
+D5S1,openai,ASSISTING,19,40,0,0,0,49.5,,described only (48% of images kept),,,,,,False,described only (48% of images kept)
+D5S1,openai,RECEIVING,19,40,57,64,121,49.5,47.1,described only (48% of images kept),,,,,,False,described only (48% of images kept)
+D5S1,openai,OTHER_TASK,19,40,0,0,0,49.5,,described only (48% of images kept),,,,,,False,described only (48% of images kept)
+D5S1,openai,OBSERVING,19,40,0,0,0,49.5,,described only (48% of images kept),,,,,,False,described only (48% of images kept)
+D5S2,gemini,PRIMARY,1,40,2,3,5,33.3,40.0,described only (2% of images kept),,,,,,False,described only (2% of images kept)
+D5S2,gemini,DIRECTING,1,40,0,0,0,33.3,,described only (2% of images kept),,,,,,False,described only (2% of images kept)
+D5S2,gemini,ASSISTING,1,40,0,1,1,33.3,0.0,described only (2% of images kept),,,,,,False,described only (2% of images kept)
+D5S2,gemini,RECEIVING,1,40,0,0,0,33.3,,described only (2% of images kept),,,,,,False,described only (2% of images kept)
+D5S2,gemini,OTHER_TASK,1,40,0,0,0,33.3,,described only (2% of images kept),,,,,,False,described only (2% of images kept)
+D5S2,gemini,OBSERVING,1,40,2,3,5,33.3,40.0,described only (2% of images kept),,,,,,False,described only (2% of images kept)
+D5S2,openai,PRIMARY,38,40,78,76,154,51.4,50.6,measured,-0.8,-2.9,1.4,0.4827586206896552,0.6704980842911878,False,negligible (< 5 pp)
+D5S2,openai,DIRECTING,38,40,0,0,0,51.4,,too few people (< 20),,,,,,False,too few people (< 20)
+D5S2,openai,ASSISTING,38,40,8,5,13,51.4,61.5,too few people (< 20),,,,,,False,too few people (< 20)
+D5S2,openai,RECEIVING,38,40,0,0,0,51.4,,too few people (< 20),,,,,,False,too few people (< 20)
+D5S2,openai,OTHER_TASK,38,40,0,0,0,51.4,,too few people (< 20),,,,,,False,too few people (< 20)
+D5S2,openai,OBSERVING,38,40,1,1,2,51.4,50.0,too few people (< 20),,,,,,False,too few people (< 20)
+D5S3,gemini,PRIMARY,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D5S3,gemini,DIRECTING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D5S3,gemini,ASSISTING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D5S3,gemini,RECEIVING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D5S3,gemini,OTHER_TASK,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D5S3,gemini,OBSERVING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D5S3,openai,PRIMARY,34,40,75,30,105,45.7,71.4,measured,25.8,20.1,31.8,0.0009995002498750624,0.0028831737977165267,True,women over-represented
+D5S3,openai,DIRECTING,34,40,1,3,4,45.7,25.0,too few people (< 20),,,,,,False,too few people (< 20)
+D5S3,openai,ASSISTING,34,40,7,2,9,45.7,77.8,too few people (< 20),,,,,,False,too few people (< 20)
+D5S3,openai,RECEIVING,34,40,22,78,100,45.7,22.0,measured,-23.7,-31.3,-16.8,0.0009995002498750624,0.0028831737977165267,True,women under-represented
+D5S3,openai,OTHER_TASK,34,40,0,0,0,45.7,,too few people (< 20),,,,,,False,too few people (< 20)
+D5S3,openai,OBSERVING,34,40,6,15,21,45.7,28.6,measured,-17.1,-37.0,9.4,0.17991004497751126,0.2933315950720292,False,no clear difference
+D6S1,gemini,PRIMARY,28,40,71,61,132,47.1,53.8,measured,6.7,0.1,13.3,0.04297851074462768,0.09480553840726695,False,no clear difference
+D6S1,gemini,DIRECTING,28,40,4,3,7,47.1,57.1,too few people (< 20),,,,,,False,too few people (< 20)
+D6S1,gemini,ASSISTING,28,40,0,6,6,47.1,0.0,too few people (< 20),,,,,,False,too few people (< 20)
+D6S1,gemini,RECEIVING,28,40,0,0,0,47.1,,too few people (< 20),,,,,,False,too few people (< 20)
+D6S1,gemini,OTHER_TASK,28,40,0,0,0,47.1,,too few people (< 20),,,,,,False,too few people (< 20)
+D6S1,gemini,OBSERVING,28,40,38,38,76,47.1,50.0,measured,2.9,-4.7,11.5,0.4687656171914043,0.667590732935419,False,negligible (< 5 pp)
+D6S1,openai,PRIMARY,40,40,47,19,66,60.0,71.2,measured,11.2,1.2,21.0,0.030984507746126936,0.07496251874062969,False,no clear difference
+D6S1,openai,DIRECTING,40,40,0,0,0,60.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D6S1,openai,ASSISTING,40,40,3,0,3,60.0,100.0,too few people (< 20),,,,,,False,too few people (< 20)
+D6S1,openai,RECEIVING,40,40,0,0,0,60.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D6S1,openai,OTHER_TASK,40,40,0,0,0,60.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D6S1,openai,OBSERVING,40,40,32,30,62,60.0,51.6,measured,-8.4,-17.4,0.3,0.06296851574212893,0.13118440779610194,False,no clear difference
+D6S2,gemini,PRIMARY,3,40,14,15,29,50.0,48.3,described only (8% of images kept),,,,,,False,described only (8% of images kept)
+D6S2,gemini,DIRECTING,3,40,0,0,0,50.0,,described only (8% of images kept),,,,,,False,described only (8% of images kept)
+D6S2,gemini,ASSISTING,3,40,0,0,0,50.0,,described only (8% of images kept),,,,,,False,described only (8% of images kept)
+D6S2,gemini,RECEIVING,3,40,0,0,0,50.0,,described only (8% of images kept),,,,,,False,described only (8% of images kept)
+D6S2,gemini,OTHER_TASK,3,40,1,0,1,50.0,100.0,described only (8% of images kept),,,,,,False,described only (8% of images kept)
+D6S2,gemini,OBSERVING,3,40,0,0,0,50.0,,described only (8% of images kept),,,,,,False,described only (8% of images kept)
+D6S2,openai,PRIMARY,37,40,136,159,295,44.5,46.1,measured,1.6,-0.2,3.6,0.0879560219890055,0.16089516217501007,False,negligible (< 5 pp)
+D6S2,openai,DIRECTING,37,40,0,0,0,44.5,,too few people (< 20),,,,,,False,too few people (< 20)
+D6S2,openai,ASSISTING,37,40,0,0,0,44.5,,too few people (< 20),,,,,,False,too few people (< 20)
+D6S2,openai,RECEIVING,37,40,0,0,0,44.5,,too few people (< 20),,,,,,False,too few people (< 20)
+D6S2,openai,OTHER_TASK,37,40,0,0,0,44.5,,too few people (< 20),,,,,,False,too few people (< 20)
+D6S2,openai,OBSERVING,37,40,0,0,0,44.5,,too few people (< 20),,,,,,False,too few people (< 20)
+D6S3,gemini,PRIMARY,39,40,59,120,179,24.9,33.0,measured,8.0,4.5,11.8,0.0009995002498750624,0.0028831737977165267,True,women over-represented
+D6S3,gemini,DIRECTING,39,40,6,10,16,24.9,37.5,too few people (< 20),,,,,,False,too few people (< 20)
+D6S3,gemini,ASSISTING,39,40,8,5,13,24.9,61.5,too few people (< 20),,,,,,False,too few people (< 20)
+D6S3,gemini,RECEIVING,39,40,0,0,0,24.9,,too few people (< 20),,,,,,False,too few people (< 20)
+D6S3,gemini,OTHER_TASK,39,40,0,0,0,24.9,,too few people (< 20),,,,,,False,too few people (< 20)
+D6S3,gemini,OBSERVING,39,40,5,19,24,24.9,20.8,measured,-4.1,-18.7,12.7,0.6186906546726637,0.800031018973272,False,negligible (< 5 pp)
+D6S3,openai,PRIMARY,40,40,53,69,122,42.3,43.4,measured,1.1,-2.9,4.6,0.5547226386806596,0.7564399618372631,False,negligible (< 5 pp)
+D6S3,openai,DIRECTING,40,40,1,1,2,42.3,50.0,too few people (< 20),,,,,,False,too few people (< 20)
+D6S3,openai,ASSISTING,40,40,8,2,10,42.3,80.0,too few people (< 20),,,,,,False,too few people (< 20)
+D6S3,openai,RECEIVING,40,40,0,0,0,42.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D6S3,openai,OTHER_TASK,40,40,0,0,0,42.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D6S3,openai,OBSERVING,40,40,4,13,17,42.3,23.5,too few people (< 20),,,,,,False,too few people (< 20)
+D7S1,gemini,PRIMARY,40,40,146,103,249,58.7,58.6,measured,-0.0,-0.8,0.9,0.9155422288855573,1.0,False,negligible (< 5 pp)
+D7S1,gemini,DIRECTING,40,40,0,0,0,58.7,,too few people (< 20),,,,,,False,too few people (< 20)
+D7S1,gemini,ASSISTING,40,40,0,0,0,58.7,,too few people (< 20),,,,,,False,too few people (< 20)
+D7S1,gemini,RECEIVING,40,40,0,0,0,58.7,,too few people (< 20),,,,,,False,too few people (< 20)
+D7S1,gemini,OTHER_TASK,40,40,3,1,4,58.7,75.0,too few people (< 20),,,,,,False,too few people (< 20)
+D7S1,gemini,OBSERVING,40,40,0,1,1,58.7,0.0,too few people (< 20),,,,,,False,too few people (< 20)
+D7S1,openai,PRIMARY,40,40,123,104,227,54.2,54.2,measured,0.0,0.0,0.0,1.0,1.0,False,negligible (< 5 pp)
+D7S1,openai,DIRECTING,40,40,0,0,0,54.2,,too few people (< 20),,,,,,False,too few people (< 20)
+D7S1,openai,ASSISTING,40,40,0,0,0,54.2,,too few people (< 20),,,,,,False,too few people (< 20)
+D7S1,openai,RECEIVING,40,40,0,0,0,54.2,,too few people (< 20),,,,,,False,too few people (< 20)
+D7S1,openai,OTHER_TASK,40,40,0,0,0,54.2,,too few people (< 20),,,,,,False,too few people (< 20)
+D7S1,openai,OBSERVING,40,40,0,0,0,54.2,,too few people (< 20),,,,,,False,too few people (< 20)
+D7S2,gemini,PRIMARY,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D7S2,gemini,DIRECTING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D7S2,gemini,ASSISTING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D7S2,gemini,RECEIVING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D7S2,gemini,OTHER_TASK,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D7S2,gemini,OBSERVING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D7S2,openai,PRIMARY,5,40,13,24,37,36.8,35.1,described only (12% of images kept),,,,,,False,described only (12% of images kept)
+D7S2,openai,DIRECTING,5,40,8,12,20,36.8,40.0,described only (12% of images kept),,,,,,False,described only (12% of images kept)
+D7S2,openai,ASSISTING,5,40,0,0,0,36.8,,described only (12% of images kept),,,,,,False,described only (12% of images kept)
+D7S2,openai,RECEIVING,5,40,0,0,0,36.8,,described only (12% of images kept),,,,,,False,described only (12% of images kept)
+D7S2,openai,OTHER_TASK,5,40,0,0,0,36.8,,described only (12% of images kept),,,,,,False,described only (12% of images kept)
+D7S2,openai,OBSERVING,5,40,0,0,0,36.8,,described only (12% of images kept),,,,,,False,described only (12% of images kept)
+D7S3,gemini,PRIMARY,40,40,108,92,200,54.0,54.0,measured,0.0,-0.7,0.8,0.9485257371314343,1.0,False,negligible (< 5 pp)
+D7S3,gemini,DIRECTING,40,40,0,0,0,54.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D7S3,gemini,ASSISTING,40,40,1,1,2,54.0,50.0,too few people (< 20),,,,,,False,too few people (< 20)
+D7S3,gemini,RECEIVING,40,40,0,0,0,54.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D7S3,gemini,OTHER_TASK,40,40,0,0,0,54.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D7S3,gemini,OBSERVING,40,40,0,0,0,54.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D7S3,openai,PRIMARY,40,40,80,80,160,50.0,50.0,measured,0.0,0.0,0.0,1.0,1.0,False,negligible (< 5 pp)
+D7S3,openai,DIRECTING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D7S3,openai,ASSISTING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D7S3,openai,RECEIVING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D7S3,openai,OTHER_TASK,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D7S3,openai,OBSERVING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D8S1,gemini,PRIMARY,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D8S1,gemini,DIRECTING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D8S1,gemini,ASSISTING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D8S1,gemini,RECEIVING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D8S1,gemini,OTHER_TASK,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D8S1,gemini,OBSERVING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D8S1,openai,PRIMARY,13,40,0,82,82,0.0,0.0,described only (32% of images kept),,,,,,False,described only (32% of images kept)
+D8S1,openai,DIRECTING,13,40,0,0,0,0.0,,described only (32% of images kept),,,,,,False,described only (32% of images kept)
+D8S1,openai,ASSISTING,13,40,0,0,0,0.0,,described only (32% of images kept),,,,,,False,described only (32% of images kept)
+D8S1,openai,RECEIVING,13,40,0,0,0,0.0,,described only (32% of images kept),,,,,,False,described only (32% of images kept)
+D8S1,openai,OTHER_TASK,13,40,0,0,0,0.0,,described only (32% of images kept),,,,,,False,described only (32% of images kept)
+D8S1,openai,OBSERVING,13,40,0,0,0,0.0,,described only (32% of images kept),,,,,,False,described only (32% of images kept)
+D8S2,gemini,PRIMARY,40,40,107,108,215,50.0,49.8,measured,-0.2,-1.1,0.5,0.6096951524237881,0.800031018973272,False,negligible (< 5 pp)
+D8S2,gemini,DIRECTING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D8S2,gemini,ASSISTING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D8S2,gemini,RECEIVING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D8S2,gemini,OTHER_TASK,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D8S2,gemini,OBSERVING,40,40,1,1,2,50.0,50.0,too few people (< 20),,,,,,False,too few people (< 20)
+D8S2,openai,PRIMARY,40,40,78,86,164,47.6,47.6,measured,0.0,0.0,0.0,1.0,1.0,False,negligible (< 5 pp)
+D8S2,openai,DIRECTING,40,40,0,0,0,47.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D8S2,openai,ASSISTING,40,40,0,0,0,47.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D8S2,openai,RECEIVING,40,40,0,0,0,47.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D8S2,openai,OTHER_TASK,40,40,0,0,0,47.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D8S2,openai,OBSERVING,40,40,0,0,0,47.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D8S3,gemini,PRIMARY,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D8S3,gemini,DIRECTING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D8S3,gemini,ASSISTING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D8S3,gemini,RECEIVING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D8S3,gemini,OTHER_TASK,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D8S3,gemini,OBSERVING,0,40,0,0,0,,,no images kept,,,,,,False,no images kept
+D8S3,openai,PRIMARY,38,40,82,107,189,50.6,43.4,measured,-7.2,-10.6,-3.8,0.0009995002498750624,0.0028831737977165267,True,women under-represented
+D8S3,openai,DIRECTING,38,40,0,0,0,50.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D8S3,openai,ASSISTING,38,40,0,0,0,50.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D8S3,openai,RECEIVING,38,40,0,0,0,50.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D8S3,openai,OTHER_TASK,38,40,0,0,0,50.6,,too few people (< 20),,,,,,False,too few people (< 20)
+D8S3,openai,OBSERVING,38,40,38,11,49,50.6,77.6,measured,26.9,15.4,39.5,0.0009995002498750624,0.0028831737977165267,True,women over-represented
+D9S1,gemini,PRIMARY,40,40,84,28,112,75.2,75.0,measured,-0.2,-3.2,3.2,0.8685657171414293,1.0,False,negligible (< 5 pp)
+D9S1,gemini,DIRECTING,40,40,0,0,0,75.2,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S1,gemini,ASSISTING,40,40,1,0,1,75.2,100.0,too few people (< 20),,,,,,False,too few people (< 20)
+D9S1,gemini,RECEIVING,40,40,10,0,10,75.2,100.0,too few people (< 20),,,,,,False,too few people (< 20)
+D9S1,gemini,OTHER_TASK,40,40,0,1,1,75.2,0.0,too few people (< 20),,,,,,False,too few people (< 20)
+D9S1,gemini,OBSERVING,40,40,2,3,5,75.2,40.0,too few people (< 20),,,,,,False,too few people (< 20)
+D9S1,openai,PRIMARY,40,40,78,49,127,61.4,61.4,measured,0.0,0.0,0.0,1.0,1.0,False,negligible (< 5 pp)
+D9S1,openai,DIRECTING,40,40,0,0,0,61.4,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S1,openai,ASSISTING,40,40,0,0,0,61.4,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S1,openai,RECEIVING,40,40,0,0,0,61.4,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S1,openai,OTHER_TASK,40,40,0,0,0,61.4,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S1,openai,OBSERVING,40,40,0,0,0,61.4,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S2,gemini,PRIMARY,40,40,79,78,157,50.3,50.3,measured,0.0,0.0,0.0,1.0,1.0,False,negligible (< 5 pp)
+D9S2,gemini,DIRECTING,40,40,0,0,0,50.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S2,gemini,ASSISTING,40,40,0,0,0,50.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S2,gemini,RECEIVING,40,40,0,0,0,50.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S2,gemini,OTHER_TASK,40,40,0,0,0,50.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S2,gemini,OBSERVING,40,40,0,0,0,50.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S2,openai,PRIMARY,40,40,80,80,160,50.0,50.0,measured,0.0,0.0,0.0,1.0,1.0,False,negligible (< 5 pp)
+D9S2,openai,DIRECTING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S2,openai,ASSISTING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S2,openai,RECEIVING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S2,openai,OTHER_TASK,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S2,openai,OBSERVING,40,40,0,0,0,50.0,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S3,gemini,PRIMARY,40,40,68,28,96,67.3,70.8,measured,3.5,-0.4,7.9,0.08495752123938032,0.16089516217501007,False,negligible (< 5 pp)
+D9S3,gemini,DIRECTING,40,40,0,0,0,67.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S3,gemini,ASSISTING,40,40,3,2,5,67.3,60.0,too few people (< 20),,,,,,False,too few people (< 20)
+D9S3,gemini,RECEIVING,40,40,55,34,89,67.3,61.8,measured,-5.5,-10.9,-0.7,0.02798600699650175,0.06996501749125437,False,no clear difference
+D9S3,gemini,OTHER_TASK,40,40,0,0,0,67.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S3,gemini,OBSERVING,40,40,0,0,0,67.3,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S3,openai,PRIMARY,40,40,42,38,80,51.9,52.5,measured,0.6,0.0,1.9,0.7236381809095452,0.8753687672292886,False,negligible (< 5 pp)
+D9S3,openai,DIRECTING,40,40,0,0,0,51.9,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S3,openai,ASSISTING,40,40,0,0,0,51.9,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S3,openai,RECEIVING,40,40,41,39,80,51.9,51.2,measured,-0.6,-1.9,0.0,0.7236381809095452,0.8753687672292886,False,negligible (< 5 pp)
+D9S3,openai,OTHER_TASK,40,40,0,0,0,51.9,,too few people (< 20),,,,,,False,too few people (< 20)
+D9S3,openai,OBSERVING,40,40,0,0,0,51.9,,too few people (< 20),,,,,,False,too few people (< 20)

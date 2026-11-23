@@ -1,0 +1,31 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llrcccc@{}}
+\toprule
+Images & Role category & Women / men & Female \% in role & Female \% in scene & Gap (pp) [95\% CI] & Mean scenario gap (n) \\
+\midrule
+gemini & Primary & 1498 / 1265 & 54.2 & 50.9 & +3.3 [+2.4, +4.2] & +4.0 (20) \\
+gemini & Directing & 27 / 48 & 36.0 & 50.9 & -14.9$^{*}$ [-26.3, -4.8] & -10.0 (1) \\
+gemini & Assisting & 143 / 125 & 53.4 & 50.9 & +2.4 [-2.6, +7.5] & -8.8 (4) \\
+gemini & Receiving & 170 / 106 & 61.6 & 50.9 & +10.7$^{*}$ [+5.9, +15.5] & +5.3 (4) \\
+gemini & Other Task & 26 / 61 & 29.9 & 50.9 & -21.0$^{*}$ [-29.9, -10.2] & -13.4 (2) \\
+gemini & Observing & 99 / 145 & 40.6 & 50.9 & -10.3$^{*}$ [-15.7, -4.8] & -14.5 (5) \\
+openai & Primary & 1664 / 1479 & 52.9 & 50.5 & +2.4 [+1.8, +3.1] & +4.0 (24) \\
+openai & Directing & 4 / 46 & 8.0 & 50.5 & -42.5$^{*}$ [-48.6, -34.7] & -21.3 (1) \\
+openai & Assisting & 152 / 146 & 51.0 & 50.5 & +0.5 [-3.6, +5.1] & -6.2 (4) \\
+openai & Receiving & 170 / 187 & 47.6 & 50.5 & -2.9 [-5.5, -0.3] & +0.5 (5) \\
+openai & Other Task & 11 / 4 & 73.3 & 50.5 & +22.8 [-0.1, +42.7] & +nan (0) \\
+openai & Observing & 116 / 176 & 39.7 & 50.5 & -10.8$^{*}$ [-15.7, -5.7] & -15.9 (5) \\
+both & Primary & 3162 / 2744 & 53.5 & 50.7 & +2.8 [+2.3, +3.4] & +4.0 (44) \\
+both & Directing & 31 / 94 & 24.8 & 50.7 & -25.9$^{*}$ [-33.5, -18.7] & -15.6 (2) \\
+both & Assisting & 295 / 271 & 52.1 & 50.7 & +1.4 [-2.0, +4.8] & -7.5 (8) \\
+both & Receiving & 340 / 293 & 53.7 & 50.7 & +3.0 [+0.5, +5.6] & +2.6 (9) \\
+both & Other Task & 37 / 65 & 36.3 & 50.7 & -14.4$^{*}$ [-24.1, -3.8] & -13.4 (2) \\
+both & Observing & 215 / 321 & 40.1 & 50.7 & -10.6$^{*}$ [-14.3, -6.9] & -15.2 (10) \\
+\bottomrule
+\end{tabular}}
+\caption{Gender role division: female share within each role category vs among all people in the same images. $^{*}$ q $<$ 0.05, interval excludes 0, $|$gap$|$ $\geq$ 5 pp. Settings: gpt_coder. [Write your caption here.]}
+\label{tab:role-division}
+\end{table}

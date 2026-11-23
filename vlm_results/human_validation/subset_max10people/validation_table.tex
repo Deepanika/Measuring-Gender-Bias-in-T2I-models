@@ -1,0 +1,28 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+ & \textbf{Main vs Vol} & \textbf{gpt-6.1-sol vs Main} & \textbf{gpt-6.1-sol vs Vol} & \textbf{gemini-3.8-flash vs Main} & \textbf{gemini-3.8-flash vs Vol} & \textbf{gpt-6.1-sol vs gemini-3.8-flash} \\
+\midrule
+Images & 87 & 87 & 87 & 87 & 87 & 87 \\
+People per image & 96.6 / 100.0 & 93.1 / 97.7 & 92.0 / 97.7 & 96.6 / 97.7 & 94.3 / 96.6 & 90.8 / 96.6 \\
+Women per image & 98.9 / 100.0 & 95.4 / 100.0 & 96.6 / 100.0 & 98.9 / 100.0 & 97.7 / 100.0 & 94.3 / 100.0 \\
+Men per image & 95.4 / 100.0 & 92.0 / 98.9 & 93.1 / 98.9 & 96.6 / 97.7 & 94.3 / 97.7 & 92.0 / 97.7 \\
+Unclear-gender people per image & 97.7 / 100.0 & 89.7 / 98.9 & 88.5 / 100.0 & 96.6 / 98.9 & 96.6 / 97.7 & 87.4 / 100.0 \\
+Women per role & 89.0 / 100.0 & 82.2 / 94.8 & 74.2 / 95.6 & 83.5 / 96.6 & 76.6 / 97.3 & 73.5 / 92.8 \\
+Men per role & 83.5 / 98.1 & 64.3 / 95.8 & 59.2 / 94.8 & 80.0 / 95.5 & 70.1 / 95.1 & 66.7 / 93.8 \\
+Women per role category & 88.2 / 99.3 & 83.2 / 96.4 & 74.8 / 95.1 & 87.3 / 98.5 & 79.3 / 97.9 & 77.0 / 95.0 \\
+Men per role category & 86.5 / 97.7 & 64.8 / 95.1 & 60.5 / 95.2 & 83.8 / 94.6 & 74.5 / 94.2 & 65.2 / 94.2 \\
+Foreground: type & 90.8 (0.17) & 87.4 (0.46) & 82.8 (0.08) & 87.4 (0.09) & 96.6 (0.56) & 83.9 (0.23) \\
+Foreground: number of people & 46.0 / 64.4 & 59.8 / 78.2 & 36.8 / 60.9 & 55.2 / 77.0 & 43.7 / 67.8 & 67.8 / 90.8 \\
+Foreground: majority gender & 65.5 (0.44) & 77.0 (0.61) & 67.8 (0.46) & 73.6 (0.56) & 67.8 (0.47) & 85.1 (0.75) \\
+Focal: type & 70.1 (0.55) & 42.5 (0.21) & 57.5 (0.35) & 66.7 (0.52) & 58.6 (0.38) & 70.1 (0.47) \\
+Focal: number of people & 60.9 / 77.0 & 35.6 / 46.0 & 43.7 / 60.9 & 58.6 / 67.8 & 48.3 / 69.0 & 64.4 / 75.9 \\
+Focal: majority gender & 72.4 (0.61) & 40.2 (0.27) & 49.4 (0.33) & 59.8 (0.46) & 57.5 (0.42) & 73.6 (0.62) \\
+Scene question q1 & 75.0 (0.00) n=4 & 100.0 (--) n=4 & 75.0 (0.00) n=4 & 100.0 (--) n=4 & 75.0 (0.00) n=4 & 100.0 (--) n=4 \\
+\bottomrule
+\end{tabular}
+\caption{Agreement per image on the non-crowded validation images (n = 87). [Write your caption here.]}
+\label{tab:human-validation}
+\end{table}

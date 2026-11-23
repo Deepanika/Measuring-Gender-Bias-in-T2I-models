@@ -1,0 +1,19 @@
+pair,t2i_images,images,women_x,men_x,women_y,men_y,share_x,share_y,diff_pp,ci_low,ci_high
+Main vs Vol,all,87,220,208,221,206,51.4,51.8,-0.4,-1.0,0.1
+Main vs Vol,gemini,36,102,83,102,84,55.1,54.8,0.3,0.0,0.9
+Main vs Vol,openai,51,118,125,119,122,48.6,49.4,-0.8,-1.8,0.0
+gpt-6.1-sol vs Main,all,87,222,205,220,208,52.0,51.4,0.6,-0.5,1.6
+gpt-6.1-sol vs Main,gemini,36,101,83,102,83,54.9,55.1,-0.2,-2.3,1.7
+gpt-6.1-sol vs Main,openai,51,121,122,118,125,49.8,48.6,1.2,0.2,2.3
+gpt-6.1-sol vs Vol,all,87,222,205,221,206,52.0,51.8,0.2,-0.5,1.0
+gpt-6.1-sol vs Vol,gemini,36,101,83,102,84,54.9,54.8,0.1,-1.4,1.7
+gpt-6.1-sol vs Vol,openai,51,121,122,119,122,49.8,49.4,0.4,0.0,1.1
+gemini-3.8-flash vs Main,all,87,221,203,220,208,52.1,51.4,0.7,0.0,1.7
+gemini-3.8-flash vs Main,gemini,36,102,81,102,83,55.7,55.1,0.6,0.0,1.9
+gemini-3.8-flash vs Main,openai,51,119,122,118,125,49.4,48.6,0.8,0.0,2.3
+gemini-3.8-flash vs Vol,all,87,221,203,221,206,52.1,51.8,0.4,-0.6,1.5
+gemini-3.8-flash vs Vol,gemini,36,102,81,102,84,55.7,54.8,0.9,0.0,2.2
+gemini-3.8-flash vs Vol,openai,51,119,122,119,122,49.4,49.4,0.0,-1.4,1.7
+gpt-6.1-sol vs gemini-3.8-flash,all,87,222,205,221,203,52.0,52.1,-0.1,-1.5,1.1
+gpt-6.1-sol vs gemini-3.8-flash,gemini,36,101,83,102,81,54.9,55.7,-0.8,-2.9,1.1
+gpt-6.1-sol vs gemini-3.8-flash,openai,51,121,122,119,122,49.8,49.4,0.4,-1.3,1.8

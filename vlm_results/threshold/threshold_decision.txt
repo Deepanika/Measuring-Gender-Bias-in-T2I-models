@@ -1,0 +1,13 @@
+{
+ "run_utc": "2026-11-22T20:26:53+00:00",
+ "chosen_n": 13,
+ "rule": {
+  "human_bar": 0.9,
+  "vlm_margin": 5.0,
+  "role_margin": 5.0,
+  "min_images": 20,
+  "primary_vlm": "gemini-3.8-flash"
+ },
+ "validation_images": 100,
+ "all_images": 2160
+}

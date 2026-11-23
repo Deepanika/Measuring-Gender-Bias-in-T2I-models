@@ -1,0 +1,7 @@
+category,scenarios,gap_gemini,gap_openai,difference,ci_low,ci_high,differs
+PRIMARY,20,3.3,2.4,0.9,-0.2,2.1,False
+DIRECTING,20,-14.9,-44.9,30.0,16.4,42.2,True
+ASSISTING,20,2.4,-1.8,4.3,-2.4,11.0,False
+RECEIVING,20,10.7,6.1,4.6,-1.1,9.9,False
+OTHER_TASK,20,-21.0,21.9,-42.9,-66.7,-18.8,True
+OBSERVING,20,-10.3,-19.2,8.8,1.2,16.2,True

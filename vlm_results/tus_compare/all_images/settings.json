@@ -1,0 +1,28 @@
+{
+ "run_utc": "2026-11-21T21:36:29+00:00",
+ "mapping": "tus_role_mapping_by_level_1.xlsx",
+ "coder": "gemini-3.8-flash",
+ "crowd_file": "vlm_results\\results_gpt-6.1-sol_low_vlm_v1_main.jsonl",
+ "n": 0,
+ "crowds": "include",
+ "exclude_scenarios": [],
+ "models": [
+  "gemini",
+  "openai"
+ ],
+ "phrasings": [
+  "plain",
+  "use-case"
+ ],
+ "levels": [
+  "3-digit",
+  "2-digit",
+  "1-digit"
+ ],
+ "min_kept_share": 0.0,
+ "sensitivity": false,
+ "w": 0.496710223632283,
+ "min_diff": 5.0,
+ "images_considered": 2160,
+ "images_kept": 2160
+}

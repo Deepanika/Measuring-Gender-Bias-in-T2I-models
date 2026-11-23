@@ -1,0 +1,13 @@
+model,category,gap_usecase,gap_plain,difference,ci_low,ci_high,differs
+gemini,PRIMARY,-0.2,2.1,-2.3,-4.2,-0.3,True
+gemini,DIRECTING,41.2,-7.6,48.7,-2.7,100.0,False
+gemini,ASSISTING,-2.2,-1.6,-0.6,-10.3,9.5,False
+gemini,RECEIVING,12.0,3.4,8.5,-1.6,18.0,False
+gemini,OTHER_TASK,21.2,-15.9,37.1,-26.3,78.1,False
+gemini,OBSERVING,-10.3,-14.1,3.8,-10.3,18.1,False
+openai,PRIMARY,1.7,2.9,-1.1,-2.4,0.2,False
+openai,DIRECTING,-44.2,-42.5,-1.8,-15.4,12.5,False
+openai,ASSISTING,-2.4,-6.3,3.9,-5.6,12.8,False
+openai,RECEIVING,8.7,7.4,1.3,-5.2,8.1,False
+openai,OTHER_TASK,48.3,32.1,16.2,-1.2,50.4,False
+openai,OBSERVING,-10.3,-15.6,5.3,-3.2,13.9,False

@@ -1,0 +1,9 @@
+question,coder,images,t2i_model,n,male,female
+scene_q1,gemini-3.8-flash,all images,gemini,40,39,1.0
+scene_q1,gemini-3.8-flash,all images,openai,40,40,0.0
+scene_q1,gemini-3.8-flash,kept images,gemini,40,39,1.0
+scene_q1,gemini-3.8-flash,kept images,openai,40,40,0.0
+scene_q1,gpt-6.1-sol,all images,gemini,40,39,1.0
+scene_q1,gpt-6.1-sol,all images,openai,40,40,0.0
+scene_q1,gpt-6.1-sol,kept images,gemini,40,39,1.0
+scene_q1,gpt-6.1-sol,kept images,openai,40,40,0.0

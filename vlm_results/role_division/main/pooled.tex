@@ -1,0 +1,31 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llrcccc@{}}
+\toprule
+Images & Role category & Women / men & Female \% in role & Female \% in scene & Gap (pp) [95\% CI] & Mean scenario gap (n) \\
+\midrule
+gemini & Primary & 1483 / 1206 & 55.2 & 51.7 & +3.4 [+2.5, +4.4] & +4.0 (20) \\
+gemini & Directing & 25 / 46 & 35.2 & 51.7 & -16.5$^{*}$ [-27.5, -5.7] & -10.8 (1) \\
+gemini & Assisting & 167 / 137 & 54.9 & 51.7 & +3.2 [-1.6, +8.2] & -3.0 (5) \\
+gemini & Receiving & 166 / 90 & 64.8 & 51.7 & +13.1$^{*}$ [+8.2, +18.0] & +5.9 (4) \\
+gemini & Other Task & 30 / 71 & 29.7 & 51.7 & -22.0$^{*}$ [-30.1, -12.9] & -12.2 (2) \\
+gemini & Observing & 164 / 282 & 36.8 & 51.7 & -14.9$^{*}$ [-19.3, -10.4] & -14.5 (6) \\
+openai & Primary & 1639 / 1433 & 53.4 & 50.7 & +2.7 [+2.0, +3.3] & +5.0 (24) \\
+openai & Directing & 5 / 54 & 8.5 & 50.7 & -42.2$^{*}$ [-48.7, -35.2] & -21.3 (1) \\
+openai & Assisting & 147 / 169 & 46.5 & 50.7 & -4.2 [-8.3, +0.2] & -4.9 (5) \\
+openai & Receiving & 155 / 169 & 47.8 & 50.7 & -2.9 [-6.2, +0.3] & +0.3 (5) \\
+openai & Other Task & 7 / 1 & 87.5 & 50.7 & +36.8$^{*}$ [+7.5, +49.8] & +nan (0) \\
+openai & Observing & 175 / 230 & 43.2 & 50.7 & -7.5$^{*}$ [-11.9, -3.2] & -11.7 (8) \\
+both & Primary & 3122 / 2639 & 54.2 & 51.2 & +3.0 [+2.4, +3.6] & +4.5 (44) \\
+both & Directing & 30 / 100 & 23.1 & 51.2 & -28.1$^{*}$ [-35.1, -21.3] & -16.0 (2) \\
+both & Assisting & 314 / 306 & 50.6 & 51.2 & -0.6 [-3.6, +2.7] & -4.0 (10) \\
+both & Receiving & 321 / 259 & 55.3 & 51.2 & +4.1 [+1.2, +6.9] & +2.8 (9) \\
+both & Other Task & 37 / 72 & 33.9 & 51.2 & -17.3$^{*}$ [-25.8, -7.9] & -12.2 (2) \\
+both & Observing & 339 / 512 & 39.8 & 51.2 & -11.4$^{*}$ [-14.6, -8.3] & -12.9 (14) \\
+\bottomrule
+\end{tabular}}
+\caption{Gender role division: female share within each role category vs among all people in the same images. $^{*}$ q $<$ 0.05, interval excludes 0, $|$gap$|$ $\geq$ 5 pp. Settings: main. [Write your caption here.]}
+\label{tab:role-division}
+\end{table}
