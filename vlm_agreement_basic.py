@@ -31,7 +31,6 @@ import pandas as pd
 GENDERS = ("female", "male", "unclear")
 
 
-# ---------------------------------------------------------------- loading ---
 def first_value(df, column, default=""):
     """First non-empty value of a column, or a default if the column is missing or empty."""
     if column not in df:
@@ -59,7 +58,7 @@ def load(results_jsonl):
     return images, roles, f"{model} ({effort})" if effort else model
 
 
-# --------------------------------------------------------------- measures ---
+
 def pct_identical(a, b):
     return 100 * np.mean(np.asarray(a) == np.asarray(b))
 
@@ -82,7 +81,7 @@ def majority_gender(df, field, coder):
     return np.select([f + m == 0, f > m, m > f], ["none or unclear", "mostly female", "mostly male"], "equal")
 
 
-# ------------------------------------------------------------------ table ---
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("results_a")
@@ -91,7 +90,7 @@ def main():
     img_a, roles_a, name_a = load(args.results_a)
     img_b, roles_b, name_b = load(args.results_b)
 
-    # images coded successfully by both coders
+   
     ok_a = set(img_a.loc[img_a.run_status == "ok", "image_key"])
     ok_b = set(img_b.loc[img_b.run_status == "ok", "image_key"])
     both = ok_a & ok_b
@@ -110,7 +109,7 @@ def main():
             m[f"{f}_size_{c}"] = sum(m[f"{f}_n_{g}_{c}"] for g in GENDERS)
     m["group"] = np.where(m.crowd_A | m.crowd_B, "Crowd", "No crowd")
 
-    # women and men per role type per image, from both coders
+    
     keep = ["image_key", "role_id", "category", "n_female", "n_male"]
     cells = pd.merge(roles_a.loc[roles_a.image_key.isin(both), keep],
                      roles_b.loc[roles_b.image_key.isin(both), keep].drop(columns="category"),
@@ -157,12 +156,12 @@ def main():
               count_row("Men per role type", cells, "n_male", cell_mask=True)]
     n = {g: int(np.sum(mask)) for g, mask in groups.items()}
 
-    # terminal
+    
     head = ["", f"All (n={n['All images']})", f"No crowd (n={n['No crowd']})", f"Crowd (n={n['Crowd']})"]
     print("\n% identical (kappa)\n" + pd.DataFrame(answers, columns=head).to_string(index=False))
     print("\n% identical / % within one\n" + pd.DataFrame(counts, columns=head).to_string(index=False))
 
-    # LaTeX
+    
     def tex_rows(rows):
         return "\n".join(" & ".join(r) + r" \\" for r in rows)
 

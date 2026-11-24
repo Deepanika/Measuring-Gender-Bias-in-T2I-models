@@ -42,7 +42,6 @@ from vlm_prompt import (SYSTEM_PROMPT, VLM_PROMPT_VERSION, build_schema, build_u
 
 load_dotenv()
 
-# ---------------------------------------------------------------- CONFIG ---
 DRIVE_ROOT = Path(os.path.expanduser(os.getenv("DRIVE_ROOT", "G:/My Drive")))
 IMAGES_DIR = DRIVE_ROOT / os.getenv("IMAGES_DIRNAME", "Images-generated")
 CODEBOOK_PATH = Path(os.getenv("CODEBOOK_PATH", "codebook_final.json"))
@@ -61,7 +60,7 @@ MAX_ATTEMPTS = 3                                             # per image, for in
 BATCH_MAX_MB = float(os.getenv("VLM_BATCH_MAX_MB", "150"))
 IMG_EXT = {".png", ".jpg", ".jpeg", ".webp"}
 NAME_RE = re.compile(r"^(?P<code>\d+)_(?P<phrasing>plain|use-case)_(?P<sample>\d+)$")
-# ---------------------------------------------------------------------------
+
 
 
 def load_codebook():
@@ -236,7 +235,6 @@ class ResultStore:
     def __init__(self, tag):
         OUT_DIR.mkdir(parents=True, exist_ok=True)
         safe_model = VLM_MODEL.replace("/", "-")
-        # effort is in the file name, so runs at different effort levels never mix or skip each other
         self.path = OUT_DIR / f"results_{safe_model}_{effort_label()}_{VLM_PROMPT_VERSION}_{tag}.jsonl"
         self.lock = threading.Lock()
 
@@ -317,7 +315,7 @@ def parse_keys(spec):
     if not spec:
         return set()
     path = Path(spec)
-    if path.exists():   # one key per line; blank lines and lines starting with # are ignored
+    if path.exists():   
         raw = [ln.split()[0] for ln in path.read_text(encoding="utf-8").splitlines()
                if ln.strip() and not ln.lstrip().startswith("#")]
     else:

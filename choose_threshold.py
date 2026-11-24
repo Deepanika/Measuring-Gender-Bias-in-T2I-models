@@ -1,8 +1,8 @@
 """
 choose_threshold.py - choose n, the largest number of people per image that can still be coded reliably.
 
-  python choose_threshold.py                     (run validate_humans.py once before, to build the volunteer file)
-  python choose_threshold.py --human-bar 0.95 --vlm-margin 3     (stricter main rule, if decided in advance)
+  python choose_threshold.py                     
+  python choose_threshold.py --human-bar 0.95 --vlm-margin 3     
 
 The script uses CODING AGREEMENT ONLY. It never computes a female share or any gender result, so the
 threshold cannot be tuned to the findings.
@@ -49,7 +49,6 @@ GROUPS = [(1, 4), (5, 6), (7, 8), (9, 10), (11, 14), (15, 99)]
 
 
 def wilson(k, n, z=1.96):
-    """95% Wilson interval for k successes out of n (good for small samples)."""
     if n == 0:
         return np.nan, np.nan
     p = k / n
@@ -70,7 +69,7 @@ def count_agree(X, Y, keys):
 
 
 def role_agree(X, Y, keys):
-    """1 if, for every role category, both coders placed the same number of women and of men in it."""
+    
     def table(C):
         r = C["roles"][C["roles"].image_key.isin(keys)]
         return r.groupby(["image_key", "category"])[["n_female", "n_male"]].sum()
@@ -81,7 +80,7 @@ def role_agree(X, Y, keys):
 
 
 def logistic(x, y, iters=50):
-    """Logistic regression y ~ 1 + x by Newton's method; returns (intercept, slope)."""
+    
     X = np.column_stack([np.ones_like(x), x])
     b = np.zeros(2)
     for _ in range(iters):
@@ -95,14 +94,14 @@ def logistic(x, y, iters=50):
 
 
 def crossing(b, bar):
-    """Size at which the fitted agreement falls to the bar (None if it never does)."""
+    
     if b[1] >= 0:
         return np.nan
     return (math.log(bar / (1 - bar)) - b[0]) / b[1]
 
 
 def choose_n(cum, bar, margin, role_margin, min_images):
-    """Largest n before the first failing n (only n with at least min_images kept images are judged)."""
+    
     ok = cum[cum.images >= min_images]
     chosen = np.nan
     for _, r in ok.iterrows():
@@ -181,7 +180,7 @@ def main():
                          hh_role=pct(hh_r[m]), vlm_role=pct(vlm_r[m])))
     cum = pd.DataFrame(rows)
     cum["count_gap"], cum["role_gap"] = cum.hh_count - cum.vlm_count, cum.hh_role - cum.vlm_role
-    try:                                       # exact one-sided test: is human agreement on kept images above the bar?
+    try:                                       
         from scipy.stats import binomtest
         cum["p_above_bar"] = [round(binomtest(int(round(h * k / 100)), int(k), args.human_bar,
                                               alternative="greater").pvalue, 3) for h, k in zip(cum.hh_count, cum.images)]
@@ -190,7 +189,7 @@ def main():
     cum["passes"] = (cum.hh_count >= 100 * args.human_bar) & (cum.count_gap <= args.vlm_margin) & \
                     (cum.role_gap <= args.role_margin)
     n_star = choose_n(cum, args.human_bar, args.vlm_margin, args.role_margin, args.min_images)
-    if not np.isnan(n_star):          # do not claim sizes no image had: shrink n to the largest size actually kept
+    if not np.isnan(n_star):          
         n_star = int(math.ceil(size[size <= n_star + 0.5].max() - 0.5))
     cum.to_csv(out / "cumulative_by_n.csv", index=False)
     print(f"\n2. KEEP IMAGES WITH AT MOST n PEOPLE: agreement on what is kept (gap = humans minus VLM; "

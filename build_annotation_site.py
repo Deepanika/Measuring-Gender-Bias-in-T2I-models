@@ -39,8 +39,8 @@ from PIL import Image
 from vlm_prompt import (CROWD_SIZE, FALLBACK_ROLES, FOREGROUND_TYPES, GENDER_MIX, IMAGE_STATUS,
                         MAX_LISTED_PEOPLE, SYSTEM_PROMPT, VLM_PROMPT_VERSION)
 
-EXPECTED_CODEBOOK_VERSION = "codebook_final@58a2c8633d"   # the codebook the VLMs used
-JPEG_QUALITY = 95                                          # same as vlm_code_images.py
+EXPECTED_CODEBOOK_VERSION = "codebook_final@58a2c8633d"   
+JPEG_QUALITY = 95                                          
 TOOL_VERSION = "human_v1"
 HERE = Path(__file__).resolve().parent
 PAGE_TEMPLATE = HERE / "annotator_page.html"
@@ -64,14 +64,12 @@ def load_manifest(path, images_root):
     """One item per image, built exactly like discover_images() in vlm_code_images.py."""
     df = pd.read_csv(path)
     df = df[df["status"] == "ok"].sort_values("timestamp_utc")
-    # a few images were regenerated: keep the last successful attempt (the file on disk)
     df = df.drop_duplicates(["provider", "scenario_id", "phrasing", "sample"], keep="last")
     items = {}
     for _, m in df.iterrows():
         code = str(m["within_dimension"]).replace(".0", "")
         key = f"{m['provider']}_{code}_{m['phrasing']}_{int(m['sample']):02d}"
         src = PureWindowsPath(str(m["file"]))
-        # --images-root re-bases the last five path parts: provider/dimension/code/phrasing/file
         path = Path(images_root, *src.parts[-5:]) if images_root else Path(str(m["file"]))
         items[key] = dict(image_key=key, t2i_model=m["provider"], dimension=m["dimension"],
                           within_dimension=code, scenario_id=m["scenario_id"], phrasing=m["phrasing"],
@@ -150,7 +148,7 @@ def main():
     if unknown_scen:
         raise SystemExit(f"Codebook has no entry for {sorted(unknown_scen)}")
 
-    # opaque ids: keep existing ones, add new random ones
+    
     map_path = args.private_dir / "mapping.csv"
     mapping = load_mapping(map_path)
     used = set(mapping.values())
@@ -165,12 +163,12 @@ def main():
             if key in items]
     pd.DataFrame(rows).to_csv(map_path, index=False, encoding="utf-8")
 
-    # site
+   
     site, img_dir, data_dir = args.site_dir, args.site_dir / "images", args.site_dir / "data"
     img_dir.mkdir(parents=True, exist_ok=True)
     data_dir.mkdir(parents=True, exist_ok=True)
     wanted = {f"{mapping[k]}.jpg" for k in chosen}
-    for old in img_dir.glob("*.jpg"):              # drop images no longer selected
+    for old in img_dir.glob("*.jpg"):              
         if old.name not in wanted:
             old.unlink()
     new = 0
@@ -179,15 +177,14 @@ def main():
         if not out.exists():
             out.write_bytes(image_jpeg_bytes(items[key]["image_path"]))
             new += 1
-    shutil.copyfile(args.codebook, data_dir / "codebook_final.json")        # exact bytes, hash-checked in page
+    shutil.copyfile(args.codebook, data_dir / "codebook_final.json")        
 
     images = {mapping[k]: items[k]["scenario_id"] for k in sorted(chosen, key=lambda k: mapping[k])}
     per_coder = defaultdict(list)
     for key, coders in chosen.items():
         for c in coders:
             per_coder[c].append(key)
-    # Each coder keeps their existing order; newly added images go at the end, so a coder who has
-    # finished their first batch never sees those images moved around or offered again.
+
     prev_path = data_dir / "assignments.json"
     previous = json.loads(prev_path.read_text(encoding="utf-8")) if prev_path.exists() else {}
     assignments = {}
@@ -200,7 +197,7 @@ def main():
             if mapping[key] not in kept:
                 by_scen[items[key]["scenario_id"]].append(mapping[key])
         order = sorted(by_scen)
-        rng.shuffle(order)                         # new images: scenarios in random order, grouped by scenario
+        rng.shuffle(order)                         
         ids = list(kept)
         for s in order:
             group = sorted(by_scen[s])
@@ -210,7 +207,7 @@ def main():
         if previous.get(coder) and len(ids) > len(kept):
             print(f"  {coder}: {len(ids) - len(kept)} new images added after their existing {len(kept)}")
 
-    # checks for hand edits: who gained or lost images since the last build, and images with one coder
+
     for coder in sorted(set(previous) | set(assignments)):
         before, after = set(previous.get(coder, [])), set(assignments.get(coder, []))
         if previous and (after - before or before - after):
@@ -236,7 +233,7 @@ def main():
     shutil.copyfile(PAGE_TEMPLATE, site / "index.html")
     (site / ".nojekyll").write_text("", encoding="utf-8")
 
-    # leak check: nothing identifying may reach the site folder
+
     leak_words = ["openai", "gemini", "plain", "use-case", "gpt-image", "flash-image"]
     for f in data_dir.glob("*.json"):
         if f.name == "codebook_final.json":

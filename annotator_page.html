@@ -126,10 +126,10 @@ dialog .dlg-head h2 { margin: 0 auto 0 0; font-size: 18px; }
 </head>
 <body>
 
-<!-- loading / fatal error -->
+
 <section id="screen-load" class="page"><p id="load-msg">Loading…</p></section>
 
-<!-- start -->
+
 <section id="screen-start" class="page" hidden>
   <h1>Image coding</h1>
   <p class="hint" id="start-study"></p>
@@ -145,7 +145,7 @@ dialog .dlg-head h2 { margin: 0 auto 0 0; font-size: 18px; }
   <p class="page-foot" data-version></p>
 </section>
 
-<!-- consent -->
+
 <section id="screen-consent" class="page" hidden>
   <h1>Before you start</h1>
   <div class="card">
@@ -191,7 +191,7 @@ dialog .dlg-head h2 { margin: 0 auto 0 0; font-size: 18px; }
   <p class="page-foot" data-version></p>
 </section>
 
-<!-- more images assigned after consent -->
+
 <section id="screen-more" class="page" hidden>
   <h1>New images for you</h1>
   <div class="card">
@@ -203,7 +203,7 @@ dialog .dlg-head h2 { margin: 0 auto 0 0; font-size: 18px; }
   <p class="page-foot" data-version></p>
 </section>
 
-<!-- rules (first time) -->
+
 <section id="screen-rules" class="page" hidden>
   <h1>How to code an image</h1>
   <div class="card rules" id="rules-first"></div>
@@ -211,7 +211,7 @@ dialog .dlg-head h2 { margin: 0 auto 0 0; font-size: 18px; }
   <p class="page-foot" data-version></p>
 </section>
 
-<!-- coding -->
+
 <section id="screen-code" hidden>
   <header class="bar">
     <span class="title">Image coding</span>
@@ -244,7 +244,7 @@ dialog .dlg-head h2 { margin: 0 auto 0 0; font-size: 18px; }
   <footer class="foot"><span id="img-id"></span><span data-version></span></footer>
 </section>
 
-<!-- done -->
+
 <section id="screen-done" class="page" hidden>
   <h1>All images are coded</h1>
   <div class="card">
@@ -265,7 +265,7 @@ dialog .dlg-head h2 { margin: 0 auto 0 0; font-size: 18px; }
 
 <script>
 "use strict";
-const IDLE_MS = 120000;            // time on an image stops counting after 2 minutes without any input
+const IDLE_MS = 120000;            
 const $ = (s, r = document) => r.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const words = s => (s || "").trim().split(/\s+/).filter(Boolean).length;
@@ -274,7 +274,7 @@ const nowIso = () => new Date().toISOString().replace(/\.\d+Z$/, "+00:00");
 const S = { cfg: null, scen: {}, images: {}, assign: {}, coder: null, order: [], idx: 0, store: null,
             zoom: 1, mode: "person", sel: null, t0: null, lastAct: Date.now(), errors: [] };
 
-/* ------------------------------------------------------------------ storage */
+
 const KEY = c => `t2i-annot:${c}`;
 function save() {
   if (!S.coder) return;
@@ -293,7 +293,7 @@ function show(id) {
   for (const s of document.querySelectorAll("body > section")) s.hidden = s.id !== id;
 }
 
-/* ------------------------------------------------------------------ boot */
+
 async function getJSON(p) {
   const r = await fetch(p, { cache: "no-cache" });
   if (!r.ok) throw new Error(`${p}: HTTP ${r.status}`);
@@ -324,7 +324,7 @@ async function boot() {
   show("screen-start");
 }
 
-/* ------------------------------------------------------------------ start + consent */
+
 $("#start-go").onclick = startCoder;
 $("#coder-input").addEventListener("keydown", e => { if (e.key === "Enter") startCoder(); });
 function startCoder() {
@@ -344,7 +344,7 @@ function startCoder() {
   } else if (!S.store.rulesSeen) show("screen-rules");
   else openCoding();
 }
-/* images assigned after the coder last agreed (older consents without a list count as agreeing to all) */
+
 function newIds() {
   const agreed = S.store.consent && S.store.consent.agreed_ids;
   return agreed ? S.order.filter(id => !agreed.includes(id)) : [];
@@ -404,7 +404,7 @@ const PLAIN_RULES = [
 function renderRules(el) {
   el.innerHTML = PLAIN_RULES.map(([t, items]) => `<h3>${esc(t)}</h3><ul>${items.map(i => `<li>${esc(i)}</li>`).join("")}</ul>`).join("");
 }
-/* role order under the image: the codebook precedence chain, shown as role names only */
+
 function precedenceNames(sc) {
   const chain = sc.precedence.split(/\s\(|\.\s/)[0].replace(/\.$/, "");
   const ids = chain.split(">").map(x => x.trim());
@@ -417,7 +417,7 @@ function renderOrder() {
   $("#order").innerHTML = names ? names.map(esc).join('<span class="sep">›</span>') : esc(sc.precedence);
 }
 
-/* ------------------------------------------------------------------ records */
+
 function rec(id = cur()) {
   if (!S.store.recs[id]) S.store.recs[id] = { status: "ok", people: [], crowds: [], foreground: { type: "", pids: [] },
     focal: { type: "", pids: [] }, scene_answers: {}, flagged: false, comment: "", seconds: 0, complete: false, updated: null };
@@ -432,7 +432,7 @@ function allRoles(sc) {
 const roleById = (sc, id) => allRoles(sc).find(r => r.role_id === id);
 function touched() { const r = rec(); r.updated = nowIso(); r.complete = false; save(); updateHeader(); }
 
-/* ------------------------------------------------------------------ timing */
+
 function accrue() {
   const now = Date.now();
   if (S.t0 !== null && S.order.length) {
@@ -450,7 +450,7 @@ function activity() {
 document.addEventListener("visibilitychange", () => { if (!$("#screen-code").hidden) { accrue(); save(); } });
 setInterval(() => { if (!$("#screen-code").hidden) { accrue(); save(); } }, 15000);
 
-/* ------------------------------------------------------------------ coding screen */
+
 function openCoding() {
   show("screen-code");
   const firstOpen = S.order.findIndex(id => !(S.store.recs[id] && S.store.recs[id].complete));
@@ -477,7 +477,7 @@ function updateHeader() {
 }
 $("#jump").onchange = e => goTo(+e.target.value);
 
-/* zoom + mode */
+
 $("#zoom").onclick = e => { const b = e.target.closest("button"); if (!b) return; S.zoom = +b.dataset.z; applyZoom(); };
 function applyZoom() {
   for (const b of $("#zoom").children) b.setAttribute("aria-pressed", +b.dataset.z === S.zoom);
@@ -487,7 +487,7 @@ function applyZoom() {
 }
 window.addEventListener("resize", () => { if (!$("#screen-code").hidden) applyZoom(); });
 $("#mode").onclick = e => { const b = e.target.closest("button"); if (b) setMode(b.dataset.m); };
-/* the crowd-group option appears once 20 people are marked (or when asked for from the Crowd groups box) */
+
 function setMode(m) { S.mode = m; renderMode(); }
 function renderMode() {
   const r = rec();
@@ -495,7 +495,7 @@ function renderMode() {
   for (const x of $("#mode").children) x.setAttribute("aria-pressed", x.dataset.m === S.mode);
 }
 
-/* markers */
+
 function renderMarks() {
   const r = rec();
   $("#marks").innerHTML =
@@ -543,7 +543,7 @@ function addAt(pos) {
       toast(`${S.cfg.max_listed} people marked. Now click on each remaining group to add it as a crowd group.`, 6000); }
   } else {
     r.crowds.push({ ...pos, role: "", gender_mix: "", size: "" });
-    if (r.people.length < S.cfg.max_listed) S.mode = "person";   // a single small background group: back to people
+    if (r.people.length < S.cfg.max_listed) S.mode = "person";   
     select("c", r.crowds.length - 1, true);
   }
   touched();
@@ -554,7 +554,7 @@ function select(k, i, focusWhere = false) {
   if (el) { el.scrollIntoView({ block: "nearest" }); if (focusWhere) { const w = el.querySelector("select[data-f=role]"); w && w.focus(); } }
 }
 
-/* ------------------------------------------------------------------ panel */
+
 function roleOptions(sc, value) {
   const opt = r => `<option value="${esc(r.role_id)}" ${r.role_id === value ? "selected" : ""}>${esc(r.role_name)}${r.fallback ? ` (${esc(r.role_id)})` : ""}</option>`;
   return `<option value="" ${value ? "" : "selected"} disabled>Choose a role</option>
@@ -633,7 +633,7 @@ function renderPanel() {
   renderMode();
 }
 
-/* panel events */
+
 $("#panel").addEventListener("input", e => {
   const t = e.target, f = t.dataset.f; if (!f) return;
   const r = rec();
@@ -694,7 +694,7 @@ $("#panel").addEventListener("click", e => {
   else if (act === "next") saveAndNext();
 });
 
-/* ------------------------------------------------------------------ validation (mirrors vlm_prompt.validate) */
+
 function validateRec(r, sc) {
   const E = [], roleIds = new Set(allRoles(sc).map(x => x.role_id));
   if (!S.cfg.image_status.includes(r.status)) E.push("Choose the image status.");
@@ -741,7 +741,7 @@ function finish() {
 }
 $("#done-back").onclick = () => { show("screen-code"); goTo(0); };
 
-/* ------------------------------------------------------------------ export / import */
+
 function whereOf(m) {
   const col = m.x < 1 / 3 ? "left" : m.x < 2 / 3 ? "centre" : "right", row = m.y < 1 / 3 ? "top" : m.y < 2 / 3 ? "middle" : "bottom";
   return `${col} ${row}, x${m.x.toFixed(2)} y${m.y.toFixed(2)}`;
@@ -787,7 +787,7 @@ $("#done-export").onclick = exportAll;
 $("#btn-rules").onclick = () => $("#dlg-rules").showModal();
 $("#dlg-close").onclick = () => $("#dlg-rules").close();
 
-/* restore from an exported file (e.g. after moving to another computer) */
+
 $("#btn-import").onclick = () => $("#import-file").click();
 $("#import-file").onchange = async e => {
   const f = e.target.files[0]; if (!f) return;
