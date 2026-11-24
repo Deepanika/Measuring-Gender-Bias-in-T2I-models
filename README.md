@@ -1,4 +1,8 @@
 # Measuring-Gender-Bias-in-T2I-models
-Ethics in AI project
+DS 307 Research Project
 
-Generate 9*3*2*10=540 images for GPT and Gemini each
+Generated 9*3*2*20=1080 images for GPT and Gemini each
+
+The repo includes the code for generating images, all the prompts used to generate the images, prompts used to write the codebook by VLMs, prompts and rules used to code the images by VLMs and the code for the same, code for determining threshold for reliable analysis, the agreement statistics of VLMs, humans and VLM-human, the detailed results of all the findings.
+
+
